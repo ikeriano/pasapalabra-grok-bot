@@ -59,7 +59,7 @@ export const PRUEBAS = {
       const okR = rival(0.7); if (!okR) fR++;
       await ui.aviso(cont, `El rival responde la letra ${otra}: ${okR ? '✅ acierta' : '❌ falla'}`, 1200);
     }
-    G.eliminado = fH >= 2;
+    G.eliminado = fH >= 2; if (fH >= 2) sonido('eliminado');
     await resumen(G, ui, 'Silla azul', fH >= 2 ? (G.entreno ? 'Has fallado dos preguntas: en el programa quedarías eliminado.' : 'Has fallado dos preguntas: quedas eliminado del programa. ¡El rival conserva la silla!') : '¡Ocupas la silla azul! Sigues en el programa.');
     return { eliminado: G.eliminado };
   } },
@@ -224,39 +224,55 @@ export const PRUEBAS = {
 
   // ===================== RUEDA LA LETRA =====================
   la_oportunidad: { nombre: 'La oportunidad', async jugar(G, ui) {
+    hud().set('rueda');
     const tira = banco('la_oportunidad').slice(0, 10); let pH = 0, pR = 0, turno = H, i = 0;
-    let cont = ui.pantalla(`<p class="j-reglas">Repesca en el atril azul. Tira de 10 letras en orden alfabético con una definición por letra. 5 segundos para responder; fallo o tiempo = rebote al rival. Si se acierta el rebote, suma y sigue en su turno. Gana el primero en llegar a 6 aciertos.</p>`); ui.cabecera(G, 'La oportunidad'); await ui.continuar(cont, 'Empezar ▸');
+    let cont = ui.pantalla(`<p class="j-reglas">Repesca en el atril azul. Tira de 10 letras en orden alfabético con una definición por letra. 5 segundos para responder; fallo o tiempo = rebote al rival. Si se acierta el rebote, suma y sigue en su turno. Gana el primero en llegar a 6 aciertos.</p>`); ui.cabecera(G, 'La oportunidad');
+    const pinta = (k, t) => hud().ruedaOportunidad(G, { letras: tira.map(x => x[0]), actual: k, aH: pH, aR: pR, turno: t });
+    pinta(-1, turno); await ui.continuar(cont, 'Empezar ▸');
     while (pH < 6 && pR < 6) {
-      const [L, d, r] = tira[i % tira.length]; i++;
-      const tiraHtml = `<div class="j-tira">${tira.map((x, k) => `<span class="${k === (i - 1) % 10 ? 'cur' : ''}">${x[0]}</span>`).join('')}</div>`;
+      const k = i % tira.length; const [L, d, r] = tira[k]; i++;
+      pinta(k, turno);
       if (turno === H) {
-        cont = ui.pantalla(`${tiraHtml}<div class="j-def">${L}: ${esc(d)}</div><div class="j-sub">Tú ${pH} · Rival ${pR}</div>`); ui.cabecera(G, 'La oportunidad');
+        cont = ui.pantalla(`<div class="j-def">${L}: ${esc(d)}</div><div class="j-sub">Tú ${pH} · Rival ${pR}</div>`); ui.cabecera(G, 'La oportunidad'); habla(d);
         const ok = await respondeHumano(ui, cont, r, 5);
-        if (ok) pH++; else { if (rival(0.55)) { pR++; turno = R; await ui.aviso(cont, 'Rebote: el rival acierta y se queda el turno', 1100); } }
+        if (ok) pH++; else { if (rival(0.55)) { pR++; turno = R; pinta(k, R); await ui.aviso(cont, 'Rebote: el rival acierta y se queda el turno', 1100); } }
       } else {
-        cont = ui.pantalla(`${tiraHtml}<div class="j-def">${L}: ${esc(d)}</div><div class="j-sub">Turno del rival · Tú ${pH} · Rival ${pR}</div>`); ui.cabecera(G, 'La oportunidad');
+        cont = ui.pantalla(`<div class="j-def">${L}: ${esc(d)}</div><div class="j-sub">Turno del rival · Tú ${pH} · Rival ${pR}</div>`); ui.cabecera(G, 'La oportunidad');
         await espera(1200);
-        if (rival(0.6)) { pR++; await ui.aviso(cont, `El rival acierta: ${esc(r.split('|')[0])}`, 900); }
-        else { await ui.aviso(cont, 'El rival falla: ¡rebote para ti!', 700); const ok = await respondeHumano(ui, cont, r, 5); if (ok) { pH++; turno = H; } }
+        if (rival(0.6)) { pR++; pinta(k, R); await ui.aviso(cont, `El rival acierta: ${esc(r.split('|')[0])}`, 900); }
+        else { pinta(k, H); await ui.aviso(cont, 'El rival falla: ¡rebote para ti!', 700); const ok = await respondeHumano(ui, cont, r, 5); if (ok) { pH++; turno = H; } }
       }
+      pinta(k, turno);
     }
+    await espera(600); hud().limpiar();
     await resumen(G, ui, 'La oportunidad', pH >= 6 ? '¡Ganas La oportunidad! Entras en el programa.' : 'El rival gana La oportunidad (sigues para practicar).');
   } },
   he_dicho: { nombre: '¡He dicho!', async jugar(G, ui) {
-    const lista = banco('he_dicho').slice(0, 10); const frases = baraja(lista.map(x => x[1])); let ac = 0; const usadas = new Set();
-    let cont = ui.pantalla(`<p class="j-reglas">10 personajes y 10 frases célebres (históricas, de dominio público). 90 segundos para emparejarlos: +1 s por acierto y +5 s extra si completas la lista.</p>`); ui.cabecera(G, '¡He dicho!', 90); await ui.continuar(cont, 'Empezar ▸');
-    const reloj = new Reloj(90, v => ui.setReloj(v)).start();
-    for (const [pers, frase] of lista) {
+    hud().set('rueda');
+    const lista = banco('he_dicho').slice(0, 10); const nombres = lista.map(x => x[0]); const orden = baraja(lista.map((x, k) => k)); let ac = 0; const usados = new Set();
+    let cont = ui.pantalla(`<p class="j-reglas">10 personajes y 10 frases célebres (históricas, de dominio público). Sale una frase: di quién la dijo. 90 segundos: +1 s por acierto y +5 s extra si completas la lista.</p>`); ui.cabecera(G, '¡He dicho!', 90);
+    globalThis.__ledRueda = '¡HE DICHO!'; await hud().ruedaLed('¡HE DICHO!', 2200); await ui.continuar(cont, 'Empezar ▸');
+    const pills = (cur = -1) => nombres.map((t, k) => ({ t, e: usados.has(k) ? 'ok' : k === cur ? 'cur' : '' }));
+    const reloj = new Reloj(90, v => { ui.setReloj(v); hud().tiempoRl(v); }).start();
+    for (const k of orden) {
       if (reloj.terminado) break;
-      cont = ui.pantalla(`<div class="j-def">¿Qué dijo <b>${esc(pers)}</b>?</div><div class="j-opc vert">${frases.map((f, k) => `<button data-v="${k}" ${usadas.has(k) ? 'disabled' : ''}>«${esc(f)}»</button>`).join('')}</div>`); ui.cabecera(G, '¡He dicho!', reloj.rest);
+      const frase = lista[k][1];
+      hud().ruedaLista(G, { lado: 0, items: pills(), texto: frase, tiempo: reloj.rest, total: 90 }); habla(frase);
+      cont = ui.pantalla(`<div class="j-def">«${esc(frase)}»</div><div class="j-opc vert">${nombres.map((n, j) => `<button data-v="${j}" ${usados.has(j) ? 'disabled' : ''}>${esc(n)}</button>`).join('')}</div>`); ui.cabecera(G, '¡He dicho!', reloj.rest);
       const v = await ui.clic(cont, '[data-v]', [reloj.fin]); if (v === 'TIEMPO') break;
-      if (frases[+v] === frase) { ac++; usadas.add(+v); sumar(G, H, 1); sonido('acierto'); } else { sonido('fallo'); await ui.aviso(cont, '❌', 500); }
+      hud().ruedaLista(G, { lado: 0, items: pills(+v), texto: frase, tiempo: reloj.rest, total: 90 });
+      if (+v === k) { ac++; usados.add(k); sumar(G, H, 1); sonido('acierto'); await ui.aviso(cont, '✅', 400); } else { sonido('fallo'); await ui.aviso(cont, `❌ Era ${esc(nombres[k])}`, 700); }
     }
     reloj.stop(); if (ac === 10) sumar(G, H, 5);
     let ar = 0; for (let i = 0; i < 10; i++) if (rival(0.6)) ar++; sumar(G, R, ar + (ar === 10 ? 5 : 0));
-    await resumen(G, ui, '¡He dicho!', `Tú: ${ac}/10 (+${ac + (ac === 10 ? 5 : 0)} s) · Rival: ${ar}/10`);
+    // turno del rival: la misma lista en turquesa a la derecha
+    const lr = baraja(banco('he_dicho')).slice(0, 10);
+    hud().ruedaLista(G, { lado: 1, items: lr.map((x, k) => ({ t: x[0], e: k < ar ? 'ok' : k === ar ? 'cur' : '' })), texto: lr[Math.min(ar, 9)][1], tiempo: 90 - ar * 7, total: 90 });
+    cont = ui.pantalla(`<div class="j-def">Juega el rival…</div>`); ui.cabecera(G, '¡He dicho!'); await espera(1800); hud().limpiar();
+    globalThis.__ledRueda = null; await resumen(G, ui, '¡He dicho!', `Tú: ${ac}/10 (+${ac + (ac === 10 ? 5 : 0)} s) · Rival: ${ar}/10`);
   } },
   cantando_espero: { nombre: 'Cantando espero', async jugar(G, ui) {
+    hud().set('rueda');
     const temas = baraja(banco('cantando_espero')).slice(0, 4);
     let cont = ui.pantalla(`<p class="j-reglas">Duelo de pulsador: 15 segundos por tema. Los primeros 5 s son exclusivos del equipo con más segundos; después se habilita el rival. En la siguiente ronda se invierte. Fallo = rebote. +5 s por acierto. (Melodías de dominio público sintetizadas o tus audios.)</p>`); ui.cabecera(G, 'Cantando espero'); await ui.continuar(cont, 'Empezar ▸');
     let prioridad = G.equipos[H].seg >= G.equipos[R].seg ? H : R;
@@ -277,38 +293,55 @@ export const PRUEBAS = {
     }
   } },
   con_dos_palabras: { nombre: 'Con dos palabras', async jugar(G, ui) {
+    hud().set('rueda');
     const lista = banco('con_dos_palabras');
+    const oculta = w => { const p = String(w).split('|')[0].toUpperCase(); return p[0] + ' ' + '_ '.repeat(Math.max(0, p.length - 1)).trim(); };
     for (let ronda = 1; ronda <= 3; ronda++) {
       const doce = baraja(lista).slice(0, 12);
       let cont = ui.pantalla(`<p class="j-reglas">Ronda ${ronda}/3 · Lista de 12 palabras. Apuesta cuántas adivinarás con pistas de máximo 2 palabras de tu compañero (virtual). Juega la apuesta más alta; 90 s; 5 s en juego por ronda.</p><div class="j-opc">${[3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(n => `<button data-v="${n}">${n}</button>`).join('')}</div>`); ui.cabecera(G, 'Con dos palabras');
+      hud().ruedaLista(G, { lado: 0, items: doce.map(([w]) => ({ t: oculta(w) })), texto: `RONDA ${ronda}: ¿CUÁNTAS TE APUESTAS?`, tiempo: 90, total: 90, apuesta: '?', conseguido: 0 });
       const apH = +await ui.clic(cont); const apR = 3 + Math.floor(Math.random() * 6);
       if (apH >= apR) {
         await ui.aviso(cont, `Tu apuesta (${apH}) supera la del rival (${apR}): juegas tú`, 1300);
-        const reloj = new Reloj(90, v => ui.setReloj(v)).start(); let ac = 0;
-        for (const [w, pista] of doce) {
+        const est = doce.map(() => ''); let ac = 0;
+        const pinta = (i, pista) => hud().ruedaLista(G, { lado: 0, items: doce.map(([w], k) => ({ t: est[k] === 'ok' ? String(w).split('|')[0] : oculta(w), e: est[k] || (k === i ? 'cur' : '') })), texto: pista, tiempo: reloj.rest, total: 90, apuesta: apH, conseguido: ac });
+        const reloj = new Reloj(90, v => { ui.setReloj(v); hud().tiempoRl(v); }).start();
+        for (let i = 0; i < doce.length; i++) {
+          const [w, pista] = doce[i];
           if (reloj.terminado || ac >= apH) break;
+          pinta(i, pista); habla(pista);
           cont = ui.pantalla(`<div class="j-def">Pista: «${esc(pista)}»</div><div class="j-sub">${ac}/${apH}</div>`); ui.cabecera(G, 'Con dos palabras', reloj.rest);
           const r = await ui.respuesta(cont, { pasa: 'Paso' }, [reloj.fin]); if (r === 'TIEMPO') break;
-          if (r !== 'PASA' && esCorrecta(r, w)) { ac++; sonido('acierto'); } else sonido('fallo');
+          if (r !== 'PASA' && esCorrecta(r, w)) { ac++; est[i] = 'ok'; sonido('acierto'); } else { est[i] = 'off'; sonido('fallo'); }
+          pinta(-1, String(w).split('|')[0]);
         }
-        reloj.stop(); if (ac >= apH) { sumar(G, H, 5); await resumen(G, ui, 'Con dos palabras', `¡Conseguido! ${ac}/${apH}: +5 s`); } else { sumar(G, R, 5); await resumen(G, ui, 'Con dos palabras', `No llegas (${ac}/${apH}): los 5 s van al rival`); }
+        reloj.stop(); hud().limpiar(); if (ac >= apH) { sumar(G, H, 5); await resumen(G, ui, 'Con dos palabras', `¡Conseguido! ${ac}/${apH}: +5 s`); } else { sumar(G, R, 5); await resumen(G, ui, 'Con dos palabras', `No llegas (${ac}/${apH}): los 5 s van al rival`); }
       } else {
-        const ok = rival(0.5); sumar(G, ok ? R : H, 5);
+        const ok = rival(0.5); sumar(G, ok ? R : H, 5); const cons = ok ? apR : Math.max(0, apR - 1 - Math.floor(Math.random() * 3));
+        hud().ruedaLista(G, { lado: 1, items: doce.map(([w], k) => ({ t: k < cons ? String(w).split('|')[0] : oculta(w), e: k < cons ? 'ok' : k === cons ? 'cur' : '' })), texto: 'JUEGA EL RIVAL', tiempo: 90 - cons * 8, total: 90, apuesta: apR, conseguido: cons });
+        await espera(1800); hud().limpiar();
         await resumen(G, ui, 'Con dos palabras', `El rival apuesta ${apR} y juega: ${ok ? 'lo consigue (+5 s rival)' : 'no lo consigue (+5 s para ti)'}`);
       }
     }
   } },
   palabras_ocultas: { nombre: 'Palabras ocultas', async jugar(G, ui) {
+    hud().set('rueda');
     const pal = banco('palabras_ocultas').slice(0, 8); const grid = panelSilabas(pal); let ac = 0; const hechas = new Set();
-    let cont = ui.pantalla(`<p class="j-reglas">Panel de 16 sílabas desordenadas. Forma la palabra de cada definición uniendo sílabas que NO estén juntas (ni en horizontal, ni en vertical, ni en diagonal). 90 segundos, +1 s por acierto.</p>`); ui.cabecera(G, 'Palabras ocultas', 90); await ui.continuar(cont, 'Empezar ▸');
-    const reloj = new Reloj(90, v => ui.setReloj(v)).start();
+    let cont = ui.pantalla(`<p class="j-reglas">Panel de 16 sílabas desordenadas. Forma la palabra de cada definición uniendo sílabas que NO estén juntas (ni en horizontal, ni en vertical, ni en diagonal). 90 segundos, +1 s por acierto.</p>`); ui.cabecera(G, 'Palabras ocultas', 90);
+    hud().ruedaLista(G, { lado: 0, grid: true, items: grid.map(t => ({ t })), texto: '', tiempo: 90, total: 90 }); await ui.continuar(cont, 'Empezar ▸');
+    const reloj = new Reloj(90, v => { ui.setReloj(v); hud().tiempoRl(v); }).start();
     for (const [d, a, b] of pal) {
       if (reloj.terminado) break;
-      cont = ui.pantalla(`<div class="j-def">${esc(d)}</div><div class="j-grid16">${grid.map(s => `<span class="${hechas.has(s) ? 'off' : ''}">${s}</span>`).join('')}</div>`); ui.cabecera(G, 'Palabras ocultas', reloj.rest);
+      hud().ruedaLista(G, { lado: 0, grid: true, items: grid.map(t => ({ t, e: hechas.has(t) ? 'off' : '' })), texto: d, tiempo: reloj.rest, total: 90 }); habla(d);
+      cont = ui.pantalla(`<div class="j-def">${esc(d)}</div><div class="j-sub">${ac} aciertos</div>`); ui.cabecera(G, 'Palabras ocultas', reloj.rest);
       const r = await ui.respuesta(cont, { pasa: 'Paso' }, [reloj.fin]); if (r === 'TIEMPO') break;
       if (r !== 'PASA' && esCorrecta(r, a + b)) { ac++; hechas.add(a); hechas.add(b); sumar(G, H, 1); sonido('acierto'); } else { sonido('fallo'); await ui.aviso(cont, `Era ${a}+${b}`, 900); }
     }
     reloj.stop(); let ar = 0; for (let i = 0; i < 8; i++) if (rival(0.5)) ar++; sumar(G, R, ar);
+    // panel del rival en turquesa a la derecha
+    const pr = banco('palabras_ocultas').slice(8, 16); const pal2 = pr.length >= 8 ? pr : pal; const g2 = panelSilabas(pal2); const off = new Set(pal2.slice(0, ar).flatMap(p => [p[1], p[2]]));
+    hud().ruedaLista(G, { lado: 1, grid: true, items: g2.map(t => ({ t, e: off.has(t) ? 'off' : '' })), texto: (pal2[Math.min(ar, pal2.length - 1)] || pal2[0])[0], tiempo: 90 - ar * 9, total: 90 });
+    cont = ui.pantalla(`<div class="j-def">Juega el rival…</div>`); ui.cabecera(G, 'Palabras ocultas'); await espera(1800); hud().limpiar();
     await resumen(G, ui, 'Palabras ocultas', `Tú: ${ac} (+${ac} s) · Rival: ${ar} (+${ar} s)`);
   } },
 };
@@ -339,7 +372,7 @@ async function duelo(G, ui, titulo, def, r, pts) {
   hud().duelo(G, { texto: def });
   const v = await ui.clic(cont, '[data-v]', [espera(2500 + Math.random() * 5000).then(() => 'CPU')]);
   hud().duelo(G, { texto: def, activo: v === 'buzz' ? 0 : 1 });
-  if (v === 'buzz') { const ok = await respondeHumano(ui, cont, r, 7); if (ok) sumar(G, H, pts); else if (rival(0.6)) { sumar(G, R, pts); await ui.aviso(cont, 'Rebote: el rival acierta', 900); } }
+  if (v === 'buzz') { sonido('pulsar'); const ok = await respondeHumano(ui, cont, r, 7); if (ok) sumar(G, H, pts); else if (rival(0.6)) { sumar(G, R, pts); await ui.aviso(cont, 'Rebote: el rival acierta', 900); } }
   else { if (rival(0.6)) { sumar(G, R, pts); await ui.aviso(cont, `El rival pulsa y acierta: ${esc(r.split('|')[0])}`, 1100); } else { await ui.aviso(cont, 'El rival falla: ¡rebote!', 700); const ok = await respondeHumano(ui, cont, r, 7); if (ok) sumar(G, H, pts); } }
 }
 function sopa(palabras) {

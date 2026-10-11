@@ -1,6 +1,6 @@
 import { decir } from '../lib/voces.js';
 // Utilidades del motor de juego (interfaz 2D sobre el plató 3D)
-import { sfx, audioCtx, synth } from '../lib/media.js';
+import { sfx, audioCtx, synth, findAudioFile } from '../lib/media.js';
 import BASE from '../data/preguntas.json';
 import { hud } from './grafismos.js';
 
@@ -33,14 +33,24 @@ export class Reloj {
       if (!this.corriendo || this.terminado) return;
       if (this.gen !== GEN) { this.stop(); return; }
       this.rest = Math.max(0, this.rest - 0.1 * VEL()); this.onTick && this.onTick(this.rest);
-      if (this.rest <= 0) { this.terminado = true; clearInterval(this._iv); this._res('TIEMPO'); }
+      const s = Math.ceil(this.rest); if (s > 0 && s <= 5 && s !== this._ult) { this._ult = s; this._tic(); }
+      if (this.rest <= 0) { this.terminado = true; clearInterval(this._iv); this._paraTic(); sonido('fin_tiempo'); this._res('TIEMPO'); }
     }, 100);
     onTick && onTick(seg);
   }
   start() { this.corriendo = true; return this; }
-  pause() { this.corriendo = false; }
+  pause() { this.corriendo = false; this._paraTic(); }
   quitar(s) { this.rest = Math.max(0.1, this.rest - s); }
-  stop() { this.terminado = true; clearInterval(this._iv); this._res('STOP'); }
+  stop() { this.terminado = true; clearInterval(this._iv); this._paraTic(); this._res('STOP'); }
+  // Tic-tac de los últimos 5 s: un archivo (cargado o en audio/) suena una vez y se corta al parar; el sintetizado, un tic por segundo
+  async _tic() {
+    if (this._ta !== undefined) return; this._ta = null;
+    const url = await findAudioFile('tictac');
+    if (!url) { sonido('tictac'); this._ta = undefined; return; }
+    if (this.terminado || !this.corriendo) return;
+    const a = await sfx('tictac'); if (this.terminado || !this.corriendo) { a && a.pause(); return; } this._ta = a || null;
+  }
+  _paraTic() { if (this._ta) { this._ta.pause(); } this._ta = undefined; }
 }
 
 /** Panel de interfaz */

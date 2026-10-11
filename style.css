@@ -42,3 +42,8 @@ body.hud-split .j-def{font-size:16px}
 .j-final{display:grid;grid-template-columns:200px 1fr 200px;gap:10px;align-items:center}.j-final h4{margin:0;text-align:center}.j-rosco{width:100%}
 .j-letra{font-size:22px;color:#ffd23a}
 @media(max-width:700px){.j-final{grid-template-columns:1fr}}
+/* «Cargar sonidos» */
+#optSonidos{border:3px solid #ffd34d;box-shadow:0 0 18px #ffd34d66}#optSonidos .cargar-son{font-size:clamp(14px,2.6vh,20px)!important;padding:1.4vh 1vw!important;font-weight:900}
+.son-row{gap:6px;padding:5px 8px!important}.son-row label{display:flex;flex-direction:column;min-width:140px;flex:2;font-size:.85em;line-height:1.15}.son-row label small{font-weight:700;font-size:.78em;opacity:.85;overflow-wrap:anywhere}.son-row label code{opacity:.7;font-size:.95em}
+.son-row .tbtn{padding:5px 10px!important;min-width:0!important;font-size:clamp(10px,1.5vw,13px)!important}.son-row.cargado label{color:#9ff0c4}.son-grupo .son-row{border-bottom:1px solid #ffffff22!important;border-radius:0!important}
+select.son-asignar{flex:1.4;max-width:260px}

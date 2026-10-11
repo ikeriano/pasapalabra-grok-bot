@@ -10,14 +10,14 @@ import * as cabRueda from '../cabeceras/rueda.js';
 
 export const ETAPAS = [
   { ...antena3_2000.info, modulo: antena3_2000, cabecera: cabTelecinco, color: 0xff7a00, especiales: false,
-    archivosMusica: ['cabecera_antena3_2000'], archivosLogo: ['antena3_2000'] },
+    archivosMusica: ['cabecera_a3_2000', 'cabecera_antena3_2000'], archivosLogo: ['antena3_2000'] },
   { ...telecinco_2007.info, modulo: telecinco_2007, cabecera: cabTelecinco, color: 0x3f7dff, especiales: true,
-    archivosMusica: ['cabecera_telecinco_2007', 'cabecera_telecinco'], archivosLogo: ['telecinco_2007', 'telecinco'] },
+    archivosMusica: ['cabecera_t5_2007', 'cabecera_telecinco_2007', 'cabecera_telecinco'], archivosLogo: ['telecinco_2007', 'telecinco'] },
   { ...telecinco_2018.info, modulo: telecinco_2018, cabecera: cabTelecinco, color: 0x2ab8ff, especiales: true,
-    archivosMusica: ['cabecera_telecinco_2018', 'cabecera_telecinco'], archivosLogo: ['telecinco_2018', 'telecinco'] },
+    archivosMusica: ['cabecera_t5_2018', 'cabecera_telecinco_2018', 'cabecera_telecinco'], archivosLogo: ['telecinco_2018', 'telecinco'] },
   { ...antena3_2020.info, modulo: antena3_2020, cabecera: cabTelecinco, color: 0x1f74ff, especiales: true,
-    archivosMusica: ['cabecera_antena3_2020'], archivosLogo: ['antena3_2020'] },
+    archivosMusica: ['cabecera_a3_2020', 'cabecera_antena3_2020'], archivosLogo: ['antena3_2020'] },
   { ...rueda.info, modulo: rueda, cabecera: cabRueda, color: 0xc050ff, especiales: false,
-    archivosMusica: ['cabecera_rueda_letra'], archivosLogo: ['rueda_letra'] },
+    archivosMusica: ['cabecera_rueda', 'cabecera_rueda_letra'], archivosLogo: ['rueda_letra'] },
 ];
 export const HUB = null;

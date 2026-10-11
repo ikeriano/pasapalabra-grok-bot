@@ -48,9 +48,61 @@ async function firstFound(base, exts, probe) {
   return null;
 }
 const folderCache = {};
-export function findAudioFile(name) {
-  return folderCache['a:' + name] ??= firstFound(`audio/${name}`, AUDIO_EXT, probeAudio);
+// Prioridad: carpeta audio/ local > sonidos cargados por el usuario (IndexedDB, si «Usar mis sonidos») > nada (el juego sintetiza)
+export const findLocalAudio = name => folderCache['a:' + name] ??= firstFound(`audio/${name}`, AUDIO_EXT, probeAudio);
+export async function findAudioFile(name) {
+  const local = await findLocalAudio(name);
+  if (local) return local;
+  if (cfg.misSonidos === false) return null;
+  await sonListos; return sonidos[name]?.url || null;
 }
+/** {url, origen: 'carpeta'|'cargado'|null, nombre} de un sonido del catálogo */
+export async function origenSonido(name) {
+  const local = await findLocalAudio(name); if (local) return { url: local, origen: 'carpeta', nombre: local };
+  await sonListos; const c = sonidos[name]; return c ? { url: c.url, origen: 'cargado', nombre: c.name, activo: cfg.misSonidos !== false } : { url: null, origen: null };
+}
+
+// --- «Cargar sonidos»: zip o archivos sueltos guardados en IndexedDB y asignados por nombre de archivo ---
+// 'snd:idx' = [ids] y 'snd:<id>' = {blob, name}; los no reconocidos: 'sndx:idx' = [claves] y 'sndx:<clave>' = {blob, name}
+const sonidos = {}, sueltos = {};
+const MIME = { mp3: 'audio/mpeg', ogg: 'audio/ogg', wav: 'audio/wav', m4a: 'audio/mp4' };
+const ES_AUDIO = /\.(mp3|ogg|wav|m4a)$/i;
+async function leerSonidos() {
+  for (const o of [sonidos, sueltos]) Object.keys(o).forEach(k => { URL.revokeObjectURL(o[k].url); delete o[k]; });
+  for (const [pre, o] of [['snd:', sonidos], ['sndx:', sueltos]]) {
+    const idx = (await idb.get(pre + 'idx')) || [];
+    for (const k of idx) { const r = await idb.get(pre + k); if (r && r.blob) o[k] = { url: URL.createObjectURL(r.blob), name: r.name }; }
+  }
+}
+let sonListos = leerSonidos().catch(() => {});
+const recargar = async () => { sonListos = leerSonidos().catch(() => {}); await sonListos; };
+async function addIdx(pre, k) { const idx = new Set((await idb.get(pre + 'idx')) || []); idx.add(k); await idb.put(pre + 'idx', [...idx]); }
+async function delIdx(pre, k) { const idx = ((await idb.get(pre + 'idx')) || []).filter(x => x !== k); await idb.put(pre + 'idx', idx); await idb.del(pre + k); }
+export const urlSonido = id => sonidos[id]?.url;
+export async function estadoSonidos() { await sonListos; return { asignados: Object.fromEntries(Object.entries(sonidos).map(([k, v]) => [k, { name: v.name, url: v.url }])), sueltos: Object.entries(sueltos).map(([k, v]) => ({ clave: k, name: v.name, url: v.url })) }; }
+/** files: File[] (.zip y/o audios). Asigna cada audio por su nombre de archivo (reconocer); los demás quedan «sin asignar». */
+export async function cargarSonidos(files, reconocer) {
+  const nuevos = [];
+  for (const f of files) {
+    if (/\.zip$/i.test(f.name)) {
+      const { unzipSync } = await import('fflate');
+      const z = unzipSync(new Uint8Array(await f.arrayBuffer()), { filter: e => ES_AUDIO.test(e.name) && !/(^|\/)(__MACOSX|\.)/.test(e.name) });
+      for (const [ruta, datos] of Object.entries(z)) { const name = ruta.split('/').pop(); nuevos.push([name, new Blob([datos], { type: MIME[name.split('.').pop().toLowerCase()] })]); }
+    } else if (ES_AUDIO.test(f.name) || /^audio\//.test(f.type)) nuevos.push([f.name, f]);
+  }
+  const asignados = [], sinAsignar = [];
+  for (const [name, blob] of nuevos) {
+    const id = reconocer(name);
+    if (id) { await idb.put('snd:' + id, { blob, name }); await addIdx('snd:', id); asignados.push([id, name]); }
+    else { const k = name.toLowerCase(); await idb.put('sndx:' + k, { blob, name }); await addIdx('sndx:', k); sinAsignar.push(name); }
+  }
+  await recargar(); return { asignados, sinAsignar, total: nuevos.length };
+}
+export async function subirSonido(id, file) { await idb.put('snd:' + id, { blob: file, name: file.name }); await addIdx('snd:', id); await recargar(); }
+export async function asignarSuelto(clave, id) { const r = await idb.get('sndx:' + clave); if (!r) return; await idb.put('snd:' + id, r); await addIdx('snd:', id); await delIdx('sndx:', clave); await recargar(); }
+export async function quitarSonido(id) { await delIdx('snd:', id); await recargar(); }
+export async function quitarSuelto(clave) { await delIdx('sndx:', clave); await recargar(); }
+export async function borrarSonidos() { for (const pre of ['snd:', 'sndx:']) { const idx = (await idb.get(pre + 'idx')) || []; for (const k of idx) await idb.del(pre + k); await idb.del(pre + 'idx'); } await recargar(); }
 export function findLogoFile(name) {
   return folderCache['i:' + name] ??= firstFound(`logos/${name}`, IMG_EXT, probeImage);
 }
@@ -71,7 +123,7 @@ export async function recursoEpoca(tipo, etapa) {
   const nombres = tipo === 'musica' ? etapa.archivosMusica : etapa.archivosLogo;
   for (const n of nombres || []) {
     const u = tipo === 'musica' ? await findAudioFile(n) : await findLogoFile(n);
-    if (u) return { url: u, origen: 'carpeta', nombre: u };
+    if (u) return u === sonidos[n]?.url ? { url: u, origen: 'cargado', nombre: sonidos[n].name } : { url: u, origen: 'carpeta', nombre: u };
   }
   return null;
 }
@@ -155,11 +207,18 @@ const FALLBACK = {
   aplausos: (c, d, t) => synth.applause(c, d, t, 3, 0.4),
   tecla: (c, d, t) => synth.tone(c, d, t, 1200, 0.05, 'sine', 0.08),
   risas: (c, d, t) => { for (let i = 0; i < 6; i++) synth.tone(c, d, t + i * 0.13, 420 - i * 18, 0.1, 'sawtooth', 0.03); },
+  tictac: (c, d, t) => synth.tone(c, d, t, 1800, 0.04, 'square', 0.05),
+  fin_tiempo: (c, d, t) => { synth.tone(c, d, t, 330, 0.7, 'sawtooth', 0.07); synth.tone(c, d, t, 262, 0.7, 'sawtooth', 0.06); },
+  bote: (c, d, t) => { [523, 659, 784, 1047].forEach((f, i) => synth.tone(c, d, t + i * 0.1, f, 0.35, 'triangle', 0.12)); },
+  pleno: (c, d, t) => { [523, 659, 784, 1047, 784, 1047].forEach((f, i) => synth.tone(c, d, t + i * 0.14, f, 0.4, 'triangle', 0.14)); synth.applause(c, d, t + 0.6, 3, 0.35); },
+  eliminado: (c, d, t) => { [392, 349, 311, 262].forEach((f, i) => synth.tone(c, d, t + i * 0.22, f, 0.3, 'square', 0.05)); },
+  pulsar: (c, d, t) => synth.tone(c, d, t, 520, 0.25, 'square', 0.08),
 };
+export const tieneRespaldo = n => !!FALLBACK[n];
 
 /** Reproduce un efecto: usa audio/<nombre>.mp3 si existe; si no, el respaldo sintetizado */
-export async function sfx(nombre) {
-  const pub = nombre === 'aplausos'; if (pub ? !cfg.publico : !cfg.sfx) return null;
+export async function sfx(nombre, forzar = false) {
+  const pub = nombre === 'aplausos' || nombre === 'risas'; if (!forzar && (pub ? !cfg.publico : !cfg.sfx)) return null;
   const vol = pub ? cfg.publicoVol : cfg.sfxVol;
   const url = await findAudioFile(nombre);
   if (url) { const a = new Audio(url); a.volume = Math.min(1, vol); a.play().catch(() => {}); return a; }

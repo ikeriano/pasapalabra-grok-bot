@@ -1,6 +1,7 @@
 // Prueba final: El rosco / AlaZ / La Rueda (25 definiciones, dos concursantes por turnos)
 import { banco, esCorrecta, espera, esc, Reloj, habla, sonido } from './motor.js';
 import { hud } from './grafismos.js';
+import { musica } from '../lib/musica.js';
 
 function svgRosco(items, estados, cur, color) {
   const n = items.length, R = 92;
@@ -14,6 +15,8 @@ function svgRosco(items, estados, cur, color) {
 
 /** tipo: 'rosco' | 'alaz' | 'rueda'. base: segundos base (90/85/110/85) */
 export async function jugarFinal(G, ui, { tipo = 'rosco', base = 85, nombre = 'El rosco' }) {
+  if (tipo === 'rueda') hud().set('rueda');
+  musica.fase([{ rosco: 'musica_rosco', alaz: 'musica_alaz', rueda: 'musica_la_rueda' }[tipo], 'musica_final'], 'final');
   const sets = banco('rosco');
   let setH = sets[0], setR = sets[1] || sets[0];
   const tH = base + G.equipos[0].seg, tR = base + G.equipos[1].seg;
@@ -28,6 +31,7 @@ export async function jugarFinal(G, ui, { tipo = 'rosco', base = 85, nombre = 'E
     await ui.continuar(cont, 'Empezar ▸');
   } else await ui.continuar(cont, 'Empezar ▸');
 
+  sonido('rosco');
   const est = { H: { set: setH, e: Array(25).fill(null), i: 0, t: tH, letras: {} }, R: { set: setR, e: Array(25).fill(null), i: 0, t: tR } };
   const pendiente = s => s.e.some(x => x === null);
   const sig = s => { for (let k = 0; k < 25; k++) { const j = (s.i + k) % 25; if (s.e[j] === null) { s.i = j; return true; } } return false; };
@@ -73,7 +77,7 @@ export async function jugarFinal(G, ui, { tipo = 'rosco', base = 85, nombre = 'E
   const ac = s => s.e.filter(x => x === 'ok').length, fa = s => s.e.filter(x => x === 'ko').length;
   const aH = ac(est.H), aR = ac(est.R), fH = fa(est.H), fR = fa(est.R);
   let msg;
-  if (aH === 25) { msg = `🏆 ¡PLENO! Te llevas el bote de ${G.bote.toLocaleString('es-ES')} €`; G.ganado += G.bote; G.bote = G.boteInicial; }
+  if (aH === 25) { sonido('pleno'); msg = `🏆 ¡PLENO! Te llevas el bote de ${G.bote.toLocaleString('es-ES')} €`; G.ganado += G.bote; G.bote = G.boteInicial; }
   else if (aR === 25) { msg = `El rival hace pleno y se lleva el bote (${G.bote.toLocaleString('es-ES')} €)`; G.bote = G.boteInicial; }
   else {
     G.bote += 6000;

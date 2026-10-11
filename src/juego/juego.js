@@ -4,6 +4,8 @@ import { PRUEBAS } from './pruebas.js';
 import { jugarFinal } from './final.js';
 import { ESPECIALES, FAMOSOS_FICTICIOS } from '../lib/especiales.js';
 import { hud, estiloDe } from './grafismos.js';
+import { sonido } from './motor.js';
+import { musica } from '../lib/musica.js';
 
 // Pruebas por época y fecha (según el texto de referencia)
 export const FORMATOS = {
@@ -63,10 +65,11 @@ export async function jugarPrograma(el, etapaDef, api, { modo = 'programa', espe
     await api.presentaciones(G); ui.vivo();
   }
   api.camara('mesa');
-  await hud().bote(G.bote); hud().limpiar(); ui.vivo();
+  sonido('bote'); await hud().bote(G.bote); hud().limpiar(); ui.vivo();
   const pruebas = modo === 'clasico' ? variante.pruebas.filter(p => p !== 'silla_azul').slice(0, 2) : variante.pruebas;
   for (const p of pruebas) {
     const cont = ui.pantalla(`<div class="j-def grande">${esc(PRUEBAS[p].nombre)}</div>`); ui.cabecera(G, PRUEBAS[p].nombre);
+    musica.fase(['musica_' + p], 'pruebas');
     await ui.continuar(cont, 'Jugar ▸');
     await PRUEBAS[p].jugar(G, ui); hud().limpiar(); ui.vivo();
     if (G.eliminado) break;
@@ -75,7 +78,7 @@ export async function jugarPrograma(el, etapaDef, api, { modo = 'programa', espe
   if (G.eliminado) linea = 'Has perdido la Silla azul: hoy te despides del programa.';
   else {
     api.camara('atril');
-    await hud().bote(G.bote); hud().limpiar(); ui.vivo();
+    sonido('bote'); await hud().bote(G.bote); hud().limpiar(); ui.vivo();
     const antes = G.ganado;
     await jugarFinal(G, ui, variante.final); hud().limpiar(); ui.vivo();
     linea = G.ganado > antes ? `¡Has ganado ${fmt(G.ganado)} €!` : `Fin del programa. Hoy te llevas ${fmt(G.ganado)} €.`;
@@ -91,7 +94,7 @@ export async function entrenar(el, etapaDef, id) {
   const G = { equipos: F.equipos.map(([n, c]) => ({ nombre: n, color: c, seg: 0 })), bote: leerBote(etapaDef.id), boteInicial: F.bote, ganado: 0, entreno: true };
   G.estilo = estiloDe(etapaDef.id); hud().set(G.estilo);
   if (id.startsWith('final:')) { const tipo = id.slice(6); const base = tipo === 'alaz' ? 110 : tipo === 'rueda' ? 85 : 85; G.equipos[0].seg = 10; G.equipos[1].seg = 8; await jugarFinal(G, ui, { tipo, base, nombre: { rosco: 'El rosco', alaz: 'AlaZ', rueda: 'La Rueda' }[tipo] }); }
-  else await PRUEBAS[id].jugar(G, ui);
+  else { musica.fase(['musica_' + id], 'pruebas'); await PRUEBAS[id].jugar(G, ui); }
   hud().limpiar(); ui.cerrar();
   return `${G.equipos[0].nombre}: ${G.equipos[0].seg} s · ${G.equipos[1].nombre}: ${G.equipos[1].seg} s`;
 }

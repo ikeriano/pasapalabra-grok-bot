@@ -34,6 +34,20 @@ VOCES
   ald, daniela. Las frases dinámicas usan la voz del navegador (masculina es-ES si existe).
 - Para regenerar tras cambiar textos: node tools/frases.mjs /tmp/f.json && python tools/gen_voces.py /tmp/f.json .
 
+CARGAR SONIDOS (v1.1)
+- Opciones → «Cargar sonidos»: elige un .zip o varios audios (mp3, ogg, wav, m4a). Cada archivo se asigna por su nombre
+  (acierto, fallo, pasapalabra, tictac, fin_tiempo, rosco, bote, pleno, eliminado, pulsar, aplausos, risas, tecla,
+  cabecera_a3_2000 / sintonia_a3_2000, cabecera_t5_2007 / sintonia_t5_2007, cabecera_t5_2018 / sintonia_t5_2018,
+  cabecera_a3_2020 / sintonia_a3_2020, cabecera_rueda / sintonia_rueda, musica_menu, musica_pruebas, musica_final,
+  musica_rosco, musica_alaz, musica_la_rueda, musica_despedida y musica_<prueba>, p. ej. musica_silla_azul).
+- «Lista de sonidos»: cada sonido con su nombre, si está cargado, ▶ Escuchar y 📂 Subir/Cambiar ese sonido concreto.
+  Los archivos no reconocidos aparecen arriba para asignarlos a mano. Interruptor «Usar mis sonidos» y botón Borrar.
+- Prioridad: carpeta audio/ > sonidos cargados > sonidos del juego. Se guardan solo en tu dispositivo (IndexedDB).
+- La sintonía de cada etapa suena en el menú, el saludo y la despedida; la cabecera, en la cabecera del programa.
+
+RUEDA LA LETRA: grafismos de cada prueba (La oportunidad, ¡He dicho!, Cantando espero, Con dos palabras,
+Palabras ocultas y La Rueda) copiados de las capturas del programa, con contenido propio.
+
 TUS ARCHIVOS
 - audio/ y logos/: pon aquí tus músicas y logos (ver los .txt), o súbelos desde Opciones (se guardan solo en tu dispositivo).
 - data/preguntas_extra.js: añade preguntas propias.

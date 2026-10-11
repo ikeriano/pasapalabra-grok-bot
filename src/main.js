@@ -17,7 +17,9 @@ import { UI, nuevaPartida, ABORT, setVoz, VEL, espera, banco } from './juego/mot
 import { hud, HUD_CSS, estiloDe } from './juego/grafismos.js';
 import { PRESENTADORES, SPOTS, CAPITULOS } from './juego/historia.js';
 import { MONOLOGOS, TIPO_ICONO, TIPO_TXT, CHISTES } from './juego/monologos.js';
-import { recursoEpoca, guardarSubido, quitarSubido, sfx, audioCtx, idb } from './lib/media.js';
+import { recursoEpoca, guardarSubido, quitarSubido, sfx, audioCtx, idb, cargarSonidos, subirSonido, asignarSuelto, quitarSonido, quitarSuelto, borrarSonidos, estadoSonidos, origenSonido, urlSonido, tieneRespaldo } from './lib/media.js';
+import { GRUPOS_SONIDOS, TODOS_SONIDOS, SONIDO, ETAPA_CLAVE, reconocer } from './lib/catalogo_sonidos.js';
+window.__urlSonido = urlSonido;
 import { programarAudioRespaldo } from './cabeceras/telecinco.js';
 import { musica } from './lib/musica.js';
 import { decir, callar, configurarVoces, CREDITOS_VOCES } from './lib/voces.js';
@@ -64,6 +66,7 @@ function cargarEtapa(id, { camara: c = 'general' } = {}) {
   const def = ETAPAS.find(e => e.id === id) || ETAPAS[3];
   if (etapa) etapa.dispose(); quitarPresentador();
   etapaDef = def; etapa = def.modulo.build(scene, ctx); cargarLogoPantalla(def);
+  musica.setEtapa(ETAPA_CLAVE[def.id]); if (musica.nombre === 'menu' || musica.nombre === 'musica_menu') musica.play('menu');
   irACamara(def.modulo.cameras[c] ? c : 'general', true);
 }
 function ponerPresentador(P, spot = SPOTS[etapaDef.id]) {
@@ -177,7 +180,7 @@ const api = {
 
 // ---------- MENÚ (plantilla común) ----------
 let pantalla = 'title', sinTiempo = false, lineaMsg = '', probando = null;
-const VOLVER = { title: null, main: 'title', play: 'main', train: 'play', options: 'main', help: 'main', credits: 'main', concursantes: 'options', canciones: 'options', monologos: 'play' };
+const VOLVER = { title: null, main: 'title', play: 'main', train: 'play', options: 'main', help: 'main', credits: 'main', concursantes: 'options', canciones: 'options', sonidos: 'options', monologos: 'play' };
 M.setSonidoTecla(() => sfx('tecla'));
 function logoDataURL(w = 900, h = 600) {
   const c = document.createElement('canvas'); c.width = w; c.height = h; const g = c.getContext('2d');
@@ -202,7 +205,7 @@ function irMenu(p = 'main') {
 function Lt(p) {
   pantalla = p; const m = $('menu'); const E = ESPECIALES[cfg.especial] || ESPECIALES.normal;
   if (p === 'title') return M.pantallaTitulo(m, { logo: logoDataURL(900, 640), sub: 'El juego', onStart: () => { audioCtx(); sfx('pasapalabra'); irMenu('main'); } });
-  const col = M.pantallaMenu(m, { logo: logoDataURL(), tag: cfg.especial === 'normal' ? `EL JUEGO · 3D` : E.emoji + ' ' + (E.banner || E.nombre), version: VERSION, cls: ['options', 'concursantes', 'canciones'].includes(p) ? 'opts' : ['help', 'credits'].includes(p) ? 'text' : '' });
+  const col = M.pantallaMenu(m, { logo: logoDataURL(), tag: cfg.especial === 'normal' ? `EL JUEGO · 3D` : E.emoji + ' ' + (E.banner || E.nombre), version: VERSION, cls: ['options', 'concursantes', 'canciones', 'sonidos'].includes(p) ? 'opts' : ['help', 'credits'].includes(p) ? 'text' : '' });
   const mbtn = M.mbtn, volver = d => M.volver(() => Lt(d));
   const nomEtapa = `${etapaDef.nombre} ${etapaDef.anios}`;
   if (p === 'main') {
@@ -225,7 +228,8 @@ function Lt(p) {
     [['rosco', 'El rosco', '25 letras · 85/90 s + acumulado'], ['alaz', 'AlaZ', 'De la A a la Z o al revés · 110 s'], ['rueda', 'La Rueda', 'Empieza por / contiene · sobres']].forEach(([k, t, d]) => { const b = document.createElement('button'); b.className = 'tbtn'; b.innerHTML = `<b>🏁 ${t}</b><small>${d}</small>`; b.onclick = e => { e.stopPropagation(); iniciar('entreno:final:' + k); }; lista.appendChild(b); });
     col.append(lista, volver('play'));
   } else if (p === 'options') {
-    col.append(M.h2('Opciones'), M.fila('🎵 Música', siNo('music'), slider('musicVol')), M.fila('🎬 Cabecera', ...opciones('cabecera', [['video', 'Mi vídeo'], ['3d', 'Cabecera 3D']])));
+    col.append(M.h2('Opciones')); col.append(bloqueSonidos(false));
+    col.append(M.fila('🎵 Música', siNo('music'), slider('musicVol')), M.fila('🎬 Cabecera', ...opciones('cabecera', [['video', 'Mi vídeo'], ['3d', 'Cabecera 3D']])));
     const cb = M.bloque('🎶 Música de la cabecera'); col.append(cb); pintarMusicaCab(cb);
     col.append(M.fila('🔊 Efectos', siNo('sfx'), slider('sfxVol')));
     const pub = M.bloque('', M.fila('👏 Público', siNo('publico'), slider('publicoVol')), M.nota('Aplausos del público sintetizados por el propio juego (no son grabaciones).')); pub.querySelector('.olabel').remove(); col.append(pub);
@@ -239,6 +243,8 @@ function Lt(p) {
     const standalone = matchMedia('(display-mode: standalone), (display-mode: fullscreen)').matches;
     col.append(M.fila('⛶ Pantalla completa', M.botones([{ t: standalone ? 'Siempre (app)' : document.fullscreenElement ? 'Salir' : 'Activar', sel: !!document.fullscreenElement, disabled: standalone, fn: async () => { try { if (document.fullscreenElement) await document.exitFullscreen(); else { await document.documentElement.requestFullscreen({ navigationUI: 'hide' }); try { await screen.orientation.lock('landscape'); } catch (x) { /* */ } } } catch (x) { toast('Tu navegador no permite pantalla completa aquí'); } setTimeout(() => Lt('options'), 300); } }])),
       M.nota(`Rendimiento actual: ${Math.round(fps)} fps. Si el juego va lento en tu móvil, elige calidad «Baja».`, 'mtext'), volver('main'));
+  } else if (p === 'sonidos') {
+    col.append(volver('options'), M.h2('Cargar sonidos'), bloqueSonidos(true)); pintarListaSonidos(col).then(() => col.append(volver('options')));
   } else if (p === 'canciones') {
     col.append(M.h2('Mis canciones')); const lista = document.createElement('div'); lista.className = 'ocustom'; col.append(lista);
     getCanciones().then(l => { if (!l.length) lista.append(M.linea('Todavía no has subido ninguna canción.'));
@@ -278,6 +284,61 @@ async function pintarMusicaCab(o) {
   o.append(M.linea(`🎞️ Mi vídeo de cabecera: ${vid ? '<b>' + esc(vid.name) + '</b>' : 'ninguno'}`), M.botones([{ t: '📂 Elegir vídeo', file: { accept: 'video/*', onFile: async f => { await idb.put('video:cabecera', { blob: f, name: f.name }); cfg.cabecera = 'video'; guardarCfg(); Lt('options'); } } }, { t: '🗑 Quitar vídeo', disabled: !vid, fn: async () => { await idb.del('video:cabecera'); cfg.cabecera = '3d'; guardarCfg(); Lt('options'); } }, { t: '▶ Ver cabecera', fn: async () => { $('menu').classList.add('hidden'); musica.stop(); await reproducirCabecera(); irMenu('options'); } }]));
   o.append(M.linea(`🖼️ Logo propio: ${lo && lo.origen === 'subido' ? '<b>' + esc(lo.nombre) + '</b>' : 'el globo de letras'}`), M.botones([{ t: '📂 Elegir imagen', file: { accept: 'image/*', onFile: async f => { await todas(id => guardarSubido('logo', id, f)); await cargarLogoPantalla(etapaDef); Lt('options'); } } }, { t: '🗑 Quitar logo', disabled: !lo || lo.origen !== 'subido', fn: async () => { await todas(id => quitarSubido('logo', id)); await cargarLogoPantalla(etapaDef); Lt('options'); } }]));
 }
+// ---------- «Cargar sonidos» (como ¡Boom! v1.4): zip o archivos sueltos → IndexedDB, asignados por nombre ----------
+let msgSon = '';
+const reiniciarMenuMusica = () => { musica.stop(); musica.play('menu'); };
+async function alCargar(fs, scroll) {
+  const est = document.querySelector('#optSonidos .son-estado'); if (est) est.textContent = '⏳ Cargando ' + fs.map(f => f.name).join(', ') + '…';
+  try { const r = await cargarSonidos(fs, reconocer); msgSon = r.total ? `✅ ${r.asignados.length} ${r.asignados.length === 1 ? 'sonido reconocido' : 'sonidos reconocidos'}${r.sinAsignar.length ? ` · ${r.sinAsignar.length} sin asignar (asígnalos abajo en la lista)` : ''}` : '⚠️ No había archivos de audio (mp3, ogg, wav o m4a)'; }
+  catch (x) { msgSon = '⚠️ No se pudo leer: ' + x.message; }
+  Lt(scroll ? 'sonidos' : 'options'); reiniciarMenuMusica();
+}
+function bloqueSonidos(enLista) {
+  const b = M.bloque('🔊 Cargar sonidos'); b.id = 'optSonidos';
+  estadoSonidos().then(e => {
+    const n = Object.keys(e.asignados).length, s = e.sueltos.length;
+    b.append(M.linea(n || s ? `✅ <b>${n}</b> de ${TODOS_SONIDOS.length} sonidos del juego cargados${s ? ` · ${s} sin asignar` : ''}${cfg.misSonidos === false ? ' · <i>desactivados</i>' : ''}` : '⚠️ No hay sonidos cargados: suenan los sonidos del juego', 'oname son-estado'));
+    const bs = M.botones([{ t: '📂 CARGAR SONIDOS (.zip o mp3/ogg/wav/m4a)', sel: true, full: true, file: { accept: '.zip,application/zip,audio/*,.mp3,.ogg,.wav,.m4a', multiple: true, onFile: fs => alCargar(fs, enLista) } }]);
+    bs.querySelector('label').classList.add('cargar-son'); b.append(bs);
+    b.append(M.fila('🎧 Usar mis sonidos', siNo('misSonidos', () => { reiniciarMenuMusica(); Lt(pantalla); })));
+    b.append(M.botones([...(enLista ? [] : [{ t: '📋 Lista de sonidos', fn: () => Lt('sonidos') }]), { t: '🗑 Borrar sonidos cargados', disabled: !n && !s, fn: async () => { await borrarSonidos(); msgSon = 'Sonidos borrados: vuelven los sonidos del juego'; Lt(pantalla); reiniciarMenuMusica(); } }]));
+    if (msgSon) { b.append(M.linea(msgSon, 'omsg')); msgSon = ''; }
+    b.append(M.nota('Elige un .zip o varios audios: cada archivo se asigna por su nombre (acierto.mp3, fallo.mp3, tictac.mp3, cabecera_a3_2020.mp3, sintonia_t5_2007.mp3, musica_rosco.mp3…). Se guardan solo en este dispositivo. Si hay archivos en la carpeta audio/, se usan esos primero.'));
+  });
+  return b;
+}
+function escuchar(id, url, b) {
+  if (url) return probar(url, b);
+  sfx(id, true);
+}
+async function pintarListaSonidos(col) {
+  const e = await estadoSonidos();
+  if (e.sueltos.length) {
+    const bx = M.bloque(`❓ Archivos sin asignar (${e.sueltos.length})`); bx.id = 'sonSueltos'; col.append(bx);
+    bx.append(M.nota('No se ha reconocido su nombre: elige a qué sonido del juego corresponde cada uno.'));
+    for (const x of e.sueltos) {
+      const sel = document.createElement('select'); sel.className = 'otext son-asignar';
+      sel.innerHTML = '<option value="">Asignar a…</option>' + GRUPOS_SONIDOS.map(g => `<optgroup label="${esc(g.titulo)}">${g.sonidos.map(([id, n]) => `<option value="${id}">${esc(n)}${e.asignados[id] ? ' (cambiar)' : ''}</option>`).join('')}</optgroup>`).join('');
+      sel.onclick = ev => ev.stopPropagation(); sel.onpointerdown = ev => ev.stopPropagation();
+      sel.onchange = async () => { if (!sel.value) return; await asignarSuelto(x.clave, sel.value); msgSon = `✅ «${x.name}» → ${SONIDO[sel.value].nombre}`; Lt('sonidos'); };
+      const r = M.fila('🎵 ' + x.name, sel, ...M.botones([{ t: '▶', fn: b => probar(x.url, b) }, { t: '🗑', fn: async () => { await quitarSuelto(x.clave); Lt('sonidos'); } }]).children); r.classList.add('son-row'); bx.append(r);
+    }
+  }
+  for (const g of GRUPOS_SONIDOS) {
+    const bx = M.bloque(g.titulo); bx.classList.add('son-grupo'); col.append(bx);
+    for (const [id, nombre] of g.sonidos) {
+      const o = await origenSonido(id);
+      const est = o.origen === 'cargado' ? `✅ ${esc(o.nombre)}${o.activo ? '' : ' (desactivado)'}` : o.origen === 'carpeta' ? '📁 carpeta audio/' : g.tipo === 'efecto' ? '🎛️ sonido del juego' : id.startsWith('cabecera_') ? '🎛️ música de la cabecera 3D' : id.startsWith('sintonia_') ? '— sin cargar (suena la música del menú)' : '— sin cargar (suena la música general)';
+      const r = document.createElement('div'); r.className = 'orow son-row' + (o.origen ? ' cargado' : ''); r.dataset.id = id;
+      const l = document.createElement('label'); l.innerHTML = `${esc(nombre)}<small>${est} · <code>${id}</code></small>`; r.append(l);
+      const usable = o.origen === 'carpeta' || (o.origen === 'cargado' && o.activo);
+      r.append(...M.botones([{ t: '▶ Escuchar', disabled: !usable && !tieneRespaldo(id), fn: b => escuchar(id, usable ? o.url : null, b) },
+        { t: o.origen === 'cargado' ? '🔄 Cambiar' : '📂 Subir', file: { accept: 'audio/*,.mp3,.ogg,.wav,.m4a', onFile: async f => { await subirSonido(id, f); msgSon = `✅ ${nombre}: «${f.name}»`; Lt('sonidos'); } } },
+        ...(o.origen === 'cargado' ? [{ t: '🗑', fn: async () => { await quitarSonido(id); Lt('sonidos'); } }] : [])]).children);
+      bx.append(r);
+    }
+  }
+}
 const getCanciones = async () => (await idb.get('canciones')) || [];
 async function cargarCanciones() { const l = await getCanciones(); musica.setCanciones(l.map(c => URL.createObjectURL(c.blob))); }
 function instalar() {
@@ -304,7 +365,7 @@ async function iniciar(modo) {
     const r = await jugarPrograma($('juego'), etapaDef, api, { modo: modo === 'clasico' ? 'clasico' : 'programa', especial: cfg.especial });
     musica.stop();
     if (modo !== 'clasico') {
-      const P = presDe(); ponerPresentador(P); modoOrbita(); musica.play('menu'); sfx('aplausos');
+      const P = presDe(); ponerPresentador(P); modoOrbita(); musica.fase(['musica_despedida', 'sintonia_' + ETAPA_CLAVE[etapaDef.id]], 'menu'); sfx('aplausos');
       await saltable(Promise.all([(async () => { await diga(P, r.G.eliminado ? 'Hoy la Silla azul no ha sido tu aliada… ¡pero vuelve pronto! Muchas gracias por jugar.' : '¡Qué gran programa! Muchas gracias por acompañarnos. ¡Hasta mañana!'); if (r.G.rival) await diga(null, FRASES_RIVAL[3], { voz: r.G.rival.voz, quien: r.G.rival.nombre }); })().catch(() => {}), rodarCreditos(creditos(), 16000)]));
       $('credits').classList.add('hidden'); ocultarSub();
     }
