@@ -208,7 +208,9 @@ function Lt(p) {
   if (p === 'main') {
     col.append(mbtn('Jugar', 'Programa completo, entrenamiento, clásico…', 'gold', () => Lt('play')), mbtn('Opciones', 'Sonido, plató de cada época, calidad gráfica', '', () => Lt('options')),
       mbtn('La historia de Pasapalabra', 'Los presentadores virtuales te cuentan la historia', '', () => iniciar('historia')), mbtn('Cómo se juega', 'Las reglas del concurso', '', () => Lt('help')), mbtn('Créditos', '', '', () => Lt('credits')));
-    if (!matchMedia('(display-mode: standalone), (display-mode: fullscreen)').matches) col.append(mbtn('Instalar app', 'Juega sin conexión desde tu pantalla de inicio', 'inst', instalar));
+    const enApk = location.hostname === 'appassets.androidplatform.net';
+    if (!enApk && !matchMedia('(display-mode: standalone), (display-mode: fullscreen)').matches) col.append(mbtn('Instalar app', 'Juega sin conexión desde tu pantalla de inicio', 'inst', instalar));
+    if (!enApk) col.append(mbtn('Descargar APK', 'Instala el juego en tu móvil Android', 'inst', () => window.open('https://github.com/ikeriano/pasapalabra-grok-bot/releases/latest', '_blank')));
   } else if (p === 'play') {
     col.append(mbtn('Programa completo', `Cabecera, Silla azul, pruebas y ${FORMATOS[cfg.etapa].variantes.at(-1).final.nombre} · ${nomEtapa}`, 'gold', () => iniciar('programa')), mbtn('Entrenamiento', 'Practica cada prueba y las finales', '', () => Lt('train')),
       mbtn('Clásico', 'Partida rápida: dos pruebas y la final', '', () => iniciar('clasico')), mbtn('Rueda la letra', 'El programa de Telecinco (2026): La oportunidad… y La Rueda', '', () => iniciar('rueda')),
