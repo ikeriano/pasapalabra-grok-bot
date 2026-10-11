@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#02040c">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<meta name="app-version" content="1.0">
+<title>Pasapalabra 3D · El juego (fan-made)</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="menu.css">
+<style>:root{--m-icono:"🔤"}</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="hud"></div>
+<div id="juego"></div>
+<div id="hashtag"></div>
+<div id="sub" class="hsub hidden"><b>El presentador</b><span></span></div>
+<div id="lower3" class="hidden"></div>
+<div id="credits" class="hidden"><div id="creditsRoll"></div></div>
+<div id="toast" class="hidden"></div>
+<div id="marcador" class="hidden"></div>
+<div id="topbar" class="hidden">
+  <button id="btnMenu" title="Menú">☰</button>
+  <button id="btnCam" title="Cámara">👁</button>
+  <button id="btnLuces" title="Luces">💡</button>
+  <button id="btnSkip" class="hidden">Saltar ⏭</button>
+</div>
+<div id="glights" class="hidden"></div>
+<div id="hint" class="hidden"></div>
+<div id="actions"></div>
+<div id="joy" class="hidden"><div id="knob"></div></div>
+<div id="fx-streak"></div><div id="fx-flash"></div><div id="fx-fade"></div>
+<div id="video" class="hidden"><video playsinline></video></div>
+<div id="menu"></div>
+<div id="loading"><div style="font-size:48px">🔤</div><p>Montando el plató…</p></div>
+<div id="rotate">Gira el móvil 📱↻</div>
+<script src="data/preguntas_extra.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

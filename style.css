@@ -1,0 +1,44 @@
+/* Pasapalabra · El juego 3D — estilos del juego (la interfaz del menú está en menu.css, plantilla común) */
+html,body{margin:0;height:100%;overflow:hidden;background:#02040c;font-family:"Nunito","Trebuchet MS",Arial,sans-serif;color:#fff;touch-action:none;user-select:none;-webkit-user-select:none;overscroll-behavior:none}
+#app{position:fixed;inset:0}#app canvas{display:block;width:100%;height:100%}
+.hidden{display:none!important}
+#loading{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#02040c;z-index:50;font-size:20px;gap:12px}
+#hint{position:fixed;top:13vh;left:50%;transform:translateX(-50%);z-index:12;background:#000a;border:2px solid #8fc4ff;padding:8px 16px;border-radius:20px;font-size:clamp(13px,2.4vh,18px);text-align:center;max-width:90vw}
+#joy{position:fixed;left:4vw;bottom:5vh;width:130px;height:130px;border-radius:50%;background:#ffffff18;border:2px solid #ffffff55;z-index:12;touch-action:none}
+#knob{position:absolute;left:40px;top:40px;width:50px;height:50px;border-radius:50%;background:#ffffffaa}
+#fx-streak,#fx-flash,#fx-fade{position:fixed;inset:0;pointer-events:none;z-index:60;opacity:0}
+#fx-streak{background:linear-gradient(180deg,transparent 40%,rgba(255,255,255,.95) 49%,#fff 50%,rgba(255,255,255,.95) 51%,transparent 60%)}
+#fx-flash,#fx-fade{background:#fff}#fx-fade.saliendo{transition:opacity .9s ease}
+body.en-cabecera #hud,body.en-cabecera #juego,body.en-cabecera #sub,body.en-cabecera #hashtag,body.en-cabecera #btnMenu,body.en-cabecera #btnCam,body.en-cabecera #btnLuces{display:none!important}
+#video{position:fixed;inset:0;background:#000;z-index:58}#video video{width:100%;height:100%;object-fit:contain}
+#glights{position:fixed;right:6px;top:58px;z-index:40;width:min(340px,96vw);background:linear-gradient(#0d2f9a,#061a5c);border:3px solid #8fc4ff;border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:8px;font:800 13px var(--m-font,Arial)}
+#glights label{display:flex;gap:8px;align-items:center}#glights input{flex:1}.gl-head{display:flex;justify-content:space-between}.gl-head button{background:#c0262d;color:#fff;border:0;border-radius:6px}
+#sub{position:fixed;z-index:13;bottom:0;left:0;right:0}
+body:has(#juego.abierto) #sub{bottom:auto;top:62px;background:linear-gradient(#000a,transparent)}
+/* Panel de juego (interacción) con el estilo azul de la plantilla */
+#juego{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(860px,94vw);max-height:84vh;overflow:auto;background:linear-gradient(#0d2f9aee,#061a5cee);border:3px solid #8fc4ff;border-radius:18px;padding:14px 18px;z-index:11;display:none;box-shadow:0 10px 30px #000a;font-family:var(--m-font,Arial)}
+#juego.abierto{display:block}
+body.hud-split #juego{top:auto;bottom:8px;transform:translateX(-50%);max-height:34vh;width:min(760px,94vw);padding:8px 14px}
+#juego button{background:linear-gradient(#2f6cff,#0a2fa8);color:#fff;border:2px solid #8fc4ff;border-radius:999px;padding:8px 16px;font:800 15px var(--m-font,Arial);cursor:pointer}
+#juego button:disabled{opacity:.5}
+.j-cab{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid #4a7ae0;padding-bottom:6px;margin-bottom:8px}
+.j-tit{font-weight:900;font-size:18px;color:#ffd23a}.j-eqs{display:flex;gap:10px}.eq{border-left:6px solid var(--c);padding-left:6px}
+.j-reloj{font:900 24px monospace;color:#ffd23a;min-width:70px;text-align:right}
+.j-def{font-size:20px;margin:8px 0;line-height:1.35}.j-def.grande{font-size:28px;font-weight:800;text-align:center}
+body.hud-split .j-def{font-size:16px}
+.j-sub{opacity:.8;font-size:13px}.j-reglas{font-size:15px;line-height:1.45;opacity:.95}
+.j-opc{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}.j-opc.vert{flex-direction:column;align-items:stretch}
+#juego .buzz{background:linear-gradient(#ff4040,#b00010)!important;border-color:#ff9090!important;font-size:22px!important;padding:12px 26px!important}
+.j-resp{display:flex;gap:8px;margin:8px 0;flex-wrap:wrap}.j-resp input{flex:1;min-width:180px;font-size:18px;padding:9px 12px;border-radius:999px;border:2px solid #8fc4ff;background:#041040;color:#fff}
+#juego .pasa{background:linear-gradient(#ff9a1a,#d06000)!important}#juego .j-cont{display:block;margin:12px auto 0;background:linear-gradient(#ffe27a,#f39a12);border-color:#fff3c0;color:#3a1a00;font-size:17px}
+.j-aviso{font-size:19px;font-weight:800;margin:8px 0;text-align:center}
+.j-hang{font:800 34px monospace;letter-spacing:4px;text-align:center;margin:10px}.j-hang.peq{font-size:22px}
+.j-teclado{display:flex;flex-wrap:wrap;gap:4px}#juego .j-teclado button{padding:6px 9px;font-size:14px;border-radius:8px}
+.j-sopa{font:800 26px monospace;letter-spacing:12px;text-align:center;line-height:1.5;background:#041040;border-radius:10px;padding:8px}
+.j-grid9{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.j-grid9>*{min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#041040;border-radius:10px;font-weight:800}
+.j-grid9 .ok{background:#147a3a}.j-grid9 small{opacity:.7}
+.j-grid16{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center;font:800 22px Arial}.j-grid16 span{background:#3a1080;border-radius:8px;padding:10px}.j-grid16 .off{opacity:.3}
+.j-tira{display:flex;gap:6px;justify-content:center}.j-tira span{width:34px;height:34px;border-radius:50%;background:#2a5cff;display:grid;place-items:center;font-weight:800}.j-tira .cur{background:#ffd400;color:#000}
+.j-final{display:grid;grid-template-columns:200px 1fr 200px;gap:10px;align-items:center}.j-final h4{margin:0;text-align:center}.j-rosco{width:100%}
+.j-letra{font-size:22px;color:#ffd23a}
+@media(max-width:700px){.j-final{grid-template-columns:1fr}}

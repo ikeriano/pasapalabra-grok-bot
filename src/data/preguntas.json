@@ -1,0 +1,1452 @@
+{
+ "_info": "Bancos de preguntas ORIGINALES de ejemplo. Puedes ampliarlos editando este archivo (y recompilando) o, sin recompilar, añadiendo elementos en data/preguntas_extra.js con la misma estructura.",
+ "una_de_cuatro": [
+  {
+   "p": "¿Cuál es el río más largo de la península ibérica?",
+   "op": [
+    "Ebro",
+    "Tajo",
+    "Duero",
+    "Guadalquivir"
+   ],
+   "r": 1
+  },
+  {
+   "p": "¿Cuántas patas tiene una araña?",
+   "op": [
+    "Seis",
+    "Ocho",
+    "Diez",
+    "Doce"
+   ],
+   "r": 1
+  },
+  {
+   "p": "¿Qué planeta es conocido como el planeta rojo?",
+   "op": [
+    "Venus",
+    "Júpiter",
+    "Marte",
+    "Saturno"
+   ],
+   "r": 2
+  },
+  {
+   "p": "¿En qué ciudad está la Alhambra?",
+   "op": [
+    "Córdoba",
+    "Sevilla",
+    "Granada",
+    "Toledo"
+   ],
+   "r": 2
+  },
+  {
+   "p": "¿Cuál es el símbolo químico del oro?",
+   "op": [
+    "Or",
+    "Au",
+    "Ag",
+    "Go"
+   ],
+   "r": 1
+  },
+  {
+   "p": "¿Quién escribió 'Don Quijote de la Mancha'?",
+   "op": [
+    "Lope de Vega",
+    "Quevedo",
+    "Cervantes",
+    "Góngora"
+   ],
+   "r": 2
+  },
+  {
+   "p": "¿Cuántos minutos tiene un día?",
+   "op": [
+    "1.240",
+    "1.440",
+    "1.640",
+    "1.400"
+   ],
+   "r": 1
+  },
+  {
+   "p": "¿Qué instrumento tiene 88 teclas?",
+   "op": [
+    "Órgano",
+    "Acordeón",
+    "Piano",
+    "Clavicordio"
+   ],
+   "r": 2
+  },
+  {
+   "p": "¿Cuál es el océano más grande?",
+   "op": [
+    "Atlántico",
+    "Índico",
+    "Pacífico",
+    "Ártico"
+   ],
+   "r": 2
+  },
+  {
+   "p": "¿Qué animal es el más rápido en tierra?",
+   "op": [
+    "León",
+    "Guepardo",
+    "Gacela",
+    "Caballo"
+   ],
+   "r": 1
+  },
+  {
+   "p": "¿En qué año llegó Colón a América?",
+   "op": [
+    "1492",
+    "1500",
+    "1488",
+    "1512"
+   ],
+   "r": 0
+  },
+  {
+   "p": "¿Cuál es la capital de Portugal?",
+   "op": [
+    "Oporto",
+    "Lisboa",
+    "Coímbra",
+    "Braga"
+   ],
+   "r": 1
+  }
+ ],
+ "una_de_dos": [
+  {
+   "p": "Ave nocturna que gira mucho la cabeza",
+   "op": [
+    "Búho",
+    "Gaviota"
+   ],
+   "r": 0
+  },
+  {
+   "p": "Metal líquido a temperatura ambiente",
+   "op": [
+    "Mercurio",
+    "Plomo"
+   ],
+   "r": 0
+  },
+  {
+   "p": "Capital de Italia",
+   "op": [
+    "Milán",
+    "Roma"
+   ],
+   "r": 1
+  },
+  {
+   "p": "Número de lados de un hexágono",
+   "op": [
+    "Seis",
+    "Ocho"
+   ],
+   "r": 0
+  },
+  {
+   "p": "Pintor de 'Las Meninas'",
+   "op": [
+    "Goya",
+    "Velázquez"
+   ],
+   "r": 1
+  },
+  {
+   "p": "Gas que respiramos para vivir",
+   "op": [
+    "Oxígeno",
+    "Helio"
+   ],
+   "r": 0
+  },
+  {
+   "p": "Estación del año que empieza en diciembre en España",
+   "op": [
+    "Invierno",
+    "Otoño"
+   ],
+   "r": 0
+  },
+  {
+   "p": "Instrumento de viento de metal",
+   "op": [
+    "Trompeta",
+    "Violín"
+   ],
+   "r": 0
+  },
+  {
+   "p": "Continente donde está Egipto",
+   "op": [
+    "Asia",
+    "África"
+   ],
+   "r": 1
+  },
+  {
+   "p": "Hueso más largo del cuerpo humano",
+   "op": [
+    "Fémur",
+    "Húmero"
+   ],
+   "r": 0
+  }
+ ],
+ "silla_azul": [
+  {
+   "letras": [
+    "A",
+    "B"
+   ],
+   "A": {
+    "p": "Empieza por A: árbol que da bellotas en la dehesa",
+    "r": "alcornoque"
+   },
+   "B": {
+    "p": "Empieza por B: embarcación de vela grande",
+    "r": "barco"
+   }
+  },
+  {
+   "letras": [
+    "C",
+    "D"
+   ],
+   "C": {
+    "p": "Empieza por C: pájaro amarillo que canta y se tiene en jaula",
+    "r": "canario"
+   },
+   "D": {
+    "p": "Empieza por D: día que sigue al sábado",
+    "r": "domingo"
+   }
+  },
+  {
+   "letras": [
+    "E",
+    "F"
+   ],
+   "E": {
+    "p": "Empieza por E: mamífero con trompa",
+    "r": "elefante"
+   },
+   "F": {
+    "p": "Empieza por F: fruta roja pequeña con semillas por fuera",
+    "r": "fresa"
+   }
+  },
+  {
+   "letras": [
+    "G",
+    "H"
+   ],
+   "G": {
+    "p": "Empieza por G: insecto verde que salta en el campo",
+    "r": "grillo"
+   },
+   "H": {
+    "p": "Empieza por H: herramienta para cortar madera con hoja metálica y mango",
+    "r": "hacha"
+   }
+  },
+  {
+   "letras": [
+    "L",
+    "M"
+   ],
+   "L": {
+    "p": "Empieza por L: fruto cítrico ácido y amarillo",
+    "r": "limon"
+   },
+   "M": {
+    "p": "Empieza por M: dulce elaborado por las abejas",
+    "r": "miel"
+   }
+  },
+  {
+   "letras": [
+    "P",
+    "R"
+   ],
+   "P": {
+    "p": "Empieza por P: ave que puede imitar la voz humana",
+    "r": "papagayo"
+   },
+   "R": {
+    "p": "Empieza por R: flor con espinas en el tallo",
+    "r": "rosa"
+   }
+  },
+  {
+   "letras": [
+    "S",
+    "T"
+   ],
+   "S": {
+    "p": "Empieza por S: prenda que se pone en la cabeza para protegerse del sol",
+    "r": "sombrero"
+   },
+   "T": {
+    "p": "Empieza por T: felino de rayas",
+    "r": "tigre"
+   }
+  }
+ ],
+ "piramides": [
+  {
+   "palabras": [
+    "solanas",
+    "solana",
+    "salon",
+    "losa",
+    "sol"
+   ],
+   "defs": [
+    "Lugares donde da el sol de lleno (plural)",
+    "Lugar donde da el sol de lleno",
+    "Habitación principal de una casa para recibir visitas",
+    "Piedra llana y poco gruesa para pavimentar",
+    "Estrella que ilumina la Tierra"
+   ]
+  },
+  {
+   "palabras": [
+    "piratas",
+    "pirata",
+    "tapir",
+    "pita",
+    "tia"
+   ],
+   "defs": [
+    "Ladrones del mar (plural)",
+    "Ladrón del mar",
+    "Mamífero con una pequeña trompa que vive en América y Asia",
+    "Planta de hojas carnosas y puntiagudas",
+    "Hermana del padre o de la madre"
+   ]
+  }
+ ],
+ "pulsador": [
+  {
+   "tema": "Animales",
+   "p": "Mamífero que lleva a sus crías en una bolsa",
+   "r": "canguro"
+  },
+  {
+   "tema": "Animales",
+   "p": "Ave de plumaje rosado que se apoya en una pata",
+   "r": "flamenco"
+  },
+  {
+   "tema": "Animales",
+   "p": "Reptil de larga vida con caparazón",
+   "r": "tortuga"
+  },
+  {
+   "tema": "Animales",
+   "p": "Insecto que fabrica miel",
+   "r": "abeja"
+  },
+  {
+   "tema": "Animales",
+   "p": "Felino conocido como rey de la selva",
+   "r": "leon"
+  },
+  {
+   "tema": "Cocina",
+   "p": "Plato de arroz típico valenciano",
+   "r": "paella"
+  },
+  {
+   "tema": "Cocina",
+   "p": "Sopa fría de tomate andaluza",
+   "r": "gazpacho"
+  },
+  {
+   "tema": "Cocina",
+   "p": "Tortilla hecha con patatas y huevo",
+   "r": "tortilla de patatas|tortilla"
+  },
+  {
+   "tema": "Cocina",
+   "p": "Dulce frito que se moja en chocolate",
+   "r": "churro|churros"
+  },
+  {
+   "tema": "Cocina",
+   "p": "Utensilio para freír con mango largo",
+   "r": "sarten"
+  },
+  {
+   "tema": "Deportes",
+   "p": "Deporte con raqueta y red baja que se juega en pista",
+   "r": "tenis"
+  },
+  {
+   "tema": "Deportes",
+   "p": "Deporte que se juega con canasta",
+   "r": "baloncesto"
+  },
+  {
+   "tema": "Deportes",
+   "p": "Carrera de 42 kilómetros y 195 metros",
+   "r": "maraton"
+  },
+  {
+   "tema": "Deportes",
+   "p": "Deporte que se practica sobre olas con una tabla",
+   "r": "surf"
+  },
+  {
+   "tema": "Deportes",
+   "p": "Disciplina de natación en la que se nada boca arriba",
+   "r": "espalda"
+  }
+ ],
+ "de_par_en_par": [
+  {
+   "tema": "Países y capitales",
+   "pares": [
+    [
+     "Francia",
+     "París"
+    ],
+    [
+     "Alemania",
+     "Berlín"
+    ],
+    [
+     "Grecia",
+     "Atenas"
+    ],
+    [
+     "Perú",
+     "Lima"
+    ],
+    [
+     "Japón",
+     "Tokio"
+    ],
+    [
+     "Egipto",
+     "El Cairo"
+    ],
+    [
+     "Noruega",
+     "Oslo"
+    ],
+    [
+     "Chile",
+     "Santiago"
+    ],
+    [
+     "Cuba",
+     "La Habana"
+    ]
+   ]
+  }
+ ],
+ "antes_y_despues": [
+  {
+   "modo": "inicio",
+   "parte": "PAN",
+   "items": [
+    [
+     "Prenda que cubre desde la cintura hasta los pies",
+     "pantalon"
+    ],
+    [
+     "Persona que hace o vende pan",
+     "panadero"
+    ],
+    [
+     "Felino de pelaje negro",
+     "pantera"
+    ],
+    [
+     "Vista amplia de un paisaje",
+     "panorama"
+    ],
+    [
+     "Pandereta grande",
+     "pandero"
+    ],
+    [
+     "Folleto de propaganda",
+     "panfleto"
+    ],
+    [
+     "Terreno con agua estancada y fango",
+     "pantano"
+    ],
+    [
+     "Conjunto de celdillas de cera de las abejas",
+     "panal"
+    ],
+    [
+     "Cartel grande que se lleva en una manifestación",
+     "pancarta"
+    ]
+   ]
+  },
+  {
+   "modo": "fin",
+   "parte": "ERO",
+   "items": [
+    [
+     "Persona que reparte las cartas",
+     "cartero"
+    ],
+    [
+     "Primer mes del año",
+     "enero"
+    ],
+    [
+     "Persona que apaga incendios",
+     "bombero"
+    ],
+    [
+     "Persona que atiende en un bar o restaurante",
+     "camarero"
+    ],
+    [
+     "Persona que trabaja la madera",
+     "carpintero"
+    ],
+    [
+     "Recipiente para guardar dinero, a menudo con forma de cerdito",
+     "hucha|monedero"
+    ],
+    [
+     "Persona que cuida ovejas",
+     "pastor|ovejero"
+    ],
+    [
+     "Persona que cocina profesionalmente",
+     "cocinero"
+    ],
+    [
+     "Persona que conduce un barco o avión",
+     "piloto|timonero"
+    ]
+   ]
+  }
+ ],
+ "palabra_imposible": [
+  {
+   "palabras": [
+    "Bonhomía",
+    "Petricor",
+    "Acendrado",
+    "Ataraxia",
+    "Procrastinar",
+    "Serendipia",
+    "Inefable",
+    "Efímero"
+   ],
+   "defs": [
+    [
+     "Afabilidad, sencillez y bondad en el carácter",
+     "Bonhomía"
+    ],
+    [
+     "Olor que produce la lluvia al caer sobre suelo seco",
+     "Petricor"
+    ],
+    [
+     "Puro, sin mancha ni defecto",
+     "Acendrado"
+    ],
+    [
+     "Imperturbabilidad, serenidad del ánimo",
+     "Ataraxia"
+    ],
+    [
+     "Aplazar o retrasar una tarea",
+     "Procrastinar"
+    ],
+    [
+     "Hallazgo valioso que se produce por casualidad",
+     "Serendipia"
+    ],
+    [
+     "Que no se puede explicar con palabras",
+     "Inefable"
+    ],
+    [
+     "Que dura muy poco tiempo",
+     "Efímero"
+    ]
+   ]
+  }
+ ],
+ "letra_a_letra": [
+  {
+   "palabras": [
+    "casa",
+    "capa",
+    "capo",
+    "caño",
+    "paño"
+   ],
+   "defs": [
+    "Edificio para vivir",
+    "Prenda larga y suelta sin mangas",
+    "Jefe de una banda mafiosa",
+    "Tubo corto por el que sale agua",
+    "Trozo de tela"
+   ]
+  },
+  {
+   "palabras": [
+    "mano",
+    "mono",
+    "mojo",
+    "moja",
+    "hoja"
+   ],
+   "defs": [
+    "Parte del cuerpo al final del brazo",
+    "Primate de cola larga",
+    "Salsa canaria",
+    "Tercera persona del verbo mojar",
+    "Parte verde de una planta"
+   ]
+  }
+ ],
+ "coco_loco": [
+  {
+   "pista": "Mamífero volador nocturno",
+   "r": "murcielago"
+  },
+  {
+   "pista": "Brilla en el cielo de noche",
+   "r": "estrella"
+  },
+  {
+   "pista": "Vehículo de dos ruedas a pedales",
+   "r": "bicicleta"
+  },
+  {
+   "pista": "Dulce hecho con cacao",
+   "r": "chocolate"
+  },
+  {
+   "pista": "Instrumento para observar astros",
+   "r": "telescopio"
+  },
+  {
+   "pista": "Insecto de alas de colores",
+   "r": "mariposa"
+  }
+ ],
+ "que_es_que": [
+  [
+   [
+    "Cuita",
+    "Pena"
+   ],
+   [
+    "Ósculo",
+    "Beso"
+   ],
+   [
+    "Galeno",
+    "Médico"
+   ]
+  ],
+  [
+   [
+    "Can",
+    "Perro"
+   ],
+   [
+    "Ínclito",
+    "Famoso"
+   ],
+   [
+    "Ágape",
+    "Banquete"
+   ],
+   [
+    "Óbice",
+    "Obstáculo"
+   ]
+  ],
+  [
+   [
+    "Prosapia",
+    "Linaje"
+   ],
+   [
+    "Fámulo",
+    "Criado"
+   ],
+   [
+    "Gárrulo",
+    "Charlatán"
+   ],
+   [
+    "Albur",
+    "Azar"
+   ],
+   [
+    "Cefalea",
+    "Dolor de cabeza"
+   ]
+  ]
+ ],
+ "pista_musical": [
+  {
+   "titulo": "Himno de la alegría",
+   "acepta": "himno de la alegria|oda a la alegria|novena sinfonia",
+   "notas": "E4 E4 F4 G4 G4 F4 E4 D4 C4 C4 D4 E4 E4 D4 D4",
+   "pistas": [
+    "Fragmento (5 s)",
+    "Verso: 'canta, oh dios, la alegría que nos une' (verso inventado de ejemplo)",
+    "Fragmento más largo (3 s)",
+    "Título con otras palabras: 'Canción de la felicidad'",
+    "Fragmento completo (1 s)"
+   ]
+  },
+  {
+   "titulo": "Para Elisa",
+   "acepta": "para elisa|fur elise",
+   "notas": "E5 D#5 E5 D#5 E5 B4 D5 C5 A4",
+   "pistas": [
+    "Fragmento (5 s)",
+    "Pista: pieza para piano dedicada a una mujer",
+    "Fragmento más largo (3 s)",
+    "Título con otras palabras: 'Dedicada a Eli'",
+    "Fragmento completo (1 s)"
+   ]
+  },
+  {
+   "titulo": "Martinillo",
+   "acepta": "martinillo|frere jacques|campanero",
+   "notas": "C4 D4 E4 C4 C4 D4 E4 C4 E4 F4 G4 E4 F4 G4",
+   "pistas": [
+    "Fragmento (5 s)",
+    "Verso: '¿duermes tú?' (canción popular)",
+    "Fragmento más largo (3 s)",
+    "Título con otras palabras: 'Pequeño Martín'",
+    "Fragmento completo (1 s)"
+   ]
+  }
+ ],
+ "sopa_letras": [
+  {
+   "tema": "Frutas",
+   "palabras": [
+    "PERA",
+    "KIWI",
+    "LIMA"
+   ]
+  },
+  {
+   "tema": "Colores",
+   "palabras": [
+    "ROJO",
+    "AZUL",
+    "GRIS"
+   ]
+  },
+  {
+   "tema": "Animales",
+   "palabras": [
+    "GATO",
+    "LORO",
+    "OSO"
+   ]
+  },
+  {
+   "tema": "Cuerpo humano",
+   "palabras": [
+    "MANO",
+    "PIE",
+    "OJO"
+   ]
+  },
+  {
+   "tema": "Muebles",
+   "palabras": [
+    "SOFA",
+    "MESA",
+    "CAMA"
+   ]
+  },
+  {
+   "tema": "Metales",
+   "palabras": [
+    "ORO",
+    "COBRE",
+    "ZINC"
+   ]
+  },
+  {
+   "tema": "Ríos de España",
+   "palabras": [
+    "EBRO",
+    "TAJO",
+    "SIL"
+   ]
+  },
+  {
+   "tema": "Notas musicales",
+   "palabras": [
+    "DO",
+    "SOL",
+    "MI"
+   ]
+  }
+ ],
+ "palabras_cruzadas": [
+  {
+   "tema": "El mar",
+   "items": [
+    [
+     "Animal de ocho brazos",
+     "pulpo"
+    ],
+    [
+     "Movimiento del agua que rompe en la playa",
+     "ola"
+    ],
+    [
+     "Construcción para que atraquen los barcos",
+     "puerto"
+    ],
+    [
+     "Pez muy grande con aleta dorsal temida",
+     "tiburon"
+    ],
+    [
+     "Concha que puede tener una perla",
+     "ostra"
+    ],
+    [
+     "Subida y bajada del nivel del mar",
+     "marea"
+    ],
+    [
+     "Persona que trabaja en un barco",
+     "marinero"
+    ],
+    [
+     "Crustáceo de pinzas que camina de lado",
+     "cangrejo"
+    ],
+    [
+     "Arena junto al mar",
+     "playa"
+    ]
+   ]
+  }
+ ],
+ "donde_estan": [
+  {
+   "tema": "Objetos de casa",
+   "palabras": [
+    "LÁMPARA",
+    "ESPEJO",
+    "CORTINA",
+    "ALFOMBRA",
+    "RELOJ",
+    "COJÍN",
+    "JARRÓN",
+    "ESTANTE",
+    "PERCHA"
+   ]
+  },
+  {
+   "tema": "Ciudades",
+   "palabras": [
+    "BILBAO",
+    "CÁDIZ",
+    "SORIA",
+    "LUGO",
+    "MURCIA",
+    "VIGO",
+    "ÁVILA",
+    "REUS",
+    "JAÉN"
+   ]
+  }
+ ],
+ "rosco": [
+  [
+   [
+    "A",
+    "e",
+    "Ave rapaz diurna de gran tamaño, presente en muchos escudos",
+    "aguila"
+   ],
+   [
+    "B",
+    "e",
+    "Tambor grande que se toca con una maza",
+    "bombo"
+   ],
+   [
+    "C",
+    "e",
+    "Rumiante con jorobas propio de los desiertos de Asia",
+    "camello"
+   ],
+   [
+    "D",
+    "e",
+    "Juego de 28 fichas rectangulares marcadas con puntos",
+    "domino"
+   ],
+   [
+    "E",
+    "e",
+    "Mamífero enorme con trompa y colmillos de marfil",
+    "elefante"
+   ],
+   [
+    "F",
+    "e",
+    "Torre con una luz potente que guía a los barcos",
+    "faro"
+   ],
+   [
+    "G",
+    "e",
+    "Instrumento de cuerda con caja en forma de ocho",
+    "guitarra"
+   ],
+   [
+    "H",
+    "e",
+    "Agua en estado sólido",
+    "hielo"
+   ],
+   [
+    "I",
+    "e",
+    "Porción de tierra rodeada de agua",
+    "isla"
+   ],
+   [
+    "J",
+    "e",
+    "Terreno con plantas y flores junto a una casa",
+    "jardin"
+   ],
+   [
+    "L",
+    "e",
+    "Satélite natural de la Tierra",
+    "luna"
+   ],
+   [
+    "M",
+    "e",
+    "Persona que enseña en una escuela",
+    "maestro|maestra"
+   ],
+   [
+    "N",
+    "e",
+    "Tiempo entre la puesta y la salida del sol",
+    "noche"
+   ],
+   [
+    "Ñ",
+    "c",
+    "Periodo de doce meses",
+    "año"
+   ],
+   [
+    "O",
+    "e",
+    "Mamífero plantígrado que hiberna",
+    "oso"
+   ],
+   [
+    "P",
+    "e",
+    "Ave que no vuela y vive en zonas frías del hemisferio sur",
+    "pinguino"
+   ],
+   [
+    "Q",
+    "e",
+    "Producto que se obtiene cuajando la leche",
+    "queso"
+   ],
+   [
+    "R",
+    "e",
+    "Aparato para medir el tiempo que se lleva en la muñeca",
+    "reloj"
+   ],
+   [
+    "S",
+    "e",
+    "Estrella que ilumina la Tierra",
+    "sol"
+   ],
+   [
+    "T",
+    "e",
+    "Fruto rojo muy usado en ensaladas y salsas",
+    "tomate"
+   ],
+   [
+    "U",
+    "e",
+    "Fruto de la vid",
+    "uva"
+   ],
+   [
+    "V",
+    "e",
+    "Recipiente de cristal para beber",
+    "vaso"
+   ],
+   [
+    "X",
+    "c",
+    "Coche con conductor que se alquila por trayectos",
+    "taxi"
+   ],
+   [
+    "Y",
+    "c",
+    "Orilla del mar cubierta de arena",
+    "playa"
+   ],
+   [
+    "Z",
+    "e",
+    "Calzado que cubre el pie",
+    "zapato"
+   ]
+  ],
+  [
+   [
+    "A",
+    "e",
+    "Vehículo con alas y motores que vuela",
+    "avion"
+   ],
+   [
+    "B",
+    "e",
+    "Acción de mover el cuerpo al ritmo de la música",
+    "baile"
+   ],
+   [
+    "C",
+    "e",
+    "Habitación de la casa donde se preparan los alimentos",
+    "cocina"
+   ],
+   [
+    "D",
+    "e",
+    "Mamífero marino muy inteligente que vive en grupos",
+    "delfin"
+   ],
+   [
+    "E",
+    "e",
+    "Serie de peldaños para subir o bajar",
+    "escalera"
+   ],
+   [
+    "F",
+    "e",
+    "Parte colorida y perfumada de muchas plantas",
+    "flor"
+   ],
+   [
+    "G",
+    "e",
+    "Animal doméstico que caza ratones",
+    "gato"
+   ],
+   [
+    "H",
+    "e",
+    "Herramienta de hoja curva para segar",
+    "hoz"
+   ],
+   [
+    "I",
+    "e",
+    "Templo cristiano",
+    "iglesia"
+   ],
+   [
+    "J",
+    "e",
+    "Recipiente con asa para servir líquidos",
+    "jarra"
+   ],
+   [
+    "L",
+    "e",
+    "Conjunto de páginas encuadernadas para leer",
+    "libro"
+   ],
+   [
+    "M",
+    "e",
+    "Gran masa de agua salada",
+    "mar"
+   ],
+   [
+    "N",
+    "e",
+    "Precipitación de agua helada en forma de copos",
+    "nieve"
+   ],
+   [
+    "Ñ",
+    "c",
+    "Persona de corta edad",
+    "niño|niña"
+   ],
+   [
+    "O",
+    "e",
+    "Órgano de la vista",
+    "ojo"
+   ],
+   [
+    "P",
+    "e",
+    "Alimento de harina, agua, sal y levadura cocido al horno",
+    "pan"
+   ],
+   [
+    "Q",
+    "e",
+    "Que está sin movimiento",
+    "quieto|quieta"
+   ],
+   [
+    "R",
+    "e",
+    "Corriente natural de agua que desemboca en el mar",
+    "rio"
+   ],
+   [
+    "S",
+    "e",
+    "Asiento con respaldo para una persona",
+    "silla"
+   ],
+   [
+    "T",
+    "e",
+    "Aparato para hablar a distancia",
+    "telefono"
+   ],
+   [
+    "U",
+    "e",
+    "Pieza dura en el extremo de los dedos",
+    "uña"
+   ],
+   [
+    "V",
+    "e",
+    "Prenda femenina de una sola pieza",
+    "vestido"
+   ],
+   [
+    "X",
+    "c",
+    "Prueba para evaluar conocimientos",
+    "examen"
+   ],
+   [
+    "Y",
+    "e",
+    "Parte amarilla del huevo",
+    "yema"
+   ],
+   [
+    "Z",
+    "e",
+    "Bebida que se obtiene exprimiendo frutas",
+    "zumo"
+   ]
+  ]
+ ],
+ "la_oportunidad": [
+  [
+   "A",
+   "Prenda gruesa para abrigarse en invierno",
+   "abrigo"
+  ],
+  [
+   "B",
+   "Embarcación grande",
+   "barco"
+  ],
+  [
+   "C",
+   "Lugar donde se guardan los coches",
+   "cochera"
+  ],
+  [
+   "D",
+   "Pieza blanca y dura de la boca",
+   "diente"
+  ],
+  [
+   "E",
+   "Planta trepadora que cubre muros",
+   "enredadera|hiedra"
+  ],
+  [
+   "F",
+   "Fruta roja pequeña con semillas por fuera",
+   "fresa"
+  ],
+  [
+   "G",
+   "Prenda para las manos",
+   "guante|guantes"
+  ],
+  [
+   "H",
+   "Herramienta para cortar leña",
+   "hacha"
+  ],
+  [
+   "I",
+   "Templo cristiano",
+   "iglesia"
+  ],
+  [
+   "J",
+   "Planta de flores blancas muy aromáticas",
+   "jazmin"
+  ],
+  [
+   "A",
+   "Árbol que da aceitunas",
+   "aceituno"
+  ],
+  [
+   "B",
+   "Calzado alto que cubre parte de la pierna",
+   "bota"
+  ],
+  [
+   "C",
+   "Casita del perro",
+   "caseta"
+  ],
+  [
+   "D",
+   "Periodo de veinticuatro horas",
+   "dia"
+  ],
+  [
+   "E",
+   "Mamífero con trompa",
+   "elefante"
+  ],
+  [
+   "F",
+   "Medio de transporte que circula sobre raíles",
+   "ferrocarril"
+  ],
+  [
+   "G",
+   "Ave de corral que pone huevos",
+   "gallina"
+  ],
+  [
+   "H",
+   "Aparato cerrado para asar o cocer alimentos",
+   "horno"
+  ],
+  [
+   "I",
+   "Centro de enseñanza secundaria",
+   "instituto"
+  ],
+  [
+   "J",
+   "Mamífero salvaje con colmillos, parecido al cerdo",
+   "jabali"
+  ]
+ ],
+ "he_dicho": [
+  [
+   "Julio César",
+   "Llegué, vi, vencí"
+  ],
+  [
+   "Arquímedes",
+   "¡Eureka!"
+  ],
+  [
+   "Sócrates",
+   "Solo sé que no sé nada"
+  ],
+  [
+   "René Descartes",
+   "Pienso, luego existo"
+  ],
+  [
+   "Galileo Galilei",
+   "Y sin embargo, se mueve"
+  ],
+  [
+   "Heráclito",
+   "Nadie se baña dos veces en el mismo río"
+  ],
+  [
+   "Isaac Newton",
+   "Si he visto más lejos es porque estoy sobre hombros de gigantes"
+  ],
+  [
+   "William Shakespeare (Hamlet)",
+   "Ser o no ser, esa es la cuestión"
+  ],
+  [
+   "Francisco de Quevedo",
+   "Poderoso caballero es don Dinero"
+  ],
+  [
+   "Miguel de Cervantes",
+   "En un lugar de la Mancha, de cuyo nombre no quiero acordarme"
+  ]
+ ],
+ "cantando_espero": [
+  {
+   "titulo": "Himno de la alegría",
+   "acepta": "himno de la alegria|oda a la alegria",
+   "notas": "E4 E4 F4 G4 G4 F4 E4 D4 C4 C4 D4 E4 E4 D4 D4"
+  },
+  {
+   "titulo": "Martinillo",
+   "acepta": "martinillo|frere jacques",
+   "notas": "C4 D4 E4 C4 C4 D4 E4 C4 E4 F4 G4"
+  },
+  {
+   "titulo": "Estrellita dónde estás",
+   "acepta": "estrellita|estrellita donde estas|twinkle twinkle",
+   "notas": "C4 C4 G4 G4 A4 A4 G4 F4 F4 E4 E4 D4 D4 C4"
+  },
+  {
+   "titulo": "Cumpleaños feliz",
+   "acepta": "cumpleaños feliz|cumpleanos feliz",
+   "notas": "G4 G4 A4 G4 C5 B4 G4 G4 A4 G4 D5 C5"
+  }
+ ],
+ "con_dos_palabras": [
+  [
+   "paraguas",
+   "lluvia protege"
+  ],
+  [
+   "biblioteca",
+   "libros prestados"
+  ],
+  [
+   "semáforo",
+   "luces tráfico"
+  ],
+  [
+   "playa",
+   "arena mar"
+  ],
+  [
+   "dentista",
+   "médico dientes"
+  ],
+  [
+   "calendario",
+   "días meses"
+  ],
+  [
+   "bombilla",
+   "luz eléctrica"
+  ],
+  [
+   "pijama",
+   "ropa dormir"
+  ],
+  [
+   "cohete",
+   "viaje espacial"
+  ],
+  [
+   "llave",
+   "abre puertas"
+  ],
+  [
+   "volcán",
+   "montaña lava"
+  ],
+  [
+   "helado",
+   "postre frío"
+  ]
+ ],
+ "palabras_ocultas": [
+  [
+   "Animal que maúlla",
+   "GA",
+   "TO"
+  ],
+  [
+   "Parte de la cara para oler",
+   "NA",
+   "RIZ"
+  ],
+  [
+   "Mueble para dormir",
+   "CA",
+   "MA"
+  ],
+  [
+   "Color del cielo despejado",
+   "A",
+   "ZUL"
+  ],
+  [
+   "Fruta amarilla y alargada",
+   "PLA",
+   "TANO"
+  ],
+  [
+   "Prenda para los pies",
+   "ZA",
+   "PATO"
+  ],
+  [
+   "Lugar donde se ven películas",
+   "CI",
+   "NE"
+  ],
+  [
+   "Estación más calurosa",
+   "VE",
+   "RANO"
+  ]
+ ]
+}

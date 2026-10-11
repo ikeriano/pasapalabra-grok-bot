@@ -1,0 +1,41 @@
+PASAPALABRA · EL JUEGO 3D (juego de fans, independiente)
+=========================================================
+Creado por Iker. Programación: Grok Bot.
+
+CÓMO ABRIRLO
+- En línea: https://ikeriano.github.io/pasapalabra-grok-bot/
+- En el ordenador: sirve esta carpeta con un servidor (p. ej. «python3 -m http.server») y abre index.html.
+- Se puede instalar como app (menú → «Instalar app»), y funciona sin conexión.
+
+MENÚS (misma interfaz que el APK «¡Ahora Caigo! El juego 3D»)
+- Título «Toca para empezar» → Menú: Jugar, Opciones, La historia de Pasapalabra, Cómo se juega, Créditos, Instalar app.
+- Jugar: Programa completo, Entrenamiento, Clásico (partida rápida), Rueda la letra, Explorar el plató,
+  Monólogos del presentador y rejilla «Programa especial» (Navidad, Fin de Año, Prime Time…).
+- Opciones: música, cabecera (3D o tu vídeo), música/logo propios, efectos, público, voz, lectura de preguntas,
+  chistes, monólogo, concursantes, ETAPA / PLATÓ (Antena 3 2000-2006, Telecinco 2007-2018, Telecinco 2018-2019,
+  Antena 3 2020-2026), mis canciones, calidad gráfica, pantalla completa.
+
+PRUEBAS Y TIEMPOS
+- Silla azul: 5 s por pregunta; con 2 fallos quedas eliminado.
+- Una de dos: 90 s, +5 s por acierto. Una de cuatro: 90 s, +2 s. ¿Dónde están?: 75 s, 20 s si completas el panel, 10 s al mejor.
+- Final: El rosco, AlaZ (desde junio 2026) o La Rueda (Rueda la letra).
+
+GRAFISMOS (diseño propio inspirado en cada época)
+- Una de cuatro / Una de dos: opciones en píldoras a la derecha, franja redondeada con la pregunta y círculo del tiempo.
+- Rosco individual a pantalla completa: letras en círculos alrededor del concursante (verde acierto, rojo fallo, la actual
+  resaltada), círculo naranja grande con el tiempo y círculo verde con los aciertos.
+- Letra a letra (Telecinco): panel naranja de palabras, número grande de segundos y píldoras naranjas.
+- ¿Qué es qué? / La palabra imposible (Telecinco): panel azul con marco blanco cruzado, rectángulos azules y círculo de tiempo.
+- El pulsador, La pista musical, ¿Dónde están?, La Rueda… con el estilo de cada etapa.
+
+VOCES
+- Pregeneradas con Piper TTS en voz/ (frases) y voz/q/ (preguntas), con index.json {hash: duración}.
+  Presentadores: davefx (CC0); Sofía Brisa: daniela (CC BY-SA 4.0). Concursantes: sharvard (CC BY 3.0), carlfm (dominio público),
+  ald, daniela. Las frases dinámicas usan la voz del navegador (masculina es-ES si existe).
+- Para regenerar tras cambiar textos: node tools/frases.mjs /tmp/f.json && python tools/gen_voces.py /tmp/f.json .
+
+TUS ARCHIVOS
+- audio/ y logos/: pon aquí tus músicas y logos (ver los .txt), o súbelos desde Opciones (se guardan solo en tu dispositivo).
+- data/preguntas_extra.js: añade preguntas propias.
+
+Juego de fans sin ánimo de lucro, no afiliado a ninguna cadena. Presentadores y concursantes son personajes virtuales.
