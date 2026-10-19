@@ -1,0 +1,492 @@
+{
+ "fuente": "Pasapalabra Nochevieja 31/12/2018 (transcripción whisper small, revisada a mano). nota = corrección o duda",
+ "pruebas": [
+  {
+   "tipo": "presentacion",
+   "frases": [
+    "Último Pasapalabra del año.",
+    "En este programa, Pasapalabra no podía faltar en sus casas en esta última tarde del 2018.",
+    "Menos de cuatro horas para cambiar de año. Feliz año nuevo a todos.",
+    "Ahora sí, comienza el último Pasapalabra del 2018.",
+    "¿Por qué van a jugar? Por 6.000 euros y, ojo, para los primeros de cada fila, la posibilidad de volver a jugar aquí, con nosotros, en 2019, en Pasapalabra."
+   ]
+  },
+  {
+   "tipo": "laPista",
+   "titulo": "Una de cuatro",
+   "frases": [
+    "Y vamos a jugar con protagonistas femeninas de este 2018, que está a punto de acabar. ¿Preparado?"
+   ],
+   "items": [
+    {
+     "q": "En 2018 se convirtió en la primera mujer en ganar tres mundiales de bádminton.",
+     "a": "Carolina Marín|Marín",
+     "nota": "ASR «Taroguina Marín»"
+    },
+    {
+     "q": "Con «Los archivos del Pentágono» tuvo su vigésimo primera nominación a los Óscar.",
+     "a": "Meryl Streep",
+     "nota": "ASR «Mayer Strip»"
+    },
+    {
+     "q": "A esta mandataria le gustaría ser astronauta para ver el mundo desde arriba.",
+     "a": "Angela Merkel|Merkel"
+    },
+    {
+     "q": "Ha sido la persona más buscada en Google en 2018 a nivel mundial por su boda real.",
+     "a": "Meghan Markle|Megan Markle",
+     "nota": "ASR «Megan Markely»"
+    },
+    {
+     "q": "Este año ha conseguido ser número uno en España y llevarse dos Grammy Latinos.",
+     "a": "Rosalía"
+    },
+    {
+     "q": "En 2018 cerró su marca de moda para centrarse en su trabajo en la Casa Blanca.",
+     "a": "Ivanka Trump|Trump"
+    },
+    {
+     "q": "Actriz de «Modern Family» y que por sexto año es la mejor pagada de la televisión.",
+     "a": "Sofía Vergara",
+     "nota": "ASR «Atri de modo en familia»"
+    },
+    {
+     "q": "Este año hizo su debut en la televisión americana dando vida a Donatella Versace.",
+     "a": "Penélope Cruz"
+    },
+    {
+     "q": "Cerró su restaurante en Sant Pol con tres estrellas Michelin para reinventarse.",
+     "a": "Carme Ruscalleda|Carmen Ruscalleda"
+    },
+    {
+     "q": "De pequeña ayudaba a su padre a vender árboles de Navidad en Pensilvania.",
+     "a": "Taylor Swift",
+     "nota": "respuesta dada por Christian tras el fallo"
+    },
+    {
+     "q": "Protagonistas masculinos del 2018. En 2018 dejó el Real Madrid siendo el máximo goleador de la historia del equipo.",
+     "a": "Cristiano Ronaldo|Cristiano"
+    },
+    {
+     "q": "Fichaje de los Lakers en 2018. Es zurdo en su vida diaria y diestro en la cancha.",
+     "a": "LeBron James|Lebron"
+    },
+    {
+     "q": "En 1989 se comercializó un juego de mesa con su nombre al estilo Monopoly.",
+     "a": "Donald Trump|Trump"
+    },
+    {
+     "q": "Ha triunfado con la película «Campeones».",
+     "a": "Javier Fesser|Fesser"
+    },
+    {
+     "q": "De pequeño imitó a Elvis en una película y este año se llevó seis premios Grammy.",
+     "a": "Bruno Mars"
+    },
+    {
+     "q": "El primer ganador de Grand Slam de la historia que en 2018 consiguió su vigésimo título.",
+     "a": "Roger Federer|Federer",
+     "nota": "frase dudosa en ASR"
+    },
+    {
+     "q": "Echó la bronca a un joven por llamarlo Manu en lugar de señor presidente.",
+     "a": "Macron|Emmanuel Macron"
+    },
+    {
+     "q": "Antes de los partidos le gusta jugar al parchís y darse una ducha fría.",
+     "a": "Rafa Nadal|Nadal"
+    },
+    {
+     "q": "Ganador del Balón de Oro que de pequeño jugaba con espinilleras hechas de roble.",
+     "a": "Luka Modric|Modric"
+    },
+    {
+     "q": "Recibió su primera nominación a los Emmy por su papel de Picasso en una serie.",
+     "a": "Antonio Banderas|Banderas"
+    },
+    {
+     "q": "Su fichaje por el Barça se ha convertido en el más caro de la historia del club.",
+     "a": "Coutinho"
+    },
+    {
+     "q": "De joven estudió para ser cura y este año ha ganado el Princesa de Asturias.",
+     "a": "Martin Scorsese|Scorsese"
+    },
+    {
+     "q": "Este campeón del mundo de Fórmula 1 tiene dos perros con cuenta en Instagram.",
+     "a": "Lewis Hamilton|Hamilton"
+    }
+   ]
+  },
+  {
+   "tipo": "duelo",
+   "titulo": "Pista musical",
+   "frases": [
+    "Esto es lo que tiene el fin de año. Pista musical.",
+    "Último duelo musical de este 2018.",
+    "Año de la canción. Lo ponemos en pantalla.",
+    "Por cinco segundos. ¡Música!"
+   ],
+   "items": [
+    {
+     "q": "1977. Título de la canción.",
+     "a": "Fiesta|Que fantastica esta fiesta",
+     "s": "ediciones/nochevieja2018/nv_1977.mp3",
+     "x": "AÑO 1977",
+     "dudoso": true,
+     "nota": "el título no se dice en el vídeo; deducido de la letra «qué fantástica…»"
+    },
+    {
+     "q": "1978. Título de la canción.",
+     "a": "Last Dance",
+     "s": "ediciones/nochevieja2018/nv_1978.mp3",
+     "x": "AÑO 1978",
+     "dudoso": true,
+     "nota": "«Last dance» es la respuesta que se oye; no se oye la confirmación"
+    }
+   ]
+  },
+  {
+   "tipo": "sopa",
+   "titulo": "Sopa de letras",
+   "frases": [
+    "Sopa de letras, vámonos.",
+    "Venga, vamos con vuestras sopas de letras, un máximo de siete, tres palabras por panel."
+   ],
+   "items": [
+    {
+     "q": "Las campanadas.",
+     "a": "uvas|doce|reloj",
+     "x": "SOPA DE LETRAS"
+    },
+    {
+     "q": "Entrantes de Nochevieja.",
+     "a": "queso|jamon",
+     "x": "SOPA DE LETRAS"
+    },
+    {
+     "q": "Brindando en Nochevieja.",
+     "a": "sidra|copa|cava",
+     "x": "SOPA DE LETRAS",
+     "nota": "ASR «Cidra, Opa, Cabo»"
+    },
+    {
+     "q": "Los Reyes Magos.",
+     "a": "mirra|oro|paje",
+     "x": "SOPA DE LETRAS"
+    },
+    {
+     "q": "Lugares donde pasar Nochevieja.",
+     "a": "casa|local|hotel",
+     "x": "SOPA DE LETRAS"
+    },
+    {
+     "q": "Protagonistas de los villancicos.",
+     "a": "niño|burra|peces",
+     "x": "SOPA DE LETRAS"
+    },
+    {
+     "q": "Relativo al mantecado.",
+     "a": "torta|cerdo|dulce",
+     "x": "SOPA DE LETRAS"
+    },
+    {
+     "q": "Deseos de año nuevo.",
+     "a": "salud|amor",
+     "x": "SOPA DE LETRAS"
+    },
+    {
+     "q": "Rellenos del roscón de Reyes.",
+     "a": "nata",
+     "x": "SOPA DE LETRAS"
+    },
+    {
+     "q": "Día de patinaje.",
+     "a": "caida|pista",
+     "x": "SOPA DE LETRAS"
+    },
+    {
+     "q": "Regalos de amigo invisible.",
+     "a": "juego|taza",
+     "x": "SOPA DE LETRAS"
+    },
+    {
+     "q": "Tocando la zambomba.",
+     "a": "caña",
+     "x": "SOPA DE LETRAS"
+    },
+    {
+     "q": "Vestuario de Nochevieja.",
+     "a": "blusa|traje|falda",
+     "x": "SOPA DE LETRAS",
+     "nota": "ASR «Lusa»"
+    }
+   ]
+  },
+  {
+   "tipo": "tablero",
+   "titulo": "¿Dónde están?",
+   "frases": [
+    "Última prueba, último segundo del juego en este último programa del 2018. Vamos a por ello: ¿Dónde están?",
+    "Aquí tenemos Cotillón y Carillón. En la bolsa del cotillón, o palabras como carillón, que más se repiten en las campanadas.",
+    "Ya sabéis que mostramos el panel, le damos la vuelta un par de segundos y tenéis que memorizar cuantas más mejor."
+   ],
+   "items": [
+    {
+     "q": "Cotillón. ¿Dónde está el globo?",
+     "a": "8",
+     "x": "COTILLÓN · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Cotillón. ¿Dónde está el silbato?",
+     "a": "5",
+     "x": "COTILLÓN · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Cotillón. ¿Dónde está el antifaz?",
+     "a": "9",
+     "x": "COTILLÓN · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Cotillón. ¿Dónde está la serpentina?",
+     "a": "6",
+     "x": "COTILLÓN · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Cotillón. ¿Dónde está el gorro?",
+     "a": "3",
+     "x": "COTILLÓN · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Cotillón. ¿Dónde está el collar?",
+     "a": "4",
+     "x": "COTILLÓN · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Cotillón. ¿Dónde está el confeti?",
+     "a": "1",
+     "x": "COTILLÓN · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Cotillón. ¿Dónde está la corbata?",
+     "a": "7",
+     "x": "COTILLÓN · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Cotillón. ¿Dónde está la nariz?",
+     "a": "2",
+     "x": "COTILLÓN · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Carillón. ¿Dónde está los cuartos?",
+     "a": "4",
+     "x": "CARILLÓN · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Carillón. ¿Dónde está reloj?",
+     "a": "7",
+     "x": "CARILLÓN · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Carillón. ¿Dónde está atragantar?",
+     "a": "8",
+     "x": "CARILLÓN · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Carillón. ¿Dónde está feliz año?",
+     "a": "2",
+     "x": "CARILLÓN · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Carillón. ¿Dónde está beso?",
+     "a": "9",
+     "x": "CARILLÓN · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Carillón. ¿Dónde está deseo?",
+     "a": "1",
+     "x": "CARILLÓN · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Carillón. ¿Dónde está abrazo?",
+     "a": "3",
+     "x": "CARILLÓN · 1 2 3 4 5 6 7 8 9"
+    }
+   ]
+  }
+ ],
+ "rosco": {
+  "seg": 168,
+  "frases": [
+   "Ahí está, son 168 segundos. ¿A por ello?",
+   "Venga, pues jugamos."
+  ],
+  "p": [
+   {
+    "l": "A",
+    "t": "e",
+    "w": "antropología",
+    "d": "Ciencia que trata de los aspectos biológicos y sociales del hombre."
+   },
+   {
+    "l": "B",
+    "t": "e",
+    "w": "borda",
+    "d": "Canto superior del costado de un buque."
+   },
+   {
+    "l": "C",
+    "t": "e",
+    "w": "cerrar",
+    "d": "Asegurar con pasador, pestillo u otro instrumento una puerta, ventana o tapa para impedir que se abra."
+   },
+   {
+    "l": "D",
+    "t": "e",
+    "w": "delante",
+    "d": "Con prioridad de lugar, en la parte anterior o en sitio detrás del cual hay alguien o algo."
+   },
+   {
+    "l": "E",
+    "t": "e",
+    "w": "economía",
+    "d": "Administración eficaz y razonable de los bienes."
+   },
+   {
+    "l": "F",
+    "t": "e",
+    "w": "falsificación",
+    "d": "Acción de hacer o fabricar una cosa no auténtica o no correspondiente a la realidad."
+   },
+   {
+    "l": "G",
+    "t": "e",
+    "w": "garita",
+    "d": "Cuarto pequeño que suelen tener los porteros en el portal para poder ver quién entra y sale."
+   },
+   {
+    "l": "H",
+    "t": "e",
+    "w": "heterónimo",
+    "d": "Nombre diferente del suyo propio que un autor utiliza para firmar sus obras."
+   },
+   {
+    "l": "I",
+    "t": "e",
+    "w": "idiosincrasia",
+    "d": "Rasgos, temperamento, carácter distintivos y propios de un individuo o de una colectividad."
+   },
+   {
+    "l": "J",
+    "t": "e",
+    "w": "jedi",
+    "d": "Orden mística y monacal de caballeros del universo ficticio de la saga de películas de Star Wars."
+   },
+   {
+    "l": "L",
+    "t": "e",
+    "w": "lehendakari",
+    "d": "Jefe del Gobierno vasco."
+   },
+   {
+    "l": "M",
+    "t": "e",
+    "w": "matriz",
+    "d": "Molde en que se funden objetos de metal que han de ser idénticos."
+   },
+   {
+    "l": "N",
+    "t": "e",
+    "w": "nombela",
+    "d": "Apellido del escritor español autor de la obra «Impresiones y recuerdos»."
+   },
+   {
+    "l": "Ñ",
+    "t": "c",
+    "w": "muñeca",
+    "d": "Parte del cuerpo humano donde se articula la mano con el antebrazo."
+   },
+   {
+    "l": "O",
+    "t": "e",
+    "w": "oleoso",
+    "d": "Se dice de lo que tiene o produce aceite."
+   },
+   {
+    "l": "P",
+    "t": "e",
+    "w": "pariente",
+    "d": "Con respecto a una persona, otra de su misma familia."
+   },
+   {
+    "l": "Q",
+    "t": "c",
+    "w": "harakiri",
+    "d": "Forma de suicidio ritual practicado en Japón por razones de honor o por orden superior, que consiste en abrirse el vientre."
+   },
+   {
+    "l": "R",
+    "t": "e",
+    "w": "rulo",
+    "d": "Rizo de cabello.",
+    "dudoso": 1
+   },
+   {
+    "l": "S",
+    "t": "e",
+    "w": "sedal",
+    "d": "Hilo de la caña de pescar.",
+    "dudoso": 1
+   },
+   {
+    "l": "T",
+    "t": "e",
+    "w": "temor",
+    "d": "Recelo o sospecha de que ocurra, haya ocurrido o pueda ocurrir cierta cosa mala.",
+    "dudoso": 1
+   },
+   {
+    "l": "U",
+    "t": "e",
+    "w": "usedom",
+    "d": "Isla del mar Báltico dividida administrativamente entre Alemania y Polonia, situada en la desembocadura del Óder."
+   },
+   {
+    "l": "V",
+    "t": "e",
+    "w": "vecindario",
+    "d": "(definición no se oye en el vídeo)",
+    "dudoso": 1
+   },
+   {
+    "l": "X",
+    "t": "c",
+    "w": "expectorar",
+    "d": "Arrojar por la boca las secreciones que se depositan en los bronquios."
+   },
+   {
+    "l": "Y",
+    "t": "c",
+    "w": "rayón",
+    "d": "Cría del jabalí, que tiene el pelaje rayado."
+   },
+   {
+    "l": "Z",
+    "t": "e",
+    "w": "zazen",
+    "d": "Meditación en la postura del loto."
+   }
+  ]
+ },
+ "cierre": [
+  "Aurora se convierte en la ganadora de este último programa de Pasapalabra.",
+  "Estamos en el último programa de Pasapalabra del 2018. Empieza el 2019, empieza siempre con los mejores deseos.",
+  "Así que, feliz año nuevo. Pasapalabra, como siempre, cada tarde durante todo el 2019."
+ ],
+ "dudas": [
+  "Pista musical: los títulos de 1977 y 1978 no se confirman en el audio.",
+  "Rosco R/S/T/V: la respuesta (o la definición de V) no se oye; R «rulo» deducido de «Rula» del ASR.",
+  "¿Dónde están? Carillón: la posición de «uvas» no se puede saber (5 o 6); omitida.",
+  "Sopa: categorías y palabras según los aciertos que se oyen; las no oídas no se incluyen."
+ ]
+}

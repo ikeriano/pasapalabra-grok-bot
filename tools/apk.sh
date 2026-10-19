@@ -2,7 +2,7 @@
 # Compila el APK firmado: tools/apk.sh [salida.apk]
 set -e
 cd "$(dirname "$0")/.."
-OUT=${1:-/workspace/pp_gb/out/Pasapalabra3D-1.2-gb.apk}
+OUT=${1:-/workspace/pp_gb/out/Pasapalabra3D-1.3-gb.apk}
 KS=/cursor/stores/store-b6a3ca2b-7c3b-4225-8f28-1a7e8cfa3201/keystores
 npx esbuild src/main.js --bundle --format=iife --minify --outfile=js/app.js
 W=android/app/src/main/assets/www; rm -rf "$W"; mkdir -p "$W"
