@@ -1,0 +1,41 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pasapalabra · AlaZ (mecánica actual)</title>
+<!-- «Programa completo (mecánica actual)»: prueba final AlaZ (Antena 3, estreno 19/06/2026, Roberto Leal).
+     Grafismo copiado de capturas de emisión (ref/alaz). Pendiente: comprobar con un programa actual (ver PENDIENTE.md). -->
+<style>
+@font-face{font-family:F;src:url(Fredoka.ttf)}
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#0a4fd6;font-family:F,Nunito,sans-serif;color:#fff}
+#fondo{position:fixed;inset:0;background:radial-gradient(circle at 20% 15%,#5fd0ff 0,#1aa0ff 18%,#0d6ff0 45%,#0a4fd6 80%)}
+#fondo.nar{background:radial-gradient(circle at 75% 20%,#ffd23a 0,#ffa31a 25%,#ff7a0d 60%,#f05a0a 100%)}
+.ltr{position:absolute;font-weight:700;opacity:.13;filter:blur(1px)}
+#cort{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:50;background:#000}
+#reloj{position:absolute;left:3vw;top:6vh;width:23vh;height:23vh;border-radius:5.5vh;background:conic-gradient(#fff var(--p,100%),#2a7af0 0);padding:2.2vh}
+#reloj div{width:100%;height:100%;border-radius:3.6vh;border:.6vh solid #fff;background:linear-gradient(#2a6cf2,#1546d6);display:flex;align-items:center;justify-content:center;font-size:9vh;font-weight:700}
+.nar #reloj div,body.nar #reloj div{background:linear-gradient(#ff8a1a,#e85a10)}body.nar #reloj{background:conic-gradient(#fff var(--p,100%),#ff9b3a 0)}
+#quedan{position:absolute;left:calc(3vw + 25vh);top:12vh;width:13vh;height:11vh;border-radius:1.6vh;border:.45vh solid #fff;background:linear-gradient(#43d43a,#16a51a);display:flex;align-items:center;justify-content:center;font-size:6.5vh;font-weight:700}
+#def{position:absolute;left:-2vw;width:72vw;bottom:19vh;height:10vh;border-radius:0 2vh 2vh 0;border:.45vh solid #fff;background:linear-gradient(#2f7bff,#1a55e6);display:flex;align-items:center;justify-content:center;font-size:3.6vh;font-weight:700;padding:0 3vw;text-transform:uppercase;text-align:center}
+#pal{position:absolute;right:-2vw;width:28vw;bottom:19vh;height:10vh;border-radius:2vh 0 0 2vh;border:.45vh solid #fff;background:linear-gradient(#2f7bff,#1a55e6);display:flex;align-items:center;justify-content:center;font-size:5vh;font-weight:700;letter-spacing:.6vh;white-space:nowrap;overflow:hidden}
+body.nar #def,body.nar #pal{background:linear-gradient(#ff8a1a,#e85a10)}
+#abc{position:absolute;left:0;right:0;bottom:6vh;display:flex;justify-content:center;gap:.45vw}
+#abc b{width:3.25vw;height:9vh;border-radius:1.2vh;border:.35vh solid #fff;background:linear-gradient(#4ee044,#16a51a);display:flex;align-items:center;justify-content:center;font-size:4.2vh;transition:.2s}
+#abc b.act{background:linear-gradient(#fff,#dfe8ff);color:#1a55e6;transform:scale(1.12)}
+#abc b.ok{background:linear-gradient(#5aa8ff,#2a6cf2)}#abc b.ko{background:linear-gradient(#ff6a5a,#d42020)}#abc b.pa{background:linear-gradient(#ffe16a,#f0b400);color:#1a3a8a}
+#nom{position:absolute;right:4vw;top:6vh;padding:1vh 3vh;border-radius:2vh;background:linear-gradient(#3d8bff,#1a55e6);border:.4vh solid #fff;font-size:3.4vh}
+body.nar #nom{background:linear-gradient(#ff9a3a,#e85a10)}
+#ui{position:absolute;right:4vw;top:16vh;display:flex;flex-direction:column;gap:1.2vh;width:34vw}
+#ui input{font:inherit;font-size:3.4vh;padding:1.2vh;border-radius:1.4vh;border:0;text-transform:uppercase}
+.bt{font:inherit;font-size:2.8vh;padding:1.2vh 2vh;border-radius:1.4vh;border:.35vh solid #fff;color:#fff;background:#1a55e6;cursor:pointer}
+.bt.g{background:#16a51a}.bt.o{background:#ff7a0d}
+#msg{position:absolute;left:0;right:0;top:36vh;text-align:center;font-size:4vh;text-shadow:0 .4vh 1vh #0008}
+#modal{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;flex-direction:column;gap:2.5vh;background:#062c8ae6;font-size:3.4vh;text-align:center;padding:4vw}
+#volver{position:fixed;left:1.5vw;top:1.5vh;z-index:60;font-size:2vh;padding:.6vh 1.4vh}
+</style></head><body>
+<div id="fondo"></div>
+<div id="reloj"><div id="seg">110</div></div><div id="quedan">27</div><div id="nom">TÚ</div>
+<div id="msg"></div>
+<div id="ui"><input id="r" placeholder="Escribe la palabra" autocomplete="off"><div style="display:flex;gap:1vh"><button class="bt g" id="ok">Responder</button><button class="bt o" id="letra">Letra (−5 s)</button><button class="bt" id="paso">Pasapalabra</button></div></div>
+<div id="def"></div><div id="pal"></div><div id="abc"></div>
+<div id="modal"></div>
+<video id="cort" src="cortinilla.mp4" playsinline></video>
+<button class="bt" id="volver">◀ Volver</button>
+<script src="alaz.js"></script></body></html>
