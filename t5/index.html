@@ -26,6 +26,16 @@ html,body{margin:0;height:100%;overflow:hidden;background:#01040f;font-family:sy
 .k{padding:1vh 2.4vh;border-radius:2vh;border:0;font:800 2.6vh Arial;color:#fff;cursor:pointer}.k.ok{background:#1fb14a}.k.pp{background:#e08a00}
 #volver{position:absolute;right:2vw;top:3vh}
 @font-face{font-family:FR;src:url(font/Fredoka.ttf);font-weight:300 700}
+#nsbox{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:60;width:62vw;padding:2.5vh 2vw;border-radius:2.4vh;background:linear-gradient(#1f6fe8,#0b3c9e);border:.45vh solid #fff;box-shadow:0 1vh 4vh #0008;color:#fff;font-family:Fredoka,Arial}
+#nsbox h3{margin:0 0 1.4vh;text-align:center;font-size:4.2vh;color:#fff;background:linear-gradient(#ff9a2e,#e8620a);border-radius:1.4vh;padding:.6vh}
+#nsbox .nsl{display:flex;align-items:baseline;gap:1vw;font-size:2.3vh;padding:.45vh 1vw;border-radius:1vh;opacity:.75}#nsbox .nsl b{min-width:3.4vh;height:3.4vh;border-radius:50%;background:#ff7a1a;display:inline-flex;align-items:center;justify-content:center}#nsbox .nsl small{opacity:.85;font-size:1.9vh}#nsbox .nsl.on{opacity:1;background:#ffffff26}
+#luces{position:fixed;inset:0;z-index:40;pointer-events:none;mix-blend-mode:screen;opacity:.45;transition:background 1s}
+#creditos2018{position:fixed;left:0;right:0;bottom:4vh;height:15vh;z-index:45;display:flex;align-items:center;justify-content:center;gap:5vw;background:linear-gradient(#4f8dff,#2f6ef0);border-top:.3vh solid #8fc0ff;border-bottom:.3vh solid #8fc0ff;font-family:Arial,sans-serif;color:#fff}
+#creditos2018 .cg{display:flex;flex-direction:column;align-items:center;border-bottom:.25vh solid #fff;padding:0 1.2vw .4vh}#creditos2018 .cg b{font-size:1.9vh}#creditos2018 .cg span{font-size:2.6vh;font-weight:700}
+#creditos2018 img{height:10vh}#creditos2018 .cp{font-size:1.9vh;font-weight:700;text-align:right;line-height:1.25}#creditos2018 img.ms{height:5vh}
+.falloRojo .marco{outline:.6vh solid #e01818;outline-offset:-.6vh}
+#vcort{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;background:#000;z-index:200;display:none}#vcort.on{display:block}
+#vlogo{position:fixed;top:0;bottom:0;left:22vw;width:78vw;height:100%;object-fit:cover;z-index:1;display:none}body.conlogo #vlogo{display:block}body.conlogo #menu .logo img+img{display:none}
 #cab .marca{position:absolute;left:50%;top:50%;width:58vw;transform:translate(-50%,-50%);filter:drop-shadow(0 .3vh .6vh #0046a080);opacity:0}
 #cab .t5{position:absolute;left:2vw;top:4vh;width:4.3vw}
 #cab .salta{position:absolute;right:2vw;bottom:2vh;font:1.8vh Arial;opacity:.6}
@@ -88,6 +98,7 @@ body.jug #sub{bottom:auto;top:12vh}
 #form{left:auto!important;right:3vw;top:3vh;bottom:auto!important;transform:none!important}#volver{left:3vw;right:auto!important}
 </style></head><body>
 <canvas id="c"></canvas>
+<video id="vcort" playsinline preload="auto"></video><video id="vlogo" src="video2018/logo_bola.mp4" muted loop playsinline preload="auto"></video>
 <div id="cab" class="ui on"><img class="t5" src="img/logo5.png" alt=""><img class="marca" src="img/wordmark.png" alt="Pasapalabra"><div class="salta">Toca para saltar</div></div>
 <div id="menu" class="ui">
  <div class="logo"><img src="img/logo5.png" style="height:5vh;vertical-align:top;margin-right:1vw"><img src="img/wordmark.png" style="height:8vh;display:block"><small>TELECINCO · 3D</small></div>
@@ -97,7 +108,7 @@ body.jug #sub{bottom:auto;top:12vh}
   <button class="b" data-go="creditos">Créditos</button>
   <button class="b" id="salirApp" style="display:none">◀ Volver al juego</button>
  </div>
- <div class="ver">v0.3</div>
+ <div class="ver">v0.4</div>
 </div>
 <div id="opciones" class="ui"><div class="panel"><h2>Opciones</h2><div id="olist"></div><button class="b" data-go="menu" style="margin-top:2vh">Volver</button></div></div>
 <div id="creditos" class="ui"><div class="panel"><h2>Créditos</h2><p style="font-size:2.4vh;line-height:1.5">Juego privado de Ikeriano, recreación del programa Pasapalabra de Telecinco.<br>Presentador: Christian Gálvez (voz sintética Piper original, no clonada).<br>Plató 3D hecho con Three.js.</p><button class="b" data-go="menu">Volver</button></div></div>
