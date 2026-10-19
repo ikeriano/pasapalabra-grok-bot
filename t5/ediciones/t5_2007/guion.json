@@ -1,0 +1,227 @@
+{
+ "fuente": "Pasapalabra Telecinco 2007, programa 100 (transcripción whisper small revisada a mano). nota = corrección o duda",
+ "pruebas": [
+  {
+   "tipo": "presentacion",
+   "frases": [
+    "Vamos a jugar. Primera prueba."
+   ]
+  },
+  {
+   "tipo": "duelo",
+   "titulo": "Palabra imposible",
+   "frases": [
+    "Vamos a jugar con Palabra imposible.",
+    "Las ocho palabras más raritas que habéis sabido en la tarde. Ciénaga, cendea, cendal, cientifismo, ciento, centaura, cieno y ciencia.",
+    "¿Qué casualidad que todas empiezan por cien, no?"
+   ],
+   "items": [
+    {
+     "q": "Confianza plena en los principios de la investigación científica.",
+     "a": "cientifismo",
+     "x": "PALABRA IMPOSIBLE"
+    },
+    {
+     "q": "Habilidad, maestría.",
+     "a": "ciencia",
+     "x": "PALABRA IMPOSIBLE"
+    },
+    {
+     "q": "Juego de naipes.",
+     "a": "ciento",
+     "x": "PALABRA IMPOSIBLE"
+    },
+    {
+     "q": "Tela de seda o lino muy delgada.",
+     "a": "cendal",
+     "x": "PALABRA IMPOSIBLE",
+     "nota": "ASR «Tella de seda tendá»; definición incompleta"
+    },
+    {
+     "q": "Planta perenne de la familia de las compuestas.",
+     "a": "centaura",
+     "x": "PALABRA IMPOSIBLE"
+    },
+    {
+     "q": "Población de Cuba.",
+     "a": "cienfuegos",
+     "x": "PALABRA IMPOSIBLE"
+    }
+   ]
+  }
+ ],
+ "rosco": {
+  "seg": 149,
+  "frases": [
+   "Te colocamos el rosco. ¿Preparado?",
+   "Tiempo."
+  ],
+  "p": [
+   {
+    "l": "A",
+    "t": "e",
+    "w": "arrancar",
+    "d": "Separar del suelo o del sitio donde está una planta, el pelo o algo semejante con su raíz."
+   },
+   {
+    "l": "B",
+    "t": "e",
+    "w": "bruta",
+    "d": "Se dice de una cantidad de dinero que no ha experimentado retención o descuento alguno."
+   },
+   {
+    "l": "C",
+    "t": "e",
+    "w": "columna",
+    "d": "Elemento arquitectónico vertical, normalmente de forma cilíndrica, que se utiliza como apoyo de techumbres u otras partes de un edificio.",
+    "dudoso": 1
+   },
+   {
+    "l": "D",
+    "t": "e",
+    "w": "designar",
+    "d": "Nombrar o destinar a alguien o algo para determinado fin.",
+    "dudoso": 1
+   },
+   {
+    "l": "E",
+    "t": "e",
+    "w": "estío",
+    "d": "Estación del año que astronómicamente comienza en el solsticio de verano y termina en otoño.",
+    "dudoso": 1
+   },
+   {
+    "l": "F",
+    "t": "e",
+    "w": "fotofobia",
+    "d": "Rechazo patológico a la luz."
+   },
+   {
+    "l": "G",
+    "t": "e",
+    "w": "grotesco",
+    "d": "Se dice de lo que es burlesco, extravagante y de mal gusto."
+   },
+   {
+    "l": "H",
+    "t": "e",
+    "w": "homenaje",
+    "d": "Acto o serie de actos que se celebran en honor de alguien o de algo."
+   },
+   {
+    "l": "I",
+    "t": "e",
+    "w": "imponer",
+    "d": "Obligar a aceptar o hacer cumplir."
+   },
+   {
+    "l": "J",
+    "t": "e",
+    "w": "jim",
+    "d": "Nombre del cantante y líder del grupo musical The Doors, de apellido Morrison.",
+    "dudoso": 1
+   },
+   {
+    "l": "L",
+    "t": "e",
+    "w": "lucir",
+    "d": "Brillar, resplandecer."
+   },
+   {
+    "l": "M",
+    "t": "e",
+    "w": "mansión",
+    "d": "Casa suntuosa, grande y señorial."
+   },
+   {
+    "l": "N",
+    "t": "e",
+    "w": "natación",
+    "d": "Práctica y deporte consistente en nadar."
+   },
+   {
+    "l": "Ñ",
+    "t": "c",
+    "w": "saña",
+    "d": "Intención rencorosa y cruel.",
+    "dudoso": 1
+   },
+   {
+    "l": "O",
+    "t": "e",
+    "w": "osar",
+    "d": "Atreverse a emprender algo con audacia."
+   },
+   {
+    "l": "P",
+    "t": "e",
+    "w": "parapente",
+    "d": "Deporte que consiste en lanzarse desde una pendiente con un paracaídas ya desplegado para tener un descenso controlado."
+   },
+   {
+    "l": "Q",
+    "t": "c",
+    "w": "portaequipajes",
+    "d": "Artefacto en forma de parrilla que se coloca sobre el techo del automóvil para llevar maletas y otros bultos."
+   },
+   {
+    "l": "R",
+    "t": "e",
+    "w": "rebufo",
+    "d": "Vacío que deja un vehículo en movimiento y que puede aprovechar el que sigue.",
+    "dudoso": 1
+   },
+   {
+    "l": "S",
+    "t": "e",
+    "w": "secreto",
+    "d": "Cosa que cuidadosamente se tiene reservada y oculta."
+   },
+   {
+    "l": "T",
+    "t": "e",
+    "w": "testa",
+    "d": "Cabeza del hombre y de los animales."
+   },
+   {
+    "l": "U",
+    "t": "e",
+    "w": "últimamente",
+    "d": "Hace poco tiempo, recientemente.",
+    "dudoso": 1
+   },
+   {
+    "l": "V",
+    "t": "e",
+    "w": "vestido",
+    "d": "Prenda exterior femenina de una sola pieza."
+   },
+   {
+    "l": "X",
+    "t": "c",
+    "w": "textil",
+    "d": "Perteneciente o relativo a los tejidos."
+   },
+   {
+    "l": "Y",
+    "t": "c",
+    "w": "rayo",
+    "d": "Línea de luz que procede de un cuerpo luminoso, especialmente del sol."
+   },
+   {
+    "l": "Z",
+    "t": "e",
+    "w": "zoología",
+    "d": "Ciencia que trata de los animales."
+   }
+  ]
+ },
+ "cierre": [
+  "Cien programas. Se han dado otros cien más de sucesos aquí la próxima tarde, aquí en Telecinco, Pasapalabra."
+ ],
+ "dudas": [
+  "Rosco de José: C, D, E, J, Ñ, R y U: respuesta no se oye (deducidas).",
+  "Palabra imposible: algunas definiciones del panel naranja no se entienden y se omiten.",
+  "Pruebas iniciales del programa omitidas por transcripción confusa."
+ ]
+}

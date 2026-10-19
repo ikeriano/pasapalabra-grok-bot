@@ -1,0 +1,307 @@
+{
+ "fuente": "Pasapalabra en Familia, primer programa (transcripción whisper small revisada a mano). nota = corrección o duda",
+ "pruebas": [
+  {
+   "tipo": "presentacion",
+   "frases": [
+    "Vamos a comenzar a jugar. Comienza este especial de Pasapalabra en Familia.",
+    "Fíjense, 11 años, 3.000 programas. Gracias a este concurso, gracias a Pasapalabra, he podido formar una familia."
+   ]
+  },
+  {
+   "tipo": "laPista",
+   "titulo": "He dicho",
+   "frases": [
+    "Consiste en recoger las declaraciones de personajes conocidos. Declaraciones insólitas, divertidas, locas, con doble sentido, impactantes de todos estos 11 años.",
+    "A una palabra de esa declaración le vamos a dejar solo la inicial. El resto de la palabra queda oculta.",
+    "En esta prueba no se puede pasar palabra. Siempre hay que decir algo."
+   ],
+   "items": [
+    {
+     "q": "Sergio Ramos presume de tener los H más grandes cada día.",
+     "a": "hijos",
+     "x": "H…"
+    },
+    {
+     "q": "Terelu afirma que cuando sale a tomar algo solo quiere que los P le entren enteros en la boca.",
+     "a": "pinchos",
+     "x": "P…"
+    },
+    {
+     "q": "Florentino Pérez reconoce que cada cierto tiempo hay que tocarle el C a Cristiano Ronaldo.",
+     "a": "contrato",
+     "x": "C…"
+    },
+    {
+     "q": "Dicen que siempre que Ernesto Neyra acude a una fiesta, acaba B.",
+     "a": "bailando",
+     "x": "B…",
+     "nota": "nombre dudoso en ASR («Ernesto dejan o ver a»)"
+    },
+    {
+     "q": "Ha puesto en marcha una aplicación de M para la renta de este año.",
+     "a": "movil",
+     "x": "M…",
+     "nota": "sujeto no se oye"
+    },
+    {
+     "q": "María la Piedra ha declarado que siempre que puede ve cine P.",
+     "a": "policiaco",
+     "x": "P…"
+    },
+    {
+     "q": "En «Ven a cenar conmigo» oímos a Raphael decir que tiene un buen P.",
+     "a": "paladar",
+     "x": "P…"
+    },
+    {
+     "q": "Isabel Preysler reconoce públicamente que Tamara Falcó es la más E de sus hijos.",
+     "a": "espontanea",
+     "x": "E…"
+    },
+    {
+     "q": "Un antiguo representante de Julio Iglesias ha declarado que el artista siempre ha sido un C.",
+     "a": "caballero",
+     "x": "C…"
+    },
+    {
+     "q": "Eva González y Cayetano están F a más no poder.",
+     "a": "felices",
+     "x": "F…"
+    },
+    {
+     "q": "No hay ninguna duda de que el nuevo novio de Sharon Stone es I desde que nació.",
+     "a": "italiano",
+     "x": "I…"
+    }
+   ]
+  },
+  {
+   "tipo": "tablero",
+   "titulo": "¿Dónde están?",
+   "frases": [
+    "¿Dónde están? Tenemos un panel con nueve casillas que esconden nueve palabras.",
+    "Le vamos a dar la vuelta para que vean las palabras, pero solo lo giraremos un par de segundos.",
+    "Yo digo una palabra y me decís detrás de qué número está."
+   ],
+   "items": [
+    {
+     "q": "Baño de Falete. ¿Dónde está el tinte?",
+     "a": "6",
+     "x": "BAÑO DE FALETE · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Baño de Falete. ¿Dónde está los rulos?",
+     "a": "5",
+     "x": "BAÑO DE FALETE · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Baño de Falete. ¿Dónde está la plancha?",
+     "a": "3",
+     "x": "BAÑO DE FALETE · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Baño de Falete. ¿Dónde está la báscula?",
+     "a": "9",
+     "x": "BAÑO DE FALETE · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Baño de Falete. ¿Dónde está los volantes?",
+     "a": "1",
+     "x": "BAÑO DE FALETE · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Baño de Falete. ¿Dónde está el rímel?",
+     "a": "8",
+     "x": "BAÑO DE FALETE · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Currículum de Ana Obregón. ¿Dónde está bióloga?",
+     "a": "2",
+     "x": "CURRÍCULUM DE ANA OBREGÓN · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Currículum de Ana Obregón. ¿Dónde está actriz?",
+     "a": "4",
+     "x": "CURRÍCULUM DE ANA OBREGÓN · 1 2 3 4 5 6 7 8 9"
+    },
+    {
+     "q": "Currículum de Ana Obregón. ¿Dónde está guionista?",
+     "a": "7",
+     "x": "CURRÍCULUM DE ANA OBREGÓN · 1 2 3 4 5 6 7 8 9"
+    }
+   ]
+  }
+ ],
+ "rosco": {
+  "seg": 131,
+  "frases": [
+   "Colocamos el rosco, colocamos el tiempo.",
+   "Tiempo."
+  ],
+  "p": [
+   {
+    "l": "A",
+    "t": "e",
+    "w": "atmósfera",
+    "d": "Sustancia que envuelve la Tierra."
+   },
+   {
+    "l": "B",
+    "t": "e",
+    "w": "bocadillo",
+    "d": "Barra o pedazo de pan abierto relleno con alimentos."
+   },
+   {
+    "l": "C",
+    "t": "e",
+    "w": "calcetín",
+    "d": "Prenda de punto que cubre el pie y parte de la pierna."
+   },
+   {
+    "l": "D",
+    "t": "e",
+    "w": "do",
+    "d": "Nombre de la primera nota de la escala musical."
+   },
+   {
+    "l": "E",
+    "t": "e",
+    "w": "edad",
+    "d": "Tiempo que ha vivido una persona desde que nació hasta el momento que se considera.",
+    "dudoso": 1
+   },
+   {
+    "l": "F",
+    "t": "e",
+    "w": "filigrana",
+    "d": "Cosa fina y delicadamente trabajada o hecha con gran habilidad."
+   },
+   {
+    "l": "G",
+    "t": "e",
+    "w": "gala",
+    "d": "Apellido del autor de la novela «Más allá del jardín».",
+    "dudoso": 1
+   },
+   {
+    "l": "H",
+    "t": "e",
+    "w": "hipoteca",
+    "d": "Gravamen que pesa sobre una finca, por el cual está sujeta a responder de una deuda."
+   },
+   {
+    "l": "I",
+    "t": "e",
+    "w": "impregnar",
+    "d": "Penetrar un líquido en un cuerpo poroso."
+   },
+   {
+    "l": "J",
+    "t": "e",
+    "w": "jareta",
+    "d": "Costura que se hace en la ropa doblando la orilla para meter una cinta y fruncir la tela."
+   },
+   {
+    "l": "L",
+    "t": "e",
+    "w": "limón",
+    "d": "Fruto de forma ovoide, con corteza de color amarillo, de sabor ácido y muy aromático."
+   },
+   {
+    "l": "M",
+    "t": "e",
+    "w": "moraleja",
+    "d": "Enseñanza que se deduce al final de un cuento o una fábula."
+   },
+   {
+    "l": "N",
+    "t": "e",
+    "w": "nuégado",
+    "d": "Pasta hecha con harina, miel y nueces u otras semillas semejantes, cocida al horno."
+   },
+   {
+    "l": "Ñ",
+    "t": "c",
+    "w": "caña",
+    "d": "Vaso estrecho y no muy grande de cerveza."
+   },
+   {
+    "l": "O",
+    "t": "e",
+    "w": "orfeón",
+    "d": "Sociedad de cantantes en coro sin instrumentos que los acompañen."
+   },
+   {
+    "l": "P",
+    "t": "e",
+    "w": "parcela",
+    "d": "Cada uno de los trozos más pequeños en que se divide un terreno grande, por ejemplo, para construir edificios."
+   },
+   {
+    "l": "Q",
+    "t": "c",
+    "w": "quinquenio",
+    "d": "Periodo de cinco años."
+   },
+   {
+    "l": "R",
+    "t": "e",
+    "w": "reto",
+    "d": "Objetivo o empresa difícil que constituye una ocasión para superarse o demostrar la propia valía."
+   },
+   {
+    "l": "S",
+    "t": "e",
+    "w": "sueco",
+    "d": "Natural u oriundo del país europeo con capital en Estocolmo."
+   },
+   {
+    "l": "T",
+    "t": "e",
+    "w": "ternasco",
+    "d": "Cordero recental."
+   },
+   {
+    "l": "U",
+    "t": "e",
+    "w": "urano",
+    "d": "Planeta del sistema solar situado entre Saturno y Neptuno."
+   },
+   {
+    "l": "V",
+    "t": "e",
+    "w": "vara",
+    "d": "Rama delgada de un árbol o un arbusto, limpia de hojas."
+   },
+   {
+    "l": "X",
+    "t": "c",
+    "w": "experimento",
+    "d": "Operación consistente en provocar cierto fenómeno para estudiarlo, estudiar sus efectos."
+   },
+   {
+    "l": "Y",
+    "t": "c",
+    "w": "daydream",
+    "d": "Título del quinto álbum de estudio de la cantante Mariah Carey, en el que se contiene el tema «Fantasy»."
+   },
+   {
+    "l": "Z",
+    "t": "e",
+    "w": "zarzuela",
+    "d": "Obra teatral, generalmente de asunto ligero, en que se declama y canta alternativamente."
+   }
+  ]
+ },
+ "cierre": [
+  "Le damos la enhorabuena a la familia Herrera: se convierten en las primeras ganadoras de este especial de Pasapalabra en Familia.",
+  "Y seguimos con esta diversión, con la cultura, con el entretenimiento, todos juntos, todos en familia. Nos vemos mañana."
+ ],
+ "dudas": [
+  "Rosco: E «edad» y G «gala» no se oyen como respuesta (deducidas; al final Christian dice algo como «Hilda/Zagre»).",
+  "He dicho: 2 frases con nombre dudoso; la última del equipo azul («su P») no se oye y se ha omitido.",
+  "Pruebas omitidas por no poder recrearse sin inventar: pista musical con el padre de Christian (títulos no confirmados), dibujo y ristra de palabras (palabras no se oyen).",
+  "¿Dónde están?: «toquilla» y «bailarina» sin posición segura; omitidas."
+ ]
+}

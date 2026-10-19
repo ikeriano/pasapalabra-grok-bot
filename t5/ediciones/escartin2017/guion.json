@@ -1,0 +1,187 @@
+{
+ "fuente": "Pasapalabra Telecinco 14/03/2017, Julio Escartín se lleva 318.000 € (transcripción whisper small revisada a mano). nota = corrección o duda",
+ "pruebas": [
+  {
+   "tipo": "presentacion",
+   "frases": [
+    "Me voy a mi sitio, comenzamos primera prueba, letra a letra."
+   ]
+  },
+  {
+   "tipo": "bote",
+   "euros": "318.000 €"
+  }
+ ],
+ "rosco": {
+  "seg": 122,
+  "frases": [
+   "Colocamos el rosco, ¿vale? Colocamos esos 122 segundos que hemos ganado para jugar.",
+   "Vamos a por ello."
+  ],
+  "p": [
+   {
+    "l": "A",
+    "t": "e",
+    "w": "agenda",
+    "d": "Libro o cuaderno en que se apunta, para no olvidarlo, aquello que se ha de hacer.",
+    "dudoso": 1
+   },
+   {
+    "l": "B",
+    "t": "e",
+    "w": "bonanza",
+    "d": "Prosperidad."
+   },
+   {
+    "l": "C",
+    "t": "e",
+    "w": "caracol",
+    "d": "Nombre del molusco gasterópodo terrestre de concha en espiral cuya carne suele comerse."
+   },
+   {
+    "l": "D",
+    "t": "e",
+    "w": "dormir",
+    "d": "Estar en aquel reposo que consiste en la inacción o suspensión de los sentidos y de todo movimiento voluntario."
+   },
+   {
+    "l": "E",
+    "t": "e",
+    "w": "entrecot",
+    "d": "Trozo de carne sacado de entre costilla y costilla de la res."
+   },
+   {
+    "l": "F",
+    "t": "e",
+    "w": "farhadi",
+    "d": "Apellido del cineasta que dirigió «El viajante», que obtuvo el Óscar a la mejor película de habla no inglesa en 2017.",
+    "dudoso": 1
+   },
+   {
+    "l": "G",
+    "t": "e",
+    "w": "gorgorito",
+    "d": "Coloquialmente, quiebro que se hace con la voz en la garganta."
+   },
+   {
+    "l": "H",
+    "t": "e",
+    "w": "hidroavión",
+    "d": "Avión que lleva, en lugar de ruedas, uno o varios flotadores para posarse sobre el agua."
+   },
+   {
+    "l": "I",
+    "t": "e",
+    "w": "inapetencia",
+    "d": "Falta de gana de comer."
+   },
+   {
+    "l": "J",
+    "t": "e",
+    "w": "jardinería",
+    "d": "Arte y oficio del jardinero."
+   },
+   {
+    "l": "L",
+    "t": "e",
+    "w": "lobera",
+    "d": "Guarida de lobos."
+   },
+   {
+    "l": "M",
+    "t": "e",
+    "w": "mentira",
+    "d": "Cosa que se dice sabiendo que no es verdad con intención de que sea creída."
+   },
+   {
+    "l": "N",
+    "t": "e",
+    "w": "nativo",
+    "d": "Se aplica al que ha nacido en el lugar de que se trata.",
+    "dudoso": 1
+   },
+   {
+    "l": "Ñ",
+    "t": "c",
+    "w": "hogaño",
+    "d": "Adverbio de tiempo que indica en esta época, a diferencia de antaño o época anterior."
+   },
+   {
+    "l": "O",
+    "t": "e",
+    "w": "órgano",
+    "d": "Cada una de las partes del cuerpo animal o vegetal que ejercen una función."
+   },
+   {
+    "l": "P",
+    "t": "e",
+    "w": "plotino",
+    "d": "Filósofo romano, máximo representante de la escuela neoplatónica y discípulo de Amonio Saccas en Alejandría.",
+    "dudoso": 1
+   },
+   {
+    "l": "Q",
+    "t": "c",
+    "w": "chisquero",
+    "d": "Encendedor antiguo de bolsillo."
+   },
+   {
+    "l": "R",
+    "t": "e",
+    "w": "ráfaga",
+    "d": "Viento fuerte, repentino y de corta duración."
+   },
+   {
+    "l": "S",
+    "t": "e",
+    "w": "simple",
+    "d": "Se aplica a lo que no tiene complicación."
+   },
+   {
+    "l": "T",
+    "t": "e",
+    "w": "trece",
+    "d": "Número cardinal equivalente a 10 más 3.",
+    "dudoso": 1
+   },
+   {
+    "l": "U",
+    "t": "e",
+    "w": "uderzo",
+    "d": "Apellido del dibujante y guionista francés autor de la serie Astérix."
+   },
+   {
+    "l": "V",
+    "t": "e",
+    "w": "verde",
+    "d": "Se aplica a lo que es de color semejante al de la hierba fresca o la esmeralda."
+   },
+   {
+    "l": "X",
+    "t": "c",
+    "w": "exégesis",
+    "d": "Explicación o interpretación, particularmente de los libros de la Biblia."
+   },
+   {
+    "l": "Y",
+    "t": "c",
+    "w": "moncayo",
+    "d": "Nombre de la montaña más alta del sistema Ibérico."
+   },
+   {
+    "l": "Z",
+    "t": "e",
+    "w": "zodiacal",
+    "d": "Perteneciente o relativo al zodiaco."
+   }
+  ]
+ },
+ "cierre": [
+  "Si te vas a llevar 318.000 euros en mi programa, me lo tienes que avisar.",
+  "Como siempre, juntando cultura con entretenimiento. Pasapalabra. Gracias y enhorabuena, Julio."
+ ],
+ "dudas": [
+  "Rosco de Julio: A, F, N, P y T: la respuesta no se oye o el ASR la deforma (deducidas).",
+  "Pruebas anteriores (letra a letra, pista musical de 1976 y 1989, etc.) omitidas en esta versión por transcripción confusa."
+ ]
+}

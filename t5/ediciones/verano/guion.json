@@ -1,0 +1,183 @@
+{
+ "fuente": "Pasapalabra Telecinco Edición Verano (transcripción whisper small revisada a mano). nota = corrección o duda",
+ "pruebas": [
+  {
+   "tipo": "presentacion",
+   "frases": [
+    "Tenemos las mismas pruebas de siempre con sorpresas."
+   ]
+  }
+ ],
+ "rosco": {
+  "seg": 122,
+  "frases": [
+   "Y la felicidad está en estas 25 preguntas, Pilar. ¿Vamos a por ellas?"
+  ],
+  "p": [
+   {
+    "l": "A",
+    "t": "e",
+    "w": "achicar",
+    "d": "Extraer el agua de un dique o una embarcación."
+   },
+   {
+    "l": "B",
+    "t": "e",
+    "w": "bolsillo",
+    "d": "Saco cosido en un vestido y que sirve para meter en él algunas cosas usuales."
+   },
+   {
+    "l": "C",
+    "t": "e",
+    "w": "camuflaje",
+    "d": "Hecho de disimular la presencia de tropas y material de guerra dándoles apariencia que pueda engañar al enemigo."
+   },
+   {
+    "l": "D",
+    "t": "e",
+    "w": "diario",
+    "d": "Libro en que se anotan los ingresos y gastos diarios de una casa."
+   },
+   {
+    "l": "E",
+    "t": "e",
+    "w": "escabeche",
+    "d": "Adobo hecho con aceite, vinagre, sal y hierbas aromáticas para conservar en él carnes o pescados."
+   },
+   {
+    "l": "F",
+    "t": "e",
+    "w": "fillmore",
+    "d": "Apellido del político que fue presidente de los Estados Unidos de América entre 1850 y 1853.",
+    "nota": "el ASR dice «1852»"
+   },
+   {
+    "l": "G",
+    "t": "e",
+    "w": "gigantismo",
+    "d": "Desarrollo anormalmente grande de un individuo en relación con los de su misma edad, especie o raza."
+   },
+   {
+    "l": "H",
+    "t": "e",
+    "w": "hora",
+    "d": "Cada una de las 24 partes de la misma duración en que se divide el día."
+   },
+   {
+    "l": "I",
+    "t": "e",
+    "w": "ignoto",
+    "d": "No conocido ni descubierto."
+   },
+   {
+    "l": "J",
+    "t": "e",
+    "w": "jutlandia",
+    "d": "Península del norte de Europa que abarca parte de Alemania y toda la tierra firme de Dinamarca."
+   },
+   {
+    "l": "L",
+    "t": "e",
+    "w": "lirón",
+    "d": "Mamífero roedor, semejante al ratón, que vive en los árboles y que pasa el invierno aletargado."
+   },
+   {
+    "l": "M",
+    "t": "e",
+    "w": "mercenario",
+    "d": "Se aplica al soldado que sirve por un salario en un ejército extranjero."
+   },
+   {
+    "l": "N",
+    "t": "e",
+    "w": "nowitzki",
+    "d": "Apellido del jugador de baloncesto alemán que fue campeón de la NBA con los Dallas Mavericks en la temporada 2010-2011.",
+    "dudoso": 1
+   },
+   {
+    "l": "Ñ",
+    "t": "c",
+    "w": "congoleño",
+    "d": "Natural de la república africana cuya capital es Brazzaville.",
+    "dudoso": 1
+   },
+   {
+    "l": "O",
+    "t": "e",
+    "w": "ocular",
+    "d": "Perteneciente o relativo a los ojos."
+   },
+   {
+    "l": "P",
+    "t": "e",
+    "w": "ponderar",
+    "d": "Considerar imparcialmente los aspectos contrapuestos de una cuestión.",
+    "dudoso": 1
+   },
+   {
+    "l": "Q",
+    "t": "c",
+    "w": "periquito",
+    "d": "Nombre de diversos loros pequeños, de colores vistosos y muy comunes como animales de compañía."
+   },
+   {
+    "l": "R",
+    "t": "e",
+    "w": "revolotear",
+    "d": "Volar alrededor de algo haciendo giros en un corto espacio.",
+    "dudoso": 1
+   },
+   {
+    "l": "S",
+    "t": "e",
+    "w": "septuagenario",
+    "d": "Se aplica a la persona de 70 años o más sin llegar a 80."
+   },
+   {
+    "l": "T",
+    "t": "e",
+    "w": "tocino",
+    "d": "Tejido adiposo del cerdo.",
+    "dudoso": 1
+   },
+   {
+    "l": "U",
+    "t": "e",
+    "w": "urja",
+    "d": "Primera persona del singular del presente de subjuntivo del verbo urgir."
+   },
+   {
+    "l": "V",
+    "t": "e",
+    "w": "vid",
+    "d": "Planta vitácea que produce la uva."
+   },
+   {
+    "l": "X",
+    "t": "c",
+    "w": "exabrupto",
+    "d": "Salida de tono, como dicho o ademán inconveniente e inesperado, manifestado con viveza."
+   },
+   {
+    "l": "Y",
+    "t": "c",
+    "w": "wayne",
+    "d": "Apellido artístico del actor protagonista de «El hombre tranquilo».",
+    "dudoso": 1
+   },
+   {
+    "l": "Z",
+    "t": "e",
+    "w": "zarrapastroso",
+    "d": "Desaseado, andrajoso, desaliñado y roto."
+   }
+  ]
+ },
+ "cierre": [
+  "Estamos empatados a 18 aciertos y un fallo. Esas cantidades se dividen a la mitad."
+ ],
+ "dudas": [
+  "Rosco de Pilar: N, Ñ, P, R, T e Y no se oye la respuesta (deducidas).",
+  "Pruebas anteriores (pista musical, letra a letra, etc.) omitidas en esta versión: transcripción demasiado confusa para copiarlas sin inventar."
+ ]
+}

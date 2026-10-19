@@ -1,0 +1,291 @@
+{
+ "fuente": "Pasapalabra Telecinco Especial Reyes 2016 (transcripción whisper small revisada a mano). nota = corrección o duda",
+ "pruebas": [
+  {
+   "tipo": "presentacion",
+   "frases": [
+    "Primera prueba en este especial día de Reyes."
+   ]
+  },
+  {
+   "tipo": "sopa",
+   "titulo": "Letra a letra",
+   "frases": [
+    "Colocamos el panel y vamos a jugar con la letra E-N. Eso significa que la E y la N van a estar todo el rato."
+   ],
+   "items": [
+    {
+     "q": "Calificación académica entre suficiente y notable que le daré a los alumnos de la ESO si les preguntan qué les parece usar la tablet en clase.",
+     "a": "bien",
+     "x": "E · N"
+    },
+    {
+     "q": "Pariente de Simba que destaca por ser un gran aficionado a la lectura.",
+     "a": "leon",
+     "x": "E · N"
+    },
+    {
+     "q": "Medio de transporte que responden los adolescentes cuando les preguntan cómo están Angelina Jolie en Maléfica.",
+     "a": "tren",
+     "x": "E · N"
+    },
+    {
+     "q": "Número de polvorones, sin llegar a la docena, que le caben a Shrek en la boca mientras dice Zaragoza.",
+     "a": "once",
+     "x": "E · N"
+    },
+    {
+     "q": "Vehículo espacial en el que viajan los Reyes Magos para llevar los regalos de E.T.",
+     "a": "nave",
+     "x": "E · N",
+     "dudoso": true
+    },
+    {
+     "q": "Mes del año en el que los Reyes Magos tienen que hacer horas extra para dejar el trabajo terminado.",
+     "a": "enero",
+     "x": "E · N",
+     "dudoso": true
+    },
+    {
+     "q": "Color con el que podemos definir al único rey mago que no tiene barba.",
+     "a": "negro",
+     "x": "E · N"
+    },
+    {
+     "q": "Habitante de la lámpara, de mucho carácter, con el que habla Aladdín para escribir la carta de los Reyes Magos.",
+     "a": "genio",
+     "x": "E · N"
+    },
+    {
+     "q": "Seis letras. Pariente de Flipper que espera los regalos de los Reyes Magos colocado en la última fila.",
+     "a": "delfin",
+     "x": "E · N"
+    },
+    {
+     "q": "Verdura que indica cuánto le importa la salud de los dálmatas a Cruella de Vil.",
+     "a": "pepino",
+     "x": "E · N"
+    },
+    {
+     "q": "Lo que se suelta el rey león cuando baila canciones de Lady Gaga.",
+     "a": "melena",
+     "x": "E · N"
+    },
+    {
+     "q": "Ahora la O y la T van a aparecer en todos los paneles. Calificación escolar que tenemos que sacar muy buena para que nos traigan muchos regalos.",
+     "a": "nota",
+     "x": "O · T"
+    },
+    {
+     "q": "Vehículo de dos ruedas que ha pedido Valentino Rossi a los Reyes Magos para ver si este año puede ganar a Jorge.",
+     "a": "moto",
+     "x": "O · T"
+    },
+    {
+     "q": "Herramienta para levantar los coches por la que más atracción siente Tom.",
+     "a": "gato",
+     "x": "O · T"
+    },
+    {
+     "q": "Cinco letras. Autómata con el que se identifican Wall-E, R2-D2 y Cristiano Ronaldo cuando camina sin doblar las rodillas.",
+     "a": "robot",
+     "x": "O · T"
+    },
+    {
+     "q": "Aparato para manejar el ordenador que siempre pide Mickey Mouse en su carta a los Reyes Magos.",
+     "a": "raton",
+     "x": "O · T",
+     "nota": "ASR «Platón»"
+    },
+    {
+     "q": "Estación en la que Otilio termina de preparar el bocata de elefante que empezó a elaborar en verano.",
+     "a": "otoño",
+     "x": "O · T"
+    },
+    {
+     "q": "Lo que realiza Serge Ibaka para definir la estatura de David el Gnomo cuando va a tirar a canasta.",
+     "a": "tapon",
+     "x": "O · T"
+    },
+    {
+     "q": "Seis letras. Bebida con gas con la que brinda la sílaba acentuada.",
+     "a": "tonica",
+     "x": "O · T"
+    },
+    {
+     "q": "Barra de pan abierta en dos que Otilio suele rellenar con carne de hipopótamo.",
+     "a": "bocata",
+     "x": "O · T"
+    }
+   ]
+  }
+ ],
+ "rosco": {
+  "seg": 133,
+  "frases": [
+   "Colocamos el rosco, el tiempo... ¿Vamos a ello?",
+   "Venga. Tiempo."
+  ],
+  "p": [
+   {
+    "l": "A",
+    "t": "e",
+    "w": "agua",
+    "d": "Líquido que forma el mar y los ríos."
+   },
+   {
+    "l": "B",
+    "t": "e",
+    "w": "baloncesto",
+    "d": "Deporte que se juega entre dos equipos de cinco jugadores y en el que intentan introducir un balón en la canasta.",
+    "dudoso": 1
+   },
+   {
+    "l": "C",
+    "t": "e",
+    "w": "cine",
+    "d": "Lugar donde se proyectan películas."
+   },
+   {
+    "l": "D",
+    "t": "e",
+    "w": "dado",
+    "d": "Objeto en forma de cubo en cuyas caras hay un número de puntos y que se utiliza en algunos juegos de azar.",
+    "dudoso": 1
+   },
+   {
+    "l": "E",
+    "t": "e",
+    "w": "eurovisión",
+    "d": "Festival de la canción en el que han participado Edurne y Ruth Lorenzo representando a España."
+   },
+   {
+    "l": "F",
+    "t": "e",
+    "w": "feta",
+    "d": "Queso blanco de oveja o de cabra típico de Grecia.",
+    "dudoso": 1
+   },
+   {
+    "l": "G",
+    "t": "e",
+    "w": "gaspar",
+    "d": "Nombre del rey mago que lleva la barba castaña y regala incienso al niño Jesús.",
+    "dudoso": 1
+   },
+   {
+    "l": "H",
+    "t": "e",
+    "w": "horno",
+    "d": "En una cocina, aparato que se usa para asar los alimentos."
+   },
+   {
+    "l": "I",
+    "t": "e",
+    "w": "italia",
+    "d": "País al que pertenecen las ciudades de Roma y Venecia."
+   },
+   {
+    "l": "J",
+    "t": "e",
+    "w": "jueves",
+    "d": "Cuarto día de la semana."
+   },
+   {
+    "l": "L",
+    "t": "e",
+    "w": "loro",
+    "d": "Ave de pico fuerte, voluminoso y curvo que es capaz de repetir sonidos propios del lenguaje humano.",
+    "dudoso": 1
+   },
+   {
+    "l": "M",
+    "t": "e",
+    "w": "minions",
+    "d": "Pequeños seres de color amarillo que trabajan para el protagonista de «Gru».",
+    "dudoso": 1
+   },
+   {
+    "l": "O",
+    "t": "e",
+    "w": "ovíparo",
+    "d": "Se dice de los animales que nacen de un huevo.",
+    "dudoso": 1
+   },
+   {
+    "l": "P",
+    "t": "e",
+    "w": "palma",
+    "d": "Parte de la mano cóncava hacia donde se doblan los dedos."
+   },
+   {
+    "l": "Q",
+    "t": "c",
+    "w": "guadalquivir",
+    "d": "Río español que pasa por la ciudad de Sevilla y desemboca en Sanlúcar de Barrameda."
+   },
+   {
+    "l": "R",
+    "t": "e",
+    "w": "rovira",
+    "d": "Apellido del actor que interpreta a Rafa en las películas «Ocho apellidos vascos» y «Ocho apellidos catalanes».",
+    "dudoso": 1
+   },
+   {
+    "l": "S",
+    "t": "e",
+    "w": "siglo",
+    "d": "Periodo de tiempo que equivale a 100 años.",
+    "dudoso": 1
+   },
+   {
+    "l": "T",
+    "t": "e",
+    "w": "tobogán",
+    "d": "Rampa deslizante, generalmente con bordes, por la que las personas sentadas se dejan resbalar por diversión."
+   },
+   {
+    "l": "U",
+    "t": "e",
+    "w": "uva",
+    "d": "Fruto de la vid, que crece agrupado en racimos y que se toma en las campanadas de fin de año."
+   },
+   {
+    "l": "V",
+    "t": "e",
+    "w": "vaso",
+    "d": "Recipiente, generalmente de vidrio y de forma cilíndrica, que se usa para beber.",
+    "dudoso": 1
+   },
+   {
+    "l": "X",
+    "t": "c",
+    "w": "hexaedro",
+    "d": "En geometría, sólido limitado por seis caras."
+   },
+   {
+    "l": "Y",
+    "t": "c",
+    "w": "arroyo",
+    "d": "Río que lleva poco caudal.",
+    "dudoso": 1
+   },
+   {
+    "l": "Z",
+    "t": "e",
+    "w": "zapatería",
+    "d": "Tienda donde se venden zapatos.",
+    "dudoso": 1
+   }
+  ]
+ },
+ "cierre": [
+  "Gracias a todos, campeones.",
+  "Feliz noche de Reyes. Y nada, que los sueños esta noche se hacen realidad."
+ ],
+ "dudas": [
+  "Rosco de Jesús: N y Ñ no se oyen (gris, no se juegan). B, D, F, G, L, M, O, R, S, V, Y, Z: definición oída pero respuesta no oída o no confirmada.",
+  "Letra a letra: «nave» y «enero» deducidas; «troll», «trono» y «turrón» no se confirman y se omiten.",
+  "Otras pruebas (pista musical, Roscón de Reyes, ¿Dónde están?) omitidas: palabras no se oyen con claridad."
+ ]
+}

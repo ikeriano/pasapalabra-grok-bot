@@ -1,0 +1,181 @@
+{
+ "fuente": "Pasapalabra Telecinco Duelo de campeones 2009 (transcripción whisper small revisada a mano). nota = corrección o duda",
+ "pruebas": [
+  {
+   "tipo": "presentacion",
+   "frases": [
+    "Comenzamos con la primera prueba, la escalera."
+   ]
+  }
+ ],
+ "rosco": {
+  "seg": 153,
+  "frases": [
+   "Te colocamos el rosco. ¿Preparado?",
+   "Tiempo."
+  ],
+  "p": [
+   {
+    "l": "A",
+    "t": "e",
+    "w": "abrigo",
+    "d": "Prenda de vestir larga, provista de mangas, que se pone sobre las demás y que sirve para resguardar del frío."
+   },
+   {
+    "l": "B",
+    "t": "e",
+    "w": "bucanero",
+    "d": "Pirata que en los siglos XVII y XVIII se entregaba al saqueo de las posesiones españolas de ultramar."
+   },
+   {
+    "l": "C",
+    "t": "e",
+    "w": "casado",
+    "d": "Cónyuge, persona unida a otra en matrimonio."
+   },
+   {
+    "l": "D",
+    "t": "e",
+    "w": "decano",
+    "d": "Persona que preside una facultad universitaria."
+   },
+   {
+    "l": "E",
+    "t": "e",
+    "w": "embalse",
+    "d": "Gran depósito de agua artificial que se forma por lo común cerrando la boca de un valle mediante un dique o presa."
+   },
+   {
+    "l": "F",
+    "t": "e",
+    "w": "filigrana",
+    "d": "Obra formada de hilos de oro y plata unidos y soldados con mucha perfección y delicadeza."
+   },
+   {
+    "l": "G",
+    "t": "e",
+    "w": "gable",
+    "d": "Apellido del actor norteamericano protagonista, junto a Ava Gardner, de la película «Mogambo».",
+    "dudoso": 1
+   },
+   {
+    "l": "H",
+    "t": "e",
+    "w": "humilde",
+    "d": "Se aplica a la persona que vive modestamente."
+   },
+   {
+    "l": "I",
+    "t": "e",
+    "w": "imitar",
+    "d": "Emular, ejecutar algo a semejanza de otra cosa."
+   },
+   {
+    "l": "J",
+    "t": "e",
+    "w": "juguetón",
+    "d": "Retozón, travieso o revoltoso."
+   },
+   {
+    "l": "L",
+    "t": "e",
+    "w": "latín",
+    "d": "Lengua del Lacio, hablada por los antiguos romanos, de la cual derivan las actuales lenguas romances.",
+    "dudoso": 1
+   },
+   {
+    "l": "M",
+    "t": "e",
+    "w": "muelle",
+    "d": "Andén alto que en las estaciones de tren o en los puertos sirve para la carga y descarga de mercancías."
+   },
+   {
+    "l": "N",
+    "t": "e",
+    "w": "neuralgia",
+    "d": "En medicina, dolor continuo a lo largo de un nervio y de sus ramificaciones, por lo común sin fenómenos inflamatorios."
+   },
+   {
+    "l": "Ñ",
+    "t": "c",
+    "w": "desdeñar",
+    "d": "Tratar con desprecio a alguien o algo."
+   },
+   {
+    "l": "O",
+    "t": "e",
+    "w": "omaha",
+    "d": "Nombre clave de la playa de Normandía donde desembarcaron los soldados americanos en la Segunda Guerra Mundial."
+   },
+   {
+    "l": "P",
+    "t": "e",
+    "w": "pacto",
+    "d": "Concierto o tratado entre dos o más partes que se comprometen a cumplir lo estipulado."
+   },
+   {
+    "l": "Q",
+    "t": "c",
+    "w": "menchevique",
+    "d": "Se dice de los componentes de la facción minoritaria y menos radical del Partido Socialdemócrata Ruso a partir de 1903."
+   },
+   {
+    "l": "R",
+    "t": "e",
+    "w": "reanudar",
+    "d": "Renovar, reiniciar o continuar algo que se había interrumpido."
+   },
+   {
+    "l": "S",
+    "t": "e",
+    "w": "salgari",
+    "d": "Apellido del escritor italiano autor de la novela titulada «El corsario negro»."
+   },
+   {
+    "l": "T",
+    "t": "e",
+    "w": "termas",
+    "d": "Baños públicos de los antiguos romanos, que fueron inaugurados por Agripa, colaborador del emperador Augusto."
+   },
+   {
+    "l": "U",
+    "t": "e",
+    "w": "utrecht",
+    "d": "Ciudad de los Países Bajos en la que se firmó el tratado que puso fin a la guerra de sucesión española en 1715.",
+    "nota": "el programa dice 1715"
+   },
+   {
+    "l": "V",
+    "t": "e",
+    "w": "ventaja",
+    "d": "Ganancia que un competidor concede de antemano a otro al que considera inferior."
+   },
+   {
+    "l": "X",
+    "t": "c",
+    "w": "extrapolar",
+    "d": "Aplicar conclusiones obtenidas en un campo a otro."
+   },
+   {
+    "l": "Y",
+    "t": "c",
+    "w": "peyorativo",
+    "d": "Que expresa una idea desfavorable, despectiva o negativa."
+   },
+   {
+    "l": "Z",
+    "t": "e",
+    "w": "zombi",
+    "d": "Persona que se supone muerta y que ha sido reanimada por arte de brujería con el fin de dominar su voluntad."
+   }
+  ]
+ },
+ "cierre": [
+  "Se convierte en el ganador del programa especial de duelo de campeones de hoy. 5.000 euros para José Manuel.",
+  "Y hasta aquí el programa especial de Pasapalabra, duelo de campeones. Aquí, en Telecinco. Chao."
+ ],
+ "dudas": [
+  "Rosco: G «Gable» y L «latín» no se oyen como respuesta (deducidas).",
+  "Pruebas anteriores (la escalera, los melones, palabras encadenadas, memoria) omitidas en esta versión por transcripción confusa."
+ ]
+}
