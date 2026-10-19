@@ -1,0 +1,108 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Pasapalabra Telecinco 3D</title><link rel="manifest" href="manifest.webmanifest">
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#01040f;font-family:system-ui,Arial,sans-serif;color:#fff;-webkit-user-select:none;user-select:none}
+#c{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:0}
+.ui{position:fixed;inset:0;display:none;pointer-events:none;z-index:2}.ui.on{display:block}.ui *{pointer-events:auto}
+#menu{background:linear-gradient(90deg,#000a2ae0 0,#000a2a90 40%,#0000 65%)}
+.logo{position:absolute;left:5vw;top:6vh;font:900 7vh Arial;letter-spacing:-.02em;color:#fff;text-shadow:0 0 2vh #2a8cff,0 .4vh 0 #0a3a9a}
+.logo small{display:block;font:700 2.4vh Arial;letter-spacing:.3em;color:#7fd0ff;text-shadow:none}
+.btns{position:absolute;left:5vw;top:27vh;display:flex;flex-direction:column;gap:1.8vh;width:38vw}
+.b{background:linear-gradient(#1f6fe0,#0b3c9e);border:.3vh solid #7fd0ff;border-radius:4vh;color:#fff;font:700 3.4vh Arial;padding:1.6vh 3vh;text-align:left;cursor:pointer;box-shadow:0 0 1.5vh #1f6fe088}
+.b small{display:block;font:400 1.9vh Arial;opacity:.85}.b.gold{background:linear-gradient(#ffcf3a,#e08a00);border-color:#fff3b0;color:#2a1600}
+.ver{position:absolute;right:2vw;bottom:2vh;font:1.8vh Arial;opacity:.6}
+.panel{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:70vw;max-height:84vh;overflow:auto;background:#031a52ee;border:.3vh solid #7fd0ff;border-radius:3vh;padding:3vh 4vh;box-sizing:border-box}
+.panel h2{margin:0 0 2vh;font:900 4vh Arial}.orow{display:flex;justify-content:space-between;align-items:center;gap:2vw;padding:1.2vh 0;border-bottom:1px solid #ffffff22;font-size:2.6vh}
+.orow small{display:block;font-size:1.8vh;opacity:.75}.tg{min-width:12vh;padding:1vh 2vh;border-radius:3vh;border:.3vh solid #7fd0ff;background:#0b3c9e;color:#fff;font:700 2.4vh Arial}.tg.si{background:#1fb14a;border-color:#b8ffcc}
+#sub{z-index:3;position:fixed;left:15vw;right:15vw;bottom:4vh;background:linear-gradient(#1b5fd0,#0a3a9a);border:.3vh solid #fff;border-radius:1.5vh;font:700 2.8vh Arial;text-align:center;padding:1.6vh 3vh;display:none}
+#sub b{color:#ffd23a}
+#hud .score{position:absolute;top:3vh;padding:1vh 3vh;border-radius:3vh;font:900 4vh Arial;background:linear-gradient(#1f6fe0,#0b3c9e);border:.3vh solid #7fd0ff}
+#tmp{left:3vw}#acs{left:16vw;background:linear-gradient(#2bd35a,#118a2f)!important;border-color:#b8ffcc!important}
+#def{position:absolute;left:8vw;right:8vw;bottom:17vh;background:#000c2ccc;border:.3vh solid #7fd0ff;border-radius:2vh;padding:2vh 3vh;font:700 3vh Arial;text-align:center}
+#def i{display:block;font:700 2.2vh Arial;color:#7fd0ff;font-style:normal}
+#form{position:absolute;left:50%;bottom:4vh;transform:translateX(-50%);display:flex;gap:1.5vh}
+#resp{font:700 3vh Arial;padding:1vh 2vh;border-radius:2vh;border:.3vh solid #7fd0ff;width:34vw}
+.k{padding:1vh 2.4vh;border-radius:2vh;border:0;font:800 2.6vh Arial;color:#fff;cursor:pointer}.k.ok{background:#1fb14a}.k.pp{background:#e08a00}
+#volver{position:absolute;right:2vw;top:3vh}
+@font-face{font-family:FR;src:url(font/Fredoka.ttf);font-weight:300 700}
+#cab .marca{position:absolute;left:50%;top:50%;width:58vw;transform:translate(-50%,-50%);filter:drop-shadow(0 .3vh .6vh #0046a080);opacity:0}
+#cab .t5{position:absolute;left:2vw;top:4vh;width:4.3vw}
+#cab .salta{position:absolute;right:2vw;bottom:2vh;font:1.8vh Arial;opacity:.6}
+body.jug #sub{bottom:auto;top:12vh}
+
+/* ===== grafismos Telecinco 2019 (capturas prog190930) ===== */
+#prog{z-index:2}
+.rotulo{position:fixed;z-index:4;left:50%;bottom:19vh;transform:translateX(-50%);padding:.4vh;border-radius:5vh;background:linear-gradient(#7fd6ff,#1a5fd8);box-shadow:0 0 2vh #1a9fff99;transition:opacity .5s}
+.rotulo span{display:block;padding:1.3vh 6vh;border-radius:4.5vh;background:linear-gradient(#2a8cf0,#0a4fc8 55%,#0a3aa8);border:.25vh solid #bfe8ff;font:600 4vh FR,Arial;color:#fff;white-space:nowrap}
+.rotulo.fuera,.rotN.fuera{opacity:0}
+.rotN{position:fixed;z-index:4;left:50%;bottom:19vh;transform:translateX(-50%);display:flex;align-items:center;gap:1.5vh;padding:.5vh;border-radius:6vh;border:.25vh solid #fff;transition:opacity .5s}
+.rotN .nom,.rotN .dat{background:linear-gradient(#ffb43a,#ff7a00 55%,#e85a00);border:.35vh solid #ffe14a}
+.rotN .nom{padding:1.2vh 4vh;border-radius:5vh 0 0 5vh;font:700 4.6vh FR,Arial;color:#fff;text-shadow:0 .2vh .3vh #a03a00;margin-right:-1.6vh}
+.rotN .dat{display:flex;flex-direction:column;padding:.6vh 3.4vh;border-radius:0 5vh 5vh 0;font:600 2.3vh FR,Arial;color:#fff;line-height:1.25}
+.rotN .pt{width:1vh;height:1vh;border-radius:50%;background:#ffe14a;box-shadow:0 0 1vh #ffe14a}
+.p-titulo{background:radial-gradient(circle at 50% 45%,#2fb0ff,#0b5bd8 60%,#0a2f9a)}
+.tit{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}.tit-t{font:600 17vh FR,Arial;color:#fff;text-shadow:0 .6vh 1.5vh #0036a0}
+.bola{position:absolute;left:3vw;bottom:5vh;width:13vh;height:13vh;border-radius:50%;background:radial-gradient(circle at 40% 30%,#ffd28a,#ff8a12 45%,#e05a00);border:.6vh solid #fff3d0;box-shadow:0 0 0 .6vh #2a8cf0,0 0 2vh #0008;display:flex;align-items:center;justify-content:center;font:700 6.5vh FR,Arial;color:#fff;text-shadow:0 .3vh .3vh #a03a00}
+.barra{position:absolute;left:12vw;right:6vw;bottom:6vh;min-height:7vh;padding:1vh 4vh 1vh 8vh;box-sizing:border-box;border-radius:1vh;background:linear-gradient(#5cb6ff,#1a6fe0 50%,#0b4fc0);border:.3vh solid #d8f1ff;font:700 3vh FR,Arial;color:#fff;display:flex;flex-direction:column;justify-content:center;text-align:center;text-shadow:0 .2vh .2vh #0040a0}
+.barra small{font-size:2vh;color:#ffd23a}
+.p-pista .barra{background:linear-gradient(#ffb43a,#ff7a00 55%,#e85a00);border:.35vh solid #ffe14a;outline:.25vh solid #fff;outline-offset:.4vh;border-radius:4vh;min-height:10vh;text-shadow:0 .2vh .3vh #a03a00}
+.p-pista .bola{border-color:#fff}.p-pista .op{border-color:#ffe14a;outline:.25vh solid #fff;outline-offset:.4vh;position:relative}
+.p-pista .op::before,.p-pista .op::after{content:'';position:absolute;top:50%;width:.8vh;height:.8vh;margin-top:-.4vh;border-radius:50%;background:#ffe14a;box-shadow:0 0 .8vh #ffe14a}.p-pista .op::before{left:-1.6vh}.p-pista .op::after{right:-1.6vh}
+.ops{position:absolute;left:4vw;top:7vh;display:grid;grid-template-columns:1fr 1fr;gap:2vh 2vw;width:52vw}
+.op,.nueve button{border:.4vh solid #ffe7a8;border-radius:4vh;background:linear-gradient(#ffb02e,#ff8000 55%,#e86400);box-shadow:inset 0 .4vh .4vh #fff7,0 .5vh 1vh #0007;font:700 3vh FR,Arial;color:#fff;padding:1.8vh 1vw;text-shadow:0 .2vh .2vh #a04000;cursor:pointer}
+.op.verde,.nueve .verde{background:linear-gradient(#5ee36a,#1fb131 55%,#118a22);border-color:#c8ffd0}.op.rojo,.nueve .rojo{background:linear-gradient(#ff6a6a,#d92a2a);border-color:#ffd0d0}
+.nueve{position:absolute;left:4vw;top:6vh;display:grid;grid-template-columns:repeat(3,13vw);gap:2.2vh 1.4vw}.nueve button{font-size:6vh;padding:.6vh}.nueve button:disabled{opacity:.9}.nueve .activa{background:linear-gradient(#5cb6ff,#1a6fe0);border-color:#fff}
+.p-cartas .cartas{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;gap:6vw}
+.carta{width:34vh;height:24vh;border:0;border-radius:1vh;cursor:pointer;background:radial-gradient(circle at 50% 50%,#7ae6ee 0,#2cc0cc 30%,#18a6b6 70%,#13909e);box-shadow:0 1vh 2vh #0008;position:relative;transform:rotate(-4deg)}
+.carta+.carta{transform:rotate(4deg)}.carta::before{content:'';position:absolute;left:50%;top:50%;width:16vh;height:16vh;margin:-8vh;border-radius:50%;background:repeating-conic-gradient(#ffffff55 0 6deg,#0000 6deg 14deg);-webkit-mask:radial-gradient(#000 60%,#0000 70%)}
+.carta span{position:relative;font:700 10vh FR,Arial;color:#fff;text-shadow:0 .3vh .5vh #0006}.carta.elegida{outline:.6vh solid #ffd23a;transform:scale(1.08)}
+.p-duelo{background:linear-gradient(#3aa8f0,#1a6fd8)}
+.p-duelo .marco{position:absolute;top:4vh;bottom:6vh;width:46.5%;border-radius:3vh;border:.5vh solid #bfe8ff;background:radial-gradient(circle at 50% 30%,#7fd0ff 0,#3aa0f0 35%,#1a6fd8 70%,#0e4fb8);box-shadow:inset 0 0 2vh #0a2f9a88;overflow:hidden}
+.p-duelo .marco::before{content:'';position:absolute;left:50%;top:6%;width:70%;padding-top:70%;transform:translateX(-50%);border-radius:50%;background:repeating-conic-gradient(#ffffff40 0 5deg,#0000 5deg 13deg);-webkit-mask:radial-gradient(#000 55%,#0000 71%)}
+.p-duelo .marco::after{content:'';position:absolute;left:50%;bottom:0;width:46%;height:62%;transform:translateX(-50%);background:radial-gradient(circle at 50% 18%,#e8b896 0 13%,#0000 13.5%),radial-gradient(ellipse at 50% 100%,var(--ropa,#c03a3a) 0 58%,#0000 58.5%)}
+.p-duelo .dch{--ropa:#3a5aa8}.p-duelo .chapa,.p-duelo .caps{z-index:1}
+.p-duelo .izq{left:2.2%}.p-duelo .dch{right:2.2%}.p-duelo.turnoRival .izq,.p-duelo:not(.turnoRival) .dch{filter:brightness(.6)}
+.chapa{position:absolute;left:22%;top:52%;width:12vh;height:12vh;border-radius:50%;background:radial-gradient(#3a9cff,#0a4fc8);border:.4vh solid #fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.chapa::before{content:'';position:absolute;inset:8%;border-radius:50%;background:repeating-conic-gradient(#ffffff44 0 5deg,#0000 5deg 12deg)}.chapa span{position:relative;font:700 1.9vh FR,Arial;color:#fff}
+.dch .chapa{left:auto;right:22%}
+.caps{position:absolute;bottom:3vh;display:flex;gap:1vh;padding:1vh 1.4vh;border-radius:5vh;background:linear-gradient(#2a8cf0,#0a4fc8);border:.4vh solid #fff}
+.izq .caps{right:-1vh;border-right-width:.8vh}.dch .caps{left:-1vh;border-left-width:.8vh}
+.caps::after{content:'';position:absolute;bottom:-2.6vh;width:1.4vh;height:1.4vh;border-radius:50%;background:#1a6fe0;border:.3vh solid #fff}.izq .caps::after{right:2vh}.dch .caps::after{left:2vh}
+.caps i,.caps b{width:6vh;height:6vh;border-radius:50%;border:.3vh solid #fff;display:flex;align-items:center;justify-content:center;font:700 3.6vh FR,Arial;font-style:normal;background:radial-gradient(circle at 40% 30%,#9cff9c,#1fb131 60%,#0a7a1a)}
+.caps b{background:#fff;color:#1a5fd8}.caps i.rojo{background:radial-gradient(circle at 40% 30%,#ff9c9c,#d92a2a 60%,#8a0a0a)}
+.caps i.crono{background:conic-gradient(#d92a2a var(--p,0%),#1fb131 0)}
+.morado{position:absolute;left:12vw;right:12vw;bottom:8vh;}.p-duelo .morado{bottom:auto;top:11vh}.morado{padding:1.2vh 3vh;border-radius:1vh;background:linear-gradient(#a05cff,#6a1fd0);border:.3vh solid #e8d8ff;font:700 2.8vh FR,Arial;color:#fff;text-align:center}.morado small{display:block;font-size:2vh;color:#ffd23a}
+.resp{position:absolute;right:3vw;top:3vh;display:flex;gap:1vh}.resp input{font:700 2.6vh Arial;padding:1vh 2vh;border-radius:2vh;border:.3vh solid #7fd0ff;width:24vw}.resp button{padding:1vh 2vh;border-radius:2vh;border:0;font:800 2.4vh Arial;color:#fff;background:#1fb14a}.resp .pp{background:#e08a00}
+.rej{position:absolute;right:8vw;top:8vh;display:grid;grid-template-columns:repeat(5,9vh);gap:.8vh;padding:1.4vh;border-radius:1.5vh;background:linear-gradient(#2a8cf0,#0a4fc8);border:.4vh solid #bfe8ff;box-shadow:0 0 2vh #1a9fff88}
+.rej b{height:9vh;border-radius:.8vh;background:linear-gradient(#ffffff,#d8e4f0);display:flex;align-items:center;justify-content:center;font:700 5.4vh FR,Arial;color:#1a5fd8;cursor:pointer;box-shadow:inset 0 -.4vh 0 #9ab}
+.rej b.sel{background:linear-gradient(#ffe08a,#ffb02e)}.rej b.verde{background:linear-gradient(#5ee36a,#1fb131);color:#fff}
+.caja{position:absolute;right:4vw;bottom:5vh;width:9vh;height:9vh;border-radius:1.2vh;background:linear-gradient(#fff,#cfdcec);border:.4vh solid #2a8cf0;display:flex;align-items:center;justify-content:center;font:700 6vh FR,Arial;color:#1a5fd8}
+.botebox{position:absolute;left:50%;bottom:8vh;transform:translateX(-50%);padding:1.4vh 8vh 1.8vh;border-radius:7vh;background:linear-gradient(#4fb0ff,#1a6fe0 50%,#0a3aa8);border:1vh solid #fff;outline:.9vh dotted #ffffffee;outline-offset:-.95vh;box-shadow:0 0 3vh #1a9fffaa;font:700 8vh FR,Arial;color:#fff;text-align:center}.botebox small{display:block;font-size:2.4vh;letter-spacing:.1em}
+#rosco2{position:absolute;left:50%;top:44%;width:74vh;height:74vh;transform:translate(-50%,-50%)}
+#rosco2 b{position:absolute;width:6vh;height:6vh;margin:-3vh 0 0 -3vh;border-radius:50%;background:radial-gradient(circle at 40% 30%,#5cb6ff,#1a6fe0 55%,#0a4fc8);border:.3vh solid #fff;display:flex;align-items:center;justify-content:center;font:700 3.4vh FR,Arial;color:#fff;box-shadow:0 .3vh .6vh #0007}
+#rosco2 b.ok{background:radial-gradient(circle at 40% 30%,#9cff9c,#1fb131 60%,#0a7a1a)}#rosco2 b.ko{background:radial-gradient(circle at 40% 30%,#ff9c9c,#d92a2a 60%,#8a0a0a)}#rosco2 b.act{transform:scale(1.25);background:radial-gradient(circle at 40% 30%,#ffd28a,#ff8a12)}
+#acs{position:absolute;left:4vw;bottom:24vh;width:8vh;height:8vh;border-radius:1vh;background:linear-gradient(#ffb02e,#ff7a00);border:.4vh solid #fff;display:flex;align-items:center;justify-content:center;font:700 5vh FR,Arial;color:#fff}
+#tmp{position:absolute;left:3vw;bottom:9vh;width:13vh;height:13vh;border-radius:50%;background:radial-gradient(circle at 40% 30%,#ffd28a,#ff8a12 45%,#e05a00);border:.6vh solid #fff3d0;box-shadow:0 0 0 .6vh #2a8cf0;display:flex;align-items:center;justify-content:center;font:700 6.5vh FR,Arial;color:#fff}
+#def{left:22vw!important;right:6vw!important;bottom:3vh!important;background:linear-gradient(#5cb6ff,#1a6fe0 50%,#0b4fc0)!important;border:.3vh solid #d8f1ff!important;border-radius:1vh!important;font-family:FR,Arial!important}
+#form{left:auto!important;right:3vw;top:3vh;bottom:auto!important;transform:none!important}#volver{left:3vw;right:auto!important}
+</style></head><body>
+<canvas id="c"></canvas>
+<div id="cab" class="ui on"><img class="t5" src="img/logo5.png" alt=""><img class="marca" src="img/wordmark.png" alt="Pasapalabra"><div class="salta">Toca para saltar</div></div>
+<div id="menu" class="ui">
+ <div class="logo"><img src="img/logo5.png" style="height:5vh;vertical-align:top;margin-right:1vw"><img src="img/wordmark.png" style="height:8vh;display:block"><small>TELECINCO · 3D</small></div>
+ <div class="btns">
+  <button class="b gold" data-go="jugar">Jugar<small>Programa completo con Christian Gálvez: La Pista, silla azul, sopa, tablero y El Rosco</small></button>
+  <button class="b" data-go="opciones">Opciones<small>Sonido, voz, normas sorpresa, calidad gráfica</small></button>
+  <button class="b" data-go="creditos">Créditos</button>
+  <button class="b" id="salirApp" style="display:none">◀ Volver al juego</button>
+ </div>
+ <div class="ver">v0.2</div>
+</div>
+<div id="opciones" class="ui"><div class="panel"><h2>Opciones</h2><div id="olist"></div><button class="b" data-go="menu" style="margin-top:2vh">Volver</button></div></div>
+<div id="creditos" class="ui"><div class="panel"><h2>Créditos</h2><p style="font-size:2.4vh;line-height:1.5">Juego privado de Ikeriano, recreación del programa Pasapalabra de Telecinco.<br>Presentador: Christian Gálvez (voz sintética Piper original, no clonada).<br>Plató 3D hecho con Three.js.</p><button class="b" data-go="menu">Volver</button></div></div>
+<div id="prog" class="ui"></div>
+<div id="hud" class="ui"><div id="rosco2"></div><div id="acs">0</div><div id="tmp">150</div><button id="volver" class="b">Salir</button>
+ <div id="def"></div><form id="form"><input id="resp" autocomplete="off" placeholder="Tu respuesta"><button class="k ok">Responder</button><button type="button" id="pasa" class="k pp">Pasapalabra</button></form></div>
+<div id="sub"></div>
+<script src="js/app.js"></script></body></html>

@@ -1,5 +1,7 @@
 // Prueba final: El rosco / AlaZ / La Rueda (25 definiciones, dos concursantes por turnos)
 import { banco, esCorrecta, espera, esc, Reloj, habla, sonido } from './motor.js';
+import { sortea, fxDe } from './normas.js';
+import { cfg } from '../cfg.js';
 import { hud } from './grafismos.js';
 import { musica } from '../lib/musica.js';
 
@@ -31,8 +33,11 @@ export async function jugarFinal(G, ui, { tipo = 'rosco', base = 85, nombre = 'E
     await ui.continuar(cont, 'Empezar ▸');
   } else await ui.continuar(cont, 'Empezar ▸');
 
+  const NS = sortea(cfg.normas === true);
+  if (NS.length) { const c2 = ui.pantalla(`<p class="j-reglas">🎲 Normas sorpresa de hoy</p><div class="j-def" style="text-align:left">${NS.map(n => `<div>• <b>${esc(n.n)}</b>: ${esc(n.d)}</div>`).join('')}</div>`); ui.cabecera(G, 'Normas sorpresa'); habla('¡Atención! Hoy hay normas sorpresa: ' + NS.map(n => n.n).join(', ') + '.'); await ui.continuar(c2, 'Empezar ▸'); }
   sonido('rosco');
-  const est = { H: { set: setH, e: Array(25).fill(null), i: 0, t: tH, letras: {} }, R: { set: setR, e: Array(25).fill(null), i: 0, t: tR } };
+  const est = { H: { set: setH, e: Array(25).fill(null), i: 0, t: tH + fxDe('tiempo'), letras: {} }, R: { set: setR, e: Array(25).fill(null), i: 0, t: Math.max(10, tR + fxDe('tiempoRival')) } };
+  let perdon = fxDe('perdon'), racha = 0, turnosH = 0;
   const pendiente = s => s.e.some(x => x === null);
   const sig = s => { for (let k = 0; k < 25; k++) { const j = (s.i + k) % 25; if (s.e[j] === null) { s.i = j; return true; } } return false; };
   let turno = empiezaH ? 'H' : 'R';
@@ -44,6 +49,7 @@ export async function jugarFinal(G, ui, { tipo = 'rosco', base = 85, nombre = 'E
     if (turno === 'H' && (est.H.t <= 0 || !pendiente(est.H))) turno = 'R';
     if (turno === 'R' && (est.R.t <= 0 || !pendiente(est.R))) { if (est.H.t > 0 && pendiente(est.H)) turno = 'H'; else break; }
     if (turno === 'H') {
+      turnosH++; if (turnosH === 2) est.H.t += fxDe('regalo2');
       const reloj = new Reloj(est.H.t, v => { est.H.t = v; const h = cont.querySelector('h4'); if (h) h.textContent = `Tú · ${Math.ceil(v)} s`; hud().tiempoRosco(0, v); }).start();
       let seguir = true;
       while (seguir && sig(est.H) && !reloj.terminado) {
@@ -53,10 +59,11 @@ export async function jugarFinal(G, ui, { tipo = 'rosco', base = 85, nombre = 'E
         habla(`${modo === 'e' ? 'Con la' : 'Contiene la'} ${L}. ${def}`);
         const a = await ui.respuesta(centro, { pasa: tipo === 'rueda' ? 'Paso' : 'Pasapalabra', letra: tipo === 'alaz' }, [reloj.fin]);
         if (a === 'TIEMPO') break;
-        if (a === 'LETRA') { if (!est.H.letras[est.H.i]) { reloj.quitar(5); est.H.letras[est.H.i] = revela(r); } continue; }
-        if (a === 'PASA') { sonido('pasapalabra'); est.H.i = (est.H.i + 1) % 25; seguir = false; break; }
-        if (esCorrecta(a, r)) { est.H.e[est.H.i] = 'ok'; sonido('acierto'); est.H.i = (est.H.i + 1) % 25; }
-        else { est.H.e[est.H.i] = 'ko'; sonido('fallo'); await ui.aviso(centro, `❌ Era <b>${esc(r.split('|')[0])}</b>`, 1300); est.H.i = (est.H.i + 1) % 25; seguir = false; }
+        if (a === 'LETRA') { if (!est.H.letras[est.H.i]) { if (!fxDe('letraGratis')) reloj.quitar(5); est.H.letras[est.H.i] = revela(r); } continue; }
+        if (a === 'PASA') { reloj.rest += fxDe('segPasa'); sonido('pasapalabra'); est.H.i = (est.H.i + 1) % 25; seguir = false; break; }
+        if (esCorrecta(a, r)) { est.H.e[est.H.i] = 'ok'; sonido('acierto'); reloj.rest += fxDe('segAcierto') + (L === 'A' ? fxDe('bonusA') : 0) + (L === 'Z' ? fxDe('bonusZ') : 0); if (++racha === 3 && fxDe('racha')) { reloj.rest += fxDe('racha'); racha = 0; } est.H.i = (est.H.i + 1) % 25; }
+        else if (perdon > 0) { perdon--; racha = 0; await ui.aviso(centro, '🎲 Fallo perdonado: vuelve a intentarlo', 1100); }
+        else { racha = 0; reloj.quitar(fxDe('segFallo')); est.H.e[est.H.i] = 'ko'; sonido('fallo'); await ui.aviso(centro, `❌ Era <b>${esc(r.split('|')[0])}</b>`, 1300); est.H.i = (est.H.i + 1) % 25; seguir = false; }
       }
       reloj.stop(); turno = 'R';
     } else {
@@ -64,8 +71,8 @@ export async function jugarFinal(G, ui, { tipo = 'rosco', base = 85, nombre = 'E
       let seguir = true;
       while (seguir && sig(est.R) && est.R.t > 0) {
         const centro = pinta(`<div class="j-def">Juega el rival… (${est.R.set[est.R.i][0]})</div>`);
-        await espera(900); est.R.t = Math.max(0, est.R.t - (3 + Math.random() * 3));
-        const x = Math.random();
+        await espera(900); est.R.t = Math.max(0, est.R.t - (3 + Math.random() * 3) * fxDe('rivalLento', 1));
+        const x = Math.random() + fxDe('rivalFalla');
         if (x < 0.62) { est.R.e[est.R.i] = 'ok'; est.R.i = (est.R.i + 1) % 25; }
         else if (x < 0.8) { est.R.i = (est.R.i + 1) % 25; seguir = false; await ui.aviso(centro, `Rival: «${tipo === 'rueda' ? 'Paso' : 'Pasapalabra'}»`, 700); }
         else { est.R.e[est.R.i] = 'ko'; est.R.i = (est.R.i + 1) % 25; seguir = false; await ui.aviso(centro, 'El rival falla', 700); }

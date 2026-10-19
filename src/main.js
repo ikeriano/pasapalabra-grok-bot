@@ -216,6 +216,7 @@ function Lt(p) {
     if (!enApk) col.append(mbtn('Descargar APK', 'Instala el juego en tu móvil Android', 'inst', () => window.open('https://github.com/ikeriano/pasapalabra-grok-bot/releases/latest', '_blank')));
   } else if (p === 'play') {
     col.append(mbtn('Programa completo', `Cabecera, Silla azul, pruebas y ${FORMATOS[cfg.etapa].variantes.at(-1).final.nombre} · ${nomEtapa}`, 'gold', () => iniciar('programa')), mbtn('Entrenamiento', 'Practica cada prueba y las finales', '', () => Lt('train')),
+      ...(cfg.t5 ? [mbtn('Pasapalabra Telecinco 3D', 'El programa de Telecinco con Christian Gálvez: La Pista, silla azul, sopa, tablero y El Rosco', 'gold', () => abreT5())] : []),
       mbtn('Clásico', 'Partida rápida: dos pruebas y la final', '', () => iniciar('clasico')), mbtn('Rueda la letra', 'El programa de Telecinco (2026): La oportunidad… y La Rueda', '', () => iniciar('rueda')),
       mbtn('Explorar el plató', 'Pasea libremente por el plató 3D', '', () => iniciar('explorar')), mbtn('Monólogos del presentador', 'Con el público, al teléfono y las normas', '', () => Lt('monologos')),
       M.h2('Programa especial'), M.rejillaTemas(Object.fromEntries(Object.entries(ESPECIALES).map(([k, v]) => [k, { name: v.nombre, emoji: v.emoji }])), cfg.especial, k => { cfg.especial = k; guardarCfg(); ctx.especial = k; cargarEtapa(cfg.etapa); modoOrbita(); Lt('play'); }),
@@ -235,6 +236,7 @@ function Lt(p) {
     const pub = M.bloque('', M.fila('👏 Público', siNo('publico'), slider('publicoVol')), M.nota('Aplausos del público sintetizados por el propio juego (no son grabaciones).')); pub.querySelector('.olabel').remove(); col.append(pub);
     col.append(M.fila('🎤 Voz del presentador', siNo('voz')), M.fila('📖 El presentador lee las preguntas', siNo('lee')), M.fila('⏩ Velocidad de lectura', ...opciones('leeVel', [['normal', 'Normal'], ['rapida', 'Rápida']])),
       M.fila('😄 Chistes del presentador', siNo('chistes')), M.fila('🎭 Monólogo del presentador', siNo('monologo')));
+    col.append(M.fila('🎲 Normas sorpresa', siNo('normas')), M.nota('Con «Sí», al empezar el juego final se sortean 10 normas entre 17 y el presentador las anuncia. Por defecto, No.', 'onote'), M.fila('📺 Plató Telecinco 3D (Christian Gálvez)', siNo('t5')), M.nota('Con «Sí», sale «Pasapalabra Telecinco 3D» en Jugar. Por defecto, No.', 'onote'));
     col.append(M.bloque('👥 Concursantes', M.linea(`${cfg.nombre ? 'Tú: ' + esc(cfg.nombre) + (cfg.profesion ? ' · ' + esc(cfg.profesion) : '') : 'Tú: sin nombre'} · Rivales: ${RIVALES.map(r => esc(r.nombre.split(' ')[0])).join(', ')}`), M.botones([{ t: '✏️ Nombres y profesiones', sel: true, full: true, fn: () => Lt('concursantes') }])));
     col.append(M.bloque('🏟️ Etapa / Plató', M.botones(ETAPAS.filter(e => e.id !== 'rueda-letra').map(e => ({ t: `${e.nombre} ${e.anios}`, sel: cfg.etapa === e.id, fn: () => { cfg.etapa = e.id; guardarCfg(); cargarEtapa(e.id); modoOrbita(); Lt('options'); } })))));
     col.append(M.nota(`${etapaDef.nombre} ${etapaDef.anios}: ${NOTA_ETAPA[etapaDef.id] || ''} Presenta: ${presDe().nombre}.`, 'mtext'));
@@ -491,3 +493,7 @@ $('loading').classList.add('hidden');
 if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});
 window.__juego = { cargarEtapa, PRUEBAS, jugarFinal, UI, FORMATOS, hud, estiloDe, iniciar, irMenu, cfg };
 window.__plato = { scene, camera, renderer, etapa: () => etapa, ok: true };
+
+// v1.2 · «Plató Telecinco 3D»: abre el programa t5 dentro del juego; «Volver al juego» lo cierra
+function abreT5() { let f = document.getElementById('t5frame'); if (!f) { f = document.createElement('iframe'); f.id = 't5frame'; f.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;border:0;z-index:9999;background:#000'; f.allow = 'autoplay'; document.body.appendChild(f); } f.src = 't5/index.html'; }
+addEventListener('message', e => { if (e.data === 'pp-menu') { const f = document.getElementById('t5frame'); if (f) f.remove(); } });

@@ -1,2 +1,11 @@
 node_modules/
 capturas/
+android/keystore/
+android/local.properties
+android/.gradle/
+android/build/
+android/app/build/
+android/app/src/main/assets/
+*.apk
+*.jks
+keystore.properties
